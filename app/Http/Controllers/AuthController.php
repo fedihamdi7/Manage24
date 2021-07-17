@@ -13,7 +13,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-    
+
     }
 
     /**
@@ -23,7 +23,7 @@ class AuthController extends Controller
      */
     public function index()
     {
-        return view('Auth');
+        return view('welcome');
     }
 
 
