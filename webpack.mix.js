@@ -17,3 +17,8 @@ mix.styles([
         'resources/css/welcome.css'
     ], 'public/css/welcome.css');
 mix.js('resources/js/welcome.js', 'public/js');
+mix.js('resources/js/dashboard.js', 'public/js');
+
+mix.styles([
+    'resources/css/dashboard.css'
+], 'public/css/dashboard.css');
