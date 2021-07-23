@@ -36,8 +36,9 @@
             <div class="user_options-forms" id="user_options-forms">
                 <div class="user_forms-login">
                     <h2 class="forms_title">Login</h2>
-                    <form class="forms_form">
-                        <fieldset class="forms_fieldset">
+                    <form class="forms_form" method="POST" action="{{ route('login') }}">
+                        @csrf
+                        <fieldset class="forms_fieldset" >
                             <div class="forms_field">
                                 <input type="email" placeholder="Email" class="forms_field-input" required autofocus />
                             </div>
@@ -53,20 +54,24 @@
                 </div>
                 <div class="user_forms-signup">
                     <h2 class="forms_title">Sign Up</h2>
-                    <form class="forms_form">
+                    <form class="forms_form" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                        @csrf
                         <fieldset class="forms_fieldset">
                             <div class="forms_field">
-                                <input type="text" placeholder="Full Name" class="forms_field-input" required />
+                                <input type="text" placeholder="Full Name" class="forms_field-input" name="name" required />
                             </div>
                             <div class="forms_field">
-                                <input type="email" placeholder="Email" class="forms_field-input" required />
+                                <input type="email" placeholder="Email" class="forms_field-input" name="email" required />
                             </div>
                             <div class="forms_field">
-                                <input type="password" placeholder="Password" class="forms_field-input" required />
+                                <input type="password" placeholder="Password" class="forms_field-input" name="password" required />
                             </div>
                         </fieldset>
                         <div class="forms_buttons">
-                            <input type="submit" value="Sign up" class="forms_buttons-action">
+                            {{-- <input type="submit" value="Sign up" class="forms_buttons-action"> --}}
+                            <button type="submit" class="forms_buttons-action">
+                                {{ ('Register') }}
+                            </button>
                         </div>
                     </form>
                 </div>
