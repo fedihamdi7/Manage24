@@ -50,7 +50,12 @@ class RegisterController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
-        User::create($data);
+        User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+        // User::create($data);
         // return dd($request);
 
         return redirect(route('/'))->with('membreCreate','Account Created Successfully , You can Login');
