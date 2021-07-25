@@ -50,7 +50,11 @@ class RegisterController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
-        return dd($request);
+        User::create($data);
+        // return dd($request);
+
+        return redirect(route('/'))->with('membreCreate','Account Created Successfully , You can Login');
+
 
 
     }
@@ -62,14 +66,14 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
 
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
+    // protected function validator(array $data)
+    // {
+    //     return Validator::make($data, [
+    //         'name' => ['required', 'string', 'max:255'],
+    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+    //         'password' => ['required', 'string', 'min:8', 'confirmed'],
+    //     ]);
+    // }
 
 
 

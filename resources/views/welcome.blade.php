@@ -18,6 +18,14 @@
             <img src="images/logo.png" alt="">
         </div>
     </header>
+    @if (session('membreCreate'))
+        <div class="alert alert-dismissible alert-success fade show suc-msg" role="alert">
+            {{ session('membreCreate') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
     <section class="user">
         <div class="user_options-container">
             <div class="user_options-text">
