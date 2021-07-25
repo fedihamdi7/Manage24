@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
 
     <link rel="icon" href="">
@@ -40,10 +41,20 @@
                         @csrf
                         <fieldset class="forms_fieldset" >
                             <div class="forms_field">
-                                <input type="email" placeholder="Email" class="forms_field-input" required autofocus />
+                                <input type="email" name="email" placeholder="Email" class="forms_field-input @error('email') is-invalid @enderror" required autofocus value="{{ old('email') }}"/>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="forms_field">
-                                <input type="password" placeholder="Password" class="forms_field-input" required />
+                                <input type="password" name="password" placeholder="Password" class="forms_field-input @error('password') is-invalid @enderror" required />
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </fieldset>
                         <div class="forms_buttons">
@@ -58,17 +69,19 @@
                         @csrf
                         <fieldset class="forms_fieldset">
                             <div class="forms_field">
-                                <input type="text" placeholder="Full Name" class="forms_field-input" name="name" required />
+                                <input type="text" placeholder="Full Name" class="forms_field-input @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" />
+                                 @error('name')<div class="text-danger">{{ $message }}</div>@enderror
                             </div>
                             <div class="forms_field">
-                                <input type="email" placeholder="Email" class="forms_field-input" name="email" required />
+                                <input type="email" placeholder="Email" class="forms_field-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" />
+                                 @error('email')<div class="text-danger">{{ $message }}</div>@enderror
                             </div>
                             <div class="forms_field">
-                                <input type="password" placeholder="Password" class="forms_field-input" name="password" required />
+                                <input type="password" placeholder="Password" class="forms_field-input @error('password') is-invalid @enderror" name="password"  />
+                                 @error('password')<div class="text-danger">{{ $message }}</div>@enderror
                             </div>
                         </fieldset>
                         <div class="forms_buttons">
-                            {{-- <input type="submit" value="Sign up" class="forms_buttons-action"> --}}
                             <button type="submit" class="forms_buttons-action">
                                 {{ ('Register') }}
                             </button>
@@ -78,7 +91,7 @@
             </div>
         </div>
     </section>
-    <script src="{{ asset('js/welcome.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 
 </html>
