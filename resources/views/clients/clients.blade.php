@@ -35,14 +35,14 @@
             @foreach ( $clients as $client )
                 <tr>
                     <th scope="row">{{$client->id}}</th>
-                    <td>{{$client->social_reason}}</td>
-                    <td>{{$client->activity}}</td>
-                    <td>{{$client->adresse1}}</td>
-                    <td>{{$client->adresse2}}</td>
-                    <td>{{$client->phone}}</td>
-                    <td>{{$client->fax}}</td>
-                    <td>{{$client->email}}</td>
-                    <td>{{$client->contact_person}}</td>
+                    <td>{{$client->social_reason ?? 'N/A'}}</td>
+                    <td>{{$client->activity ?? 'N/A'}}</td>
+                    <td>{{$client->adresse1 ?? 'N/A'}}</td>
+                    <td>{{$client->adresse2 ?? 'N/A'}}</td>
+                    <td>{{$client->phone ?? 'N/A'}}</td>
+                    <td>{{$client->fax ?? 'N/A'}}</td>
+                    <td>{{$client->email ?? 'N/A'}}</td>
+                    <td>{{$client->contact_person ?? 'N/A'}}</td>
                     <td >
 
                         <a href="{{ route('client.edit',['client'=>$client->id]) }}"> <i class="fa fa-edit" aria-hidden="true"></i> </a>

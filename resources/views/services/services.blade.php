@@ -28,8 +28,8 @@
             @foreach ( $services as $service )
                 <tr>
                     <th scope="row">{{$service->id}}</th>
-                    <td>{{$service->service_ligne}}</td>
-                    <td>{{$service->description}}</td>
+                    <td>{{$service->service_ligne ?? 'N/A'}}</td>
+                    <td>{{$service->description ?? 'N/A'}}</td>
                     <td >
 
                         <a href="{{ route('service.edit',['service'=>$service->id]) }}"> <i class="fa fa-edit" aria-hidden="true"></i> </a>

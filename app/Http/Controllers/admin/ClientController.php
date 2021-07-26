@@ -29,8 +29,8 @@ class ClientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    { $user = Auth::user();
+        return view('clients.create',compact('user'));
     }
 
     /**
@@ -41,7 +41,19 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      
+        $data = $request->validate([
+            'social_reason' => 'required',
+            'activity' => 'required',
+            'adresse1' => 'required',
+            'phone' => 'required|size:8',
+            'email' => 'email',
+            'contact_person' => 'required',
+        ]);
+
+        $client = new Client();
+        $client->create($data);
+        return redirect(route('client.index',))->with('clientCreated','Client Added Successfully');
     }
 
     /**

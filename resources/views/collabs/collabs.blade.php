@@ -33,12 +33,12 @@
             @foreach ( $collabs as $collab )
                 <tr>
                     <th scope="row">{{$collab->id}}</th>
-                    <td>{{$collab->collab_name}}</td>
-                    <td>{{$collab->collab_last_name}}</td>
-                    <td>{{$collab->collab_dateIn}}</td>
-                    <td>{{$collab->collab_dateOut}}</td>
-                    <td>{{$collab->collab_phone}}</td>
-                    <td>{{$collab->collab_mail}}</td>
+                    <td>{{$collab->collab_name ?? 'N/A'}}</td>
+                    <td>{{$collab->collab_last_name ?? 'N/A'}}</td>
+                    <td>{{$collab->collab_dateIn ?? 'N/A'}}</td>
+                    <td>{{$collab->collab_dateOut ?? 'N/A'}}</td>
+                    <td>{{$collab->collab_phone ?? 'N/A'}}</td>
+                    <td>{{$collab->collab_mail ?? 'N/A'}}</td>
                     <td >
 
                         <a href="{{ route('collab.edit',['collab'=>$collab->id]) }}"> <i class="fa fa-edit" aria-hidden="true"></i> </a>
