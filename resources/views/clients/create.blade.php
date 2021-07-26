@@ -87,9 +87,9 @@
 
             </div>
             <div class="col-12">
-                <input type="email" class="form-control @error('collab_mail') is-invalid @enderror" id="inputEmail"
-                    placeholder="Email.." name="collab_mail" value="{{ old('collab_mail') }}">
-                @error('collab_mail')
+                <input type="email" class="form-control @error('email') is-invalid @enderror" id="inputEmail"
+                    placeholder="Email.." name="email" value="{{ old('collab_mail') }}">
+                @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>

@@ -6,6 +6,7 @@ use App\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ClientController extends Controller
 {
@@ -41,7 +42,7 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-      
+
         $data = $request->validate([
             'social_reason' => 'required',
             'activity' => 'required',
@@ -75,7 +76,9 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        //
+        $user = Auth::user();
+        $client = client::find($client->id);
+        return view('clients.edit',compact('user','client'));
     }
 
     /**
@@ -87,7 +90,30 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        //
+        $data = $request->validate([
+            'social_reason' => 'required',
+            'activity' => 'required',
+            'adresse1' => 'required',
+            'phone' => 'required|size:8',
+            'email' => 'email',
+            'contact_person' => 'required',
+        ]);
+
+        DB::table('clients')
+        ->where('id',$client->id)
+        ->update([
+            'social_reason' => $request->social_reason,
+            'activity' => $request->activity,
+            'adresse1' => $request->adresse1,
+            'adresse2' => $request->adresse2,
+            'phone' => $request->phone,
+            'fax' => $request->fax,
+            'email' => $request->email,
+            'contact_person' => $request->contact_person,
+
+        ]);
+
+        return redirect(route('client.edit',compact('client')))->with('clientUpdated','Client Updated Successfully');
     }
 
     /**
