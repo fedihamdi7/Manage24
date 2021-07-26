@@ -1,5 +1,14 @@
 @include("../layouts.sidebar")
+
   <section class="home-section">
+    @if (session('collabCreated'))
+    <div class="alert alert-dismissible alert-success fade show suc-msg" style="margin-bottom: 0px" role="alert">
+        {{ session('collabCreated') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
     <div class="home-content">
       <i class='bx bx-menu' ></i>
       <span class="text"></span>

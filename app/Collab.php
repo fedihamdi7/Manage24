@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Collabs extends Model
+class Collab extends Model
 {
     //
     protected $guarded=[];

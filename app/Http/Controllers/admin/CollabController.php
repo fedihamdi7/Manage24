@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Collabs;
+use App\Collab;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +18,7 @@ class CollabController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $collabs = Collabs::get()->sort();
+        $collabs = Collab::get()->sort();
 
         return view('collabs.collabs',compact('user','collabs'));
     }
@@ -30,7 +30,8 @@ class CollabController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+        return view('collabs.create',compact('user'));
     }
 
     /**
@@ -41,7 +42,19 @@ class CollabController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'collab_name' => 'required',
+            'collab_last_name' => 'required',
+            'collab_dateIn' => 'required',
+            'collab_dateOut' => 'required',
+            'collab_phone' => 'required|size:8',
+            'collab_mail' => 'required|email',
+        ]);
+
+        $collab = new Collab();
+        $collab->create($data);
+        return redirect(route('collab.index',))->with('collabCreated','Collaborator Added Successfully');
+
     }
 
     /**
@@ -50,7 +63,7 @@ class CollabController extends Controller
      * @param  \App\Collabs  $collabs
      * @return \Illuminate\Http\Response
      */
-    public function show(Collabs $collabs)
+    public function show(Collab $collabs)
     {
         //
     }
@@ -61,10 +74,10 @@ class CollabController extends Controller
      * @param  \App\Collabs  $collabs
      * @return \Illuminate\Http\Response
      */
-    public function edit(Collabs $collab)
+    public function edit(Collab $collab)
     {
         $user = Auth::user();
-        $collabs = Collabs::find($collab->id);
+        $collabs = Collab::find($collab->id);
         // dd($collabs);
         return view('collabs.edit',compact('user','collabs'));
     }
@@ -76,7 +89,7 @@ class CollabController extends Controller
      * @param  \App\Collabs  $collabs
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Collabs $collab)
+    public function update(Request $request, Collab $collab)
     {
         $data = $request->validate([
             'collab_name' => 'required',
@@ -113,7 +126,7 @@ class CollabController extends Controller
      * @param  \App\Collabs  $collabs
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Collabs $collab,Request $request)
+    public function destroy(Collab $collab,Request $request)
     {
      $collab->delete();
      return redirect()->route('collab.index');
