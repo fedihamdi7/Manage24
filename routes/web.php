@@ -21,5 +21,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::resource('collab', 'admin\CollabController');
+// Route::get('/dashboard', 'DashboardController@index')->name('dashboard');

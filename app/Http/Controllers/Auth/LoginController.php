@@ -30,7 +30,7 @@ class LoginController extends Controller
 
     public function redirectTo()
     {
-        return '/dashboard';
+        return '/collab';
     }
 
     /**

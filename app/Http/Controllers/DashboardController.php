@@ -29,6 +29,6 @@ class DashboardController extends Controller
         $user = Auth::user();
         $collabs = Collabs::get();
 
-        return view('dashboard',compact('user','collabs'));
+        return view('collabs',compact('user','collabs'));
     }
 }

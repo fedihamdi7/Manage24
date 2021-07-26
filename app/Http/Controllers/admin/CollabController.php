@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Collabs;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CollabController extends Controller
 {
@@ -15,7 +16,10 @@ class CollabController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $collabs = Collabs::get();
+
+        return view('collabs',compact('user','collabs'));
     }
 
     /**
