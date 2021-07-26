@@ -24,7 +24,7 @@
     <a name="" id="" class="btn btn-perso" href="{{route('client.create')}}" role="button" >Add Client</a>
 
     <table class="table caption-top">
-        <caption class="cap-style">Clients List</caption>
+        <caption class="cap-style" style="margin-left: 46%;">Clients List</caption>
         <thead class="table-light">
           <tr>
             <th scope="col">#</th>

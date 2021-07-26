@@ -9,8 +9,8 @@ $factory->define(Client::class, function (Faker $faker) {
     return [
         'social_reason'=> $faker->word,
         'activity'=> $faker->word,
-        'adresse 1'=> $faker->address(),
-        'adresse 2'=> $faker->address(),
+        'adresse1'=> $faker->address(),
+        'adresse2'=> $faker->address(),
         'phone'=> $faker->phoneNumber(),
         'fax'=> $faker->phoneNumber(),
         'email'=> $faker->email(),

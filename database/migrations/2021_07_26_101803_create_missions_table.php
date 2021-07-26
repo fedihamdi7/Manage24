@@ -14,12 +14,10 @@ class CreateMissionsTable extends Migration
     public function up()
     {
         Schema::create('missions', function (Blueprint $table) {
-
+            $table->bigIncrements('id');
             $table->integer('service_id')->unsigned();
             $table->integer('client_id')->unsigned();
-            $table->integer('mission_id')->unsigned();
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('mission_id')->references('id')->on('missions')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade')->onUpdate('cascade');
             $table->date('date_start');
             $table->date('date_finish');
