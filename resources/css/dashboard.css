@@ -261,3 +261,30 @@ table{
 .fa-ban{
     color: red;
 }
+
+
+/* ****************** EDIT **************** */
+.cont-edit{
+    margin-top: 6%;
+    width: 50%;
+}
+.form-control{
+    margin-top: 3%;
+}
+.title-edit{
+    font-size: 1.3em;
+}
+.title-edit span{
+    font-weight: bold;
+}
+
+.sub-btn{
+    margin-top: 2%;
+}
+
+.Del-Form-Button
+{
+    position: absolute;
+    left: 31%;
+    top: 47.1%;
+}

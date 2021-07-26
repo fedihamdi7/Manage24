@@ -9,7 +9,8 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" >
-    <link rel="icon" href="images/logo.png">
+    {{-- <link rel="icon" href="../images/logo.png"> --}}
+    <link rel="icon" href="{{ asset('images/logo.png') }}">
     <title>Manage24</title>
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +18,7 @@
 <body>
   <div class="sidebar close">
     <div class="logo-details">
-      <img src="images/logo.png" alt="" style="width: 100%">
+      <img src="{{ asset('images/logo.png') }}" alt="" style="width: 100%">
       {{-- <span class="logo_name">Manage24</span> --}}
     </div>
     <ul class="nav-links">
@@ -123,7 +124,7 @@
       <li>
     <div class="profile-details">
       <div class="profile-content">
-        <img src="images/ff.jpg" alt="profileImg">
+        <img src="{{ asset('images/ff.jpg') }}" alt="profileImg">
       </div>
       <div class="name-job">
         <div class="profile_name">{{$user->name}}</div>

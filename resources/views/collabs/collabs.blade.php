@@ -1,4 +1,4 @@
-@include("layouts.sidebar")
+@include("../layouts.sidebar")
   <section class="home-section">
     <div class="home-content">
       <i class='bx bx-menu' ></i>
@@ -15,7 +15,7 @@
             <th scope="col">Date Out</th>
             <th scope="col">Phone</th>
             <th scope="col">Email</th>
-            <th scope="col">Operations</th>
+            <th scope="col">Edit</th>
           </tr>
         </thead>
         <tbody>
@@ -28,13 +28,13 @@
                     <td>{{$collab->collab_dateOut}}</td>
                     <td>{{$collab->collab_phone}}</td>
                     <td>{{$collab->collab_mail}}</td>
-                    <td id="operations-style">
+                    <td >
 
                         <a href="{{ route('collab.edit',['collab'=>$collab->id]) }}"> <i class="fa fa-edit" aria-hidden="true"></i> </a>
-                        <a href="" title="Delete {{ $collab->collab_name.' '.$collab->collab_last_name }}" onclick="event.preventDefault();document.querySelector('#delete-event-form').submit()"> <i class="fa fa-ban" aria-hidden="true" ></i> </a>
+                        {{-- <a href="" title="Delete {{ $collab->collab_name.' '.$collab->collab_last_name }}" onclick="event.preventDefault();document.querySelector('#delete-event-form').submit()"> <i class="fa fa-ban" aria-hidden="true" ></i> </a>
                         <form action="{{ route('collab.destroy',['collab'=>$collab]) }}" method="POST" id="delete-event-form">
                         @csrf @method('DELETE')
-                        </form>
+                        </form> --}}
 
                     </td>
                 </tr>
