@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ServiceController extends Controller
 {
@@ -62,7 +63,10 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+        $user = Auth::user();
+        // $services = Service::get()->sort();
+
+        return view('services.edit',compact('user','service'));
     }
 
     /**
@@ -74,7 +78,26 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        //
+
+        $data = $request->validate([
+            'service_ligne' => 'required',
+            'description' => 'required',
+        ]);
+
+        DB::table('services')
+        ->where('id',$service->id)
+        ->update([
+            'service_ligne' => $request->service_ligne,
+            'description' => $request->description,
+
+        ]);
+
+
+
+
+
+
+        return redirect(route('service.edit',compact('service')))->with('serviceUpdated','Service Ligne Updated Successfully');
     }
 
     /**
@@ -85,6 +108,7 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        $service->delete();
+        return redirect()->route('service.index');
     }
 }

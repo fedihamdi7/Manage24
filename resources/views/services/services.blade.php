@@ -26,12 +26,12 @@
         <tbody>
             @foreach ( $services as $service )
                 <tr>
-                    <th scope="row">{{$collab->id}}</th>
+                    <th scope="row">{{$service->id}}</th>
                     <td>{{$service->service_ligne}}</td>
                     <td>{{$service->description}}</td>
                     <td >
 
-                        <a href="{{ route('collab.edit',['collab'=>$service->id]) }}"> <i class="fa fa-edit" aria-hidden="true"></i> </a>
+                        <a href="{{ route('service.edit',['service'=>$service->id]) }}"> <i class="fa fa-edit" aria-hidden="true"></i> </a>
                         {{-- <a href="" title="Delete {{ $collab->collab_name.' '.$collab->collab_last_name }}" onclick="event.preventDefault();document.querySelector('#delete-event-form').submit()"> <i class="fa fa-ban" aria-hidden="true" ></i> </a>
                         <form action="{{ route('collab.destroy',['collab'=>$collab]) }}" method="POST" id="delete-event-form">
                         @csrf @method('DELETE')
