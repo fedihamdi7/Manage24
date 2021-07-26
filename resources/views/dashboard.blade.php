@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <!--<title> Drop Down Sidebar Menu | CodingLab </title>-->
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" >
     <link rel="icon" href="images/logo.png">
@@ -150,34 +152,40 @@
       <span class="text"></span>
     </div>
     <table class="table caption-top">
-        <caption class="cap-style">List of users</caption>
+        <caption class="cap-style">Collaborators List</caption>
         <thead class="table-light">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Date In</th>
+            <th scope="col">Date Out</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Operations</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
+            @foreach ( $collabs as $collab )
+                <tr>
+                    <th scope="row">{{$collab->id}}</th>
+                    <td>{{$collab->collab_name}}</td>
+                    <td>{{$collab->collab_last_name}}</td>
+                    <td>{{$collab->collab_dateIn}}</td>
+                    <td>{{$collab->collab_dateOut}}</td>
+                    <td>{{$collab->collab_phone}}</td>
+                    <td>{{$collab->collab_mail}}</td>
+                    <td id="operations-style">
+
+                        <a href="{{ route('collab.edit',['collab'=>$collab->id]) }}"> <i class="fa fa-edit" aria-hidden="true"></i> </a>
+                        <a href="" title="Delete {{ $collab->collab_name.' '.$collab->collab_last_name }}" onclick="event.preventDefault();document.querySelector('#delete-event-form').submit()"> <i class="fa fa-ban" aria-hidden="true" ></i> </a>
+                        <form action="{{ route('collab.destroy',['collab'=>$collab]) }}" method="POST" id="delete-event-form">
+                        @csrf @method('DELETE')
+                        </form>
+
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
       </table>
   </section>

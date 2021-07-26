@@ -79,8 +79,8 @@ class CollabController extends Controller
      * @param  \App\Collabs  $collabs
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Collabs $collabs)
+    public function destroy(Collabs $collab,Request $request)
     {
-        //
+     $collab->delete();
     }
 }
