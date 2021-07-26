@@ -18,8 +18,8 @@ class CreateClientsTable extends Migration
             $table->timestamps();
             $table->string('social_reason');
             $table->string('activity');
-            $table->string('adresse 1');
-            $table->string('adresse 2')->nullable();
+            $table->string('adresse1');
+            $table->string('adresse2')->nullable();
             $table->string('phone')->nullable();
             $table->string('fax')->nullable();
             $table->string('email')->nullable();
