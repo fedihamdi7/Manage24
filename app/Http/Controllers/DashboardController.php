@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Collabs;
+use App\Collab;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +16,7 @@ class DashboardController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -27,7 +27,7 @@ class DashboardController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $collabs = Collabs::get();
+        $collabs = Collab::get();
 
         return view('collabs',compact('user','collabs'));
     }
