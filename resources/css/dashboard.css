@@ -238,3 +238,17 @@
   font-size: 26px;
   font-weight: 600;
 }
+.cap-style
+{
+    margin-left: 35%;
+    margin-bottom: 2%;
+    font-size: 1.5em;
+}
+table{
+    width: auto !important;
+    margin: 5% auto !important;
+}
+
+.profile-details .dropdown-item:hover{
+    background-color: rgba(255, 255, 255, 0);
+}

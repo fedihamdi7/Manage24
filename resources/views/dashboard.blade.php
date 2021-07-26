@@ -4,6 +4,8 @@
   <head>
     <meta charset="UTF-8">
     <!--<title> Drop Down Sidebar Menu | CodingLab </title>-->
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" >
     <link rel="icon" href="images/logo.png">
     <title>Manage24</title>
@@ -13,8 +15,8 @@
 <body>
   <div class="sidebar close">
     <div class="logo-details">
-      <i class='bx bxl-c-plus-plus'></i>
-      <span class="logo_name">CodingLab</span>
+      <img src="images/logo.png" alt="" style="width: 100%">
+      {{-- <span class="logo_name">Manage24</span> --}}
     </div>
     <ul class="nav-links">
       <li>
@@ -23,22 +25,22 @@
           <span class="link_name">Dashboard</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a class="link_name" href="#">Category</a></li>
+          <li><a class="link_name" href="{{ route('dashboard') }}">Dashboard</a></li>
         </ul>
       </li>
       <li>
         <div class="iocn-link">
-          <a href="#">
+          <a href="{{ route('collab.index') }}">
             <i class='bx bx-collection' ></i>
-            <span class="link_name">Category</span>
+            <span class="link_name">Collaborators</span>
           </a>
           <i class='bx bxs-chevron-down arrow' ></i>
         </div>
         <ul class="sub-menu">
-          <li><a class="link_name" href="#">Category</a></li>
-          <li><a href="#">HTML & CSS</a></li>
-          <li><a href="#">JavaScript</a></li>
-          <li><a href="#">PHP & MySQL</a></li>
+          <li><a class="link_name" href="{{ route('collab.index') }}">Collaborators</a></li>
+          <li><a href="{{ route('collab.create') }}">Add</a></li>
+          {{-- <li><a href="#">Edit</a></li>
+          <li><a href="#">PHP & MySQL</a></li> --}}
         </ul>
       </li>
       <li>
@@ -147,9 +149,40 @@
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
-
+    <table class="table caption-top">
+        <caption class="cap-style">List of users</caption>
+        <thead class="table-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
   </section>
 
  <script src="{{ asset('js/dashboard.js') }}"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
