@@ -1,9 +1,9 @@
 <?php
 
-use App\Collab;
+use App\Client;
 use Illuminate\Database\Seeder;
 
-class CollabsTableSeeder extends Seeder
+class ClientsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,7 @@ class CollabsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Collab::class,4)->create();
+        factory(Client::class, 5)->create();
+
     }
 }

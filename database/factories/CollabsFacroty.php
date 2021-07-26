@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Collabs;
+use App\Collab;
 use Faker\Generator as Faker;
 
-$factory->define(Collabs::class, function (Faker $faker) {
+$factory->define(Collab::class, function (Faker $faker) {
     return [
         'collab_name'=> $faker->name(),
         'collab_last_name'=> $faker->lastName(),
