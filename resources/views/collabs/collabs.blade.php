@@ -13,7 +13,7 @@
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
-    <a name="{{route('collab.create')}}" id="" class="btn btn-perso" href="#" role="button" >Add Collaborator</a>
+    <a name="" id="" class="btn btn-perso" href="{{route('collab.create')}}" role="button" >Add Collaborator</a>
 
     <table class="table caption-top">
         <caption class="cap-style">Collaborators List</caption>

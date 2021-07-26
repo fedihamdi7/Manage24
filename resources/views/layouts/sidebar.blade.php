@@ -38,7 +38,7 @@
             <li>
                 <div class="iocn-link">
                     <a href="{{ route('collab.index') }}">
-                        <i class='bx bx-collection'></i>
+                        <i class='bx bx-street-view'></i>
                         <span class="link_name">Collaborators</span>
                     </a>
                     <i class='bx bxs-chevron-down arrow'></i>
@@ -53,7 +53,7 @@
             <li>
                 <div class="iocn-link">
                     <a href="{{ route('service.index') }}">
-                        <i class='bx bx-collection'></i>
+                        <i class='bx bxs-devices' ></i>
                         <span class="link_name">Service Line</span>
                     </a>
                     <i class='bx bxs-chevron-down arrow'></i>
@@ -68,7 +68,7 @@
             <li>
                 <div class="iocn-link">
                     <a href="{{ route('client.index') }}">
-                        <i class='bx bx-book-alt'></i>
+                        <i class='bx bxs-user' ></i>
                         <span class="link_name">Clients</span>
                     </a>
                     <i class='bx bxs-chevron-down arrow'></i>
@@ -82,7 +82,7 @@
             <li>
                 <div class="iocn-link">
                     <a href="{{ route('mission.index') }}">
-                        <i class='bx bx-book-alt'></i>
+                       <i class='bx bxs-bookmark-star' ></i>
                         <span class="link_name">Missions</span>
                     </a>
                     <i class='bx bxs-chevron-down arrow'></i>
