@@ -11,7 +11,7 @@
   top: 0;
   left: 0;
   height: 100%;
-  width: 260px;
+  width: 262px;
   background: #11101d;
   z-index: 100;
   transition: all 0.5s ease;
@@ -293,4 +293,18 @@ table{
     display: flex;
             align-items: baseline;
             column-gap: 1%;
+}
+
+
+
+.close-btn{
+    background-color: transparent !important;
+        border: none !important;
+
+}
+
+.alert-dismissible{
+    position: absolute;
+    left: 39%;
+    top: 6%;
 }

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class ServiceController extends Controller
 {
-    /**
+        /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -30,7 +30,9 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+        return view('services.create',compact('user'));
+
     }
 
     /**
@@ -41,7 +43,15 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'service_ligne' => 'required',
+            'description' => 'required',
+
+        ]);
+
+        $service = new Service();
+        $service->create($data);
+        return redirect(route('service.index',))->with('serviceCreated','Service Line Added Successfully');
     }
 
     /**
@@ -91,11 +101,6 @@ class ServiceController extends Controller
             'description' => $request->description,
 
         ]);
-
-
-
-
-
 
         return redirect(route('service.edit',compact('service')))->with('serviceUpdated','Service Ligne Updated Successfully');
     }

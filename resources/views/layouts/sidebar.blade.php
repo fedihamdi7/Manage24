@@ -50,12 +50,12 @@
         <div class="iocn-link">
           <a href="{{ route('service.index') }}">
             <i class='bx bx-collection' ></i>
-            <span class="link_name">Service Ligne</span>
+            <span class="link_name">Service Line</span>
           </a>
           <i class='bx bxs-chevron-down arrow' ></i>
         </div>
         <ul class="sub-menu">
-          <li><a class="link_name" href="{{ route('service.index') }}">Service Ligne</a></li>
+          <li><a class="link_name" href="{{ route('service.index') }}">Service Line</a></li>
           <li><a href="{{ route('service.create') }}">Add</a></li>
           {{-- <li><a href="#">Edit</a></li>
           <li><a href="#">PHP & MySQL</a></li> --}}

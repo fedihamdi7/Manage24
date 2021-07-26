@@ -7,7 +7,7 @@
     @if (session('serviceUpdated'))
     <div class="alert alert-dismissible alert-success fade show suc-msg" style="margin-bottom: 0px" role="alert">
         {{ session('serviceUpdated') }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <button type="button" class="close-btn" data-dismiss="alert" aria-label="Close" >
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
@@ -21,7 +21,7 @@
 
             <div class="col-12">
                 {{-- <label for="inputPhone" class="form-label">Phone</label> --}}
-                <input type="text" class="form-control @error('service_ligne') is-invalid @enderror" id="inputPhone" placeholder="Phone" name="service_ligne" value="{{$service->service_ligne}} ">
+                <input type="text" class="form-control @error('service_ligne') is-invalid @enderror" id="inputPhone" placeholde name="service_ligne" value="{{$service->service_ligne}} ">
                  @error('service_ligne')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

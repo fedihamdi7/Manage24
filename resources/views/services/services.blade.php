@@ -4,7 +4,7 @@
     @if (session('serviceCreated'))
     <div class="alert alert-dismissible alert-success fade show suc-msg" style="margin-bottom: 0px" role="alert">
         {{ session('serviceCreated') }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <button type="button" class="close-btn" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
@@ -14,7 +14,7 @@
       <span class="text"></span>
     </div>
     <table class="table caption-top">
-        <caption class="cap-style">Service Ligne</caption>
+        <caption class="cap-style">Service Line</caption>
         <thead class="table-light">
           <tr>
             <th scope="col">#</th>

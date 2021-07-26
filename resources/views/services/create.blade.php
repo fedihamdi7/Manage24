@@ -4,59 +4,25 @@
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
-    @if (session('collabUpdated'))
-    <div class="alert alert-dismissible alert-success fade show suc-msg" role="alert">
-        {{ session('collabUpdated') }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    @if (session('serviceUpdated'))
+    <div class="alert alert-dismissible alert-success fade show suc-msg" style="margin-bottom: 0px" role="alert">
+        {{ session('serviceUpdated') }}
+        <button type="button" class="close-btn" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-@endif
+    @endif
     <div class="container cont-edit">
-        <form method="POST" action="{{ route('collab.store')}}">
+        <form method="POST" action="{{ route('service.store')}}">
             @csrf
-        <div class="title-edit"> Create Collaborator </div>
-            <div class="row">
-                <div class="col">
 
-                <input type="text" class="form-control @error('collab_name') is-invalid @enderror"  placeholder="First name " aria-label="First name" name="collab_name" value="{{ old('collab_name')}}">
-                 @error('collab_name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-                </div>
-                <div class="col">
-                <input type="text" class="form-control @error('collab_last_name') is-invalid @enderror" placeholder="Last name" aria-label="Last name" name="collab_last_name" value="{{ old('collab_last_name')}}">
-                 @error('collab_last_name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                <input type="date" class="form-control @error('collab_dateIn') is-invalid @enderror" placeholder="Date In" aria-label="Date In" name="collab_dateIn" value="{{ old('collab_dateIn')}}">
-                 @error('collab_dateIn')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-                </div>
-                <div class="col">
-                <input type="date" class="form-control @error('collab_dateOut') is-invalid @enderror" placeholder="Date Out" aria-label="Date Out" name="collab_dateOut" value="{{ old('collab_dateOut')}}">
-                 @error('collab_dateOut')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-                </div>
-            </div>
+        <div class="title-edit"> Create Service Line </div>
+
+
             <div class="col-12">
                 {{-- <label for="inputPhone" class="form-label">Phone</label> --}}
-                <input type="text" class="form-control @error('collab_phone') is-invalid @enderror" id="inputPhone" placeholder="Phone" name="collab_phone" value="{{ old('collab_phone')}}">
-                 @error('collab_phone')
+                <input type="text" class="form-control @error('service_ligne') is-invalid @enderror" id="inputPhone" placeholder="Service Line" name="service_ligne" value="{{old('service_ligne')}}">
+                 @error('service_ligne')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -64,17 +30,23 @@
             </div>
             <div class="col-12">
                 {{-- <label for="inputEmail" class="form-label">Email</label> --}}
-                <input type="email" class="form-control @error('collab_mail') is-invalid @enderror" id="inputEmail" placeholder="Email.." name="collab_mail" value="{{ old('collab_mail')}}">
-                 @error('collab_mail')
+                <div class="form-floating">
+                    <textarea class="form-control @error('description') is-invalid @enderror" style="height: 12em" placeholder="Leave a comment here" id="floatingTextarea2"  name="description">{{old('description')}}</textarea>
+                    <label for="floatingTextarea2">Description</label>
+                    @error('description')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
+                  </div>
+
+
             </div>
 
 
                 <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i class="fa fa-save"></i>  Save </button></div>
 
+        </div>
     </div>
   </section>
 
