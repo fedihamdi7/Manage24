@@ -24,3 +24,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('collab', 'admin\CollabController');
 Route::resource('service', 'admin\ServiceController');
 Route::resource('client', 'admin\ClientController');
+Route::resource('mission', 'admin\MissionController');
