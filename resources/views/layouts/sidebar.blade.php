@@ -22,7 +22,7 @@
       {{-- <span class="logo_name">Manage24</span> --}}
     </div>
     <ul class="nav-links">
-      <li>
+      {{-- <li>
         <a href="#">
           <i class='bx bx-grid-alt' ></i>
           <span class="link_name">Dashboard</span>
@@ -30,7 +30,7 @@
         <ul class="sub-menu blank">
           <li><a class="link_name" href="#">Dashboard</a></li>
         </ul>
-      </li>
+      </li> --}}
       <li>
         <div class="iocn-link">
           <a href="{{ route('collab.index') }}">
@@ -42,6 +42,21 @@
         <ul class="sub-menu">
           <li><a class="link_name" href="{{ route('collab.index') }}">Collaborators</a></li>
           <li><a href="{{ route('collab.create') }}">Add</a></li>
+          {{-- <li><a href="#">Edit</a></li>
+          <li><a href="#">PHP & MySQL</a></li> --}}
+        </ul>
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="{{ route('service.index') }}">
+            <i class='bx bx-collection' ></i>
+            <span class="link_name">Service Ligne</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="{{ route('service.index') }}">Service Ligne</a></li>
+          <li><a href="{{ route('service.create') }}">Add</a></li>
           {{-- <li><a href="#">Edit</a></li>
           <li><a href="#">PHP & MySQL</a></li> --}}
         </ul>

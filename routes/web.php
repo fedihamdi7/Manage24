@@ -22,4 +22,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('collab', 'admin\CollabController');
-// Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::resource('service', 'admin\ServiceController');
