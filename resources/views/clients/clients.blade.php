@@ -9,11 +9,19 @@
         </button>
     </div>
     @endif
+    @if (session('clientDeleted'))
+    <div class="alert alert-dismissible alert-success fade show suc-msg" style="margin-bottom: 0px" role="alert">
+        {{ session('clientDeleted') }}
+        <button type="button" class="close-btn" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
     <div class="home-content">
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
-    <a name="{{route('client.create')}}" id="" class="btn btn-perso" href="#" role="button" >Add Client</a>
+    <a name="" id="" class="btn btn-perso" href="{{route('client.create')}}" role="button" >Add Client</a>
 
     <table class="table caption-top">
         <caption class="cap-style">Clients List</caption>

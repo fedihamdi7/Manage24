@@ -108,9 +108,17 @@
             </div>
 
 
-            <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i
-                        class="fa fa-save"></i> Save </button></div>
-        </form>
+            <div id="both-btn">
+                <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i class="fa fa-save"></i>  Save </button></div>
+                <a href="" title="Delete" onclick="event.preventDefault();document.querySelector('#delete-event-form').submit()"> <div class="col sub-btn"><button type="submit" class="btn btn-block btn-outline-danger"><i class="fa fa-trash"></i>  Delete </button></div> </a>
+            </div>
+                <div class="Del-Form-Button">
+            </form>
+
+                <form action="{{ route('client.destroy',['client'=>$client]) }}" method="POST" id="delete-event-form">
+                @csrf @method('DELETE')
+            </form>
+        </div>
 
     </div>
 </section>
