@@ -308,3 +308,18 @@ table{
     left: 39%;
     top: 6%;
 }
+
+.btn-perso
+{
+    color: white;
+    background-color: #504b8e;
+    border: none;
+    position: relative;
+    right: -75%;
+    top: 7%;
+}
+.btn-perso:hover{
+    color: white;
+    background-image: linear-gradient(10deg, rgb(129, 72, 146),rgb(124, 42, 201));
+
+}

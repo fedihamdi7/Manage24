@@ -13,6 +13,7 @@
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
+    <a name="{{route('service.create')}}" id="" class="btn btn-perso" href="#" role="button" >Add Service Line</a>
     <table class="table caption-top">
         <caption class="cap-style">Service Line</caption>
         <thead class="table-light">
