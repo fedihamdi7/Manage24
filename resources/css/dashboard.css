@@ -288,3 +288,9 @@ table{
     left: 31%;
     top: 47.1%;
 }
+
+ #both-btn{
+    display: flex;
+            align-items: baseline;
+            column-gap: 1%;
+}

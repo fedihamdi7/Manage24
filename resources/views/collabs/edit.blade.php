@@ -73,12 +73,13 @@
                 @enderror
             </div>
 
-
+            <div id="both-btn">
                 <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i class="fa fa-save"></i>  Save </button></div>
-
-        <div class="Del-Form-Button">
-            </form>
                 <a href="" title="Delete {{ $collabs->collab_name.' '.$collabs->collab_last_name }}" onclick="event.preventDefault();document.querySelector('#delete-event-form').submit()"> <div class="col sub-btn"><button type="submit" class="btn btn-block btn-outline-danger"><i class="fa fa-trash"></i>  Delete </button></div> </a>
+            </div>
+                <div class="Del-Form-Button">
+            </form>
+
                 <form action="{{ route('collab.destroy',['collab'=>$collabs]) }}" method="POST" id="delete-event-form">
                 @csrf @method('DELETE')
             </form>
