@@ -8,7 +8,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
 
-    <link rel="icon" href="">
+    <link rel="icon" href="images/logo.png">
     <title>Manage24</title>
 </head>
 

@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <!--<title> Drop Down Sidebar Menu | CodingLab </title>-->
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" >
-
+    <link rel="icon" href="images/logo.png">
+    <title>Manage24</title>
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
@@ -121,10 +122,22 @@
         <img src="images/ff.jpg" alt="profileImg">
       </div>
       <div class="name-job">
-        <div class="profile_name">Prem Shahi</div>
-        <div class="job">Web Desginer</div>
+        <div class="profile_name">{{$user->name}}</div>
+        <div class="job">{{$user->role}}</div>
       </div>
-      <i class='bx bx-log-out' ></i>
+
+
+      <a class="dropdown-item" href="{{ route('logout') }}"
+      onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+       <i class='bx bx-log-out' title="Logout"></i>
+   </a>
+
+   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+       @csrf
+   </form>
+
+
     </div>
   </li>
 </ul>
@@ -132,7 +145,7 @@
   <section class="home-section">
     <div class="home-content">
       <i class='bx bx-menu' ></i>
-      <span class="text">Drop Down Sidebar</span>
+      <span class="text"></span>
     </div>
 
   </section>
