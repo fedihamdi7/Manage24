@@ -8,4 +8,9 @@ class Mission extends Model
 {
     protected $guarded=[];
     //
+
+    public function time()
+    {
+        return $this->belongsTo('App\Time');
+    }
 }

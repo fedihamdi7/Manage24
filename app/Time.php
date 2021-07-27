@@ -8,4 +8,10 @@ class Time extends Model
 {
     //
     protected $guarded=[];
+
+    public function missions()
+    {
+        return $this->hasMany('App\Mission');
+    }
+
 }
