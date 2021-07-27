@@ -97,12 +97,12 @@
                 <div class="iocn-link">
                     <a href="{{ route('time.index') }}">
                         <i class='bx bx-time'></i>
-                        <span class="link_name">Time</span>
+                        <span class="link_name">Time Management</span>
                     </a>
                     <i class='bx bxs-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link_name" href="{{ route('time.index') }}">Time</a></li>
+                    <li><a class="link_name" href="{{ route('time.index') }}">Time Management</a></li>
                     <li><a href="{{ route('time.create') }}">Add</a></li>
 
                 </ul>
