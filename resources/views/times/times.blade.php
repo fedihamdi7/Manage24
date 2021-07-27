@@ -13,7 +13,9 @@
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
+    @if ($user->role == "admin")
     <a  id="" class="btn btn-perso" href="{{route('time.create')}}" role="button" >Add time</a>
+    @endif
     <table class="table caption-top">
         <caption class="cap-style">Times</caption>
         <thead class="table-light">
@@ -24,7 +26,9 @@
             <th scope="col">Date</th>
             <th scope="col">Start Time</th>
             <th scope="col">Elapsed Time</th>
+            @if ($user->role == "admin")
             <th scope="col">Edit</th>
+            @endif
           </tr>
         </thead>
         <tbody>
@@ -36,12 +40,14 @@
                     <td>{{$time->date ?? 'N/A'}}</td>
                     <td>{{$time->start_time ?? 'N/A'}}</td>
                     <td>{{$time->elapsed_time ?? 'N/A'}}</td>
+                    @if ($user->role == "admin")
                     <td >
 
                         <a href="{{ route('time.edit',['time'=>$time->id]) }}"> <i class="fa fa-edit" aria-hidden="true"></i> </a>
 
 
                     </td>
+                    @endif
                 </tr>
             @endforeach
         </tbody>

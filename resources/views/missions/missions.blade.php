@@ -21,8 +21,9 @@
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
+    @if ($user->role == "admin")
     <a name="" id="" class="btn btn-perso" href="{{route('mission.create')}}" role="button" >Add Mission</a>
-
+    @endif
     <table class="table caption-top">
         <caption class="cap-style" style="margin-left: 32%;">Missions List</caption>
         <thead class="table-light">
@@ -32,7 +33,9 @@
             <th scope="col">Client</th>
             <th scope="col">Date Start</th>
             <th scope="col">Date Finish</th>
+            @if ($user->role == "admin")
             <th scope="col">Edit</th>
+            @endif
           </tr>
         </thead>
         <tbody>
@@ -43,6 +46,7 @@
                     <td>{{$mission->client_id ?? 'N/A'}}</td>
                     <td>{{$mission->date_start ?? 'N/A'}}</td>
                     <td>{{$mission->date_finish ?? 'N/A'}}</td>
+                    @if ($user->role == "admin")
                     <td >
 
                         <a href="{{ route('mission.edit',['mission'=>$mission->id]) }}"> <i class="fa fa-edit" aria-hidden="true"></i> </a>
@@ -52,6 +56,7 @@
                         </form> --}}
 
                     </td>
+                    @endif
                 </tr>
             @endforeach
         </tbody>

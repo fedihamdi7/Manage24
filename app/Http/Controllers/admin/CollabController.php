@@ -14,6 +14,8 @@ class CollabController extends Controller
     {
         $this->middleware('auth');
 
+        $this->middleware('admin')->except(['index']);
+
     }
     /**
      * Display a listing of the resource.

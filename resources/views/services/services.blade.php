@@ -13,7 +13,9 @@
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
+    @if ($user->role == "admin")
     <a name="{{route('service.create')}}" id="" class="btn btn-perso" href="{{route('collab.create')}}" role="button" >Add Service Line</a>
+    @endif
     <table class="table caption-top">
         <caption class="cap-style">Service Line</caption>
         <thead class="table-light">
@@ -21,7 +23,9 @@
             <th scope="col">#</th>
             <th scope="col">Service Ligne</th>
             <th scope="col">Description</th>
+            @if ($user->role == "admin")
             <th scope="col">Edit</th>
+            @endif
           </tr>
         </thead>
         <tbody>
@@ -30,6 +34,7 @@
                     <th scope="row">{{$service->id}}</th>
                     <td>{{$service->service_ligne ?? 'N/A'}}</td>
                     <td>{{$service->description ?? 'N/A'}}</td>
+                    @if ($user->role == "admin")
                     <td >
 
                         <a href="{{ route('service.edit',['service'=>$service->id]) }}"> <i class="fa fa-edit" aria-hidden="true"></i> </a>
@@ -39,6 +44,7 @@
                         </form> --}}
 
                     </td>
+                    @endif
                 </tr>
             @endforeach
         </tbody>

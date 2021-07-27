@@ -13,7 +13,10 @@
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
+
+    @if ($user->role == "admin")
     <a name="" id="" class="btn btn-perso" href="{{route('collab.create')}}" role="button" >Add Collaborator</a>
+    @endif
 
     <table class="table caption-top">
         <caption class="cap-style">Collaborators List</caption>
@@ -26,7 +29,9 @@
             <th scope="col">Date Out</th>
             <th scope="col">Phone</th>
             <th scope="col">Email</th>
+            @if ($user->role == "admin")
             <th scope="col">Edit</th>
+            @endif
           </tr>
         </thead>
         <tbody>
@@ -39,6 +44,7 @@
                     <td>{{$collab->collab_dateOut ?? 'N/A'}}</td>
                     <td>{{$collab->collab_phone ?? 'N/A'}}</td>
                     <td>{{$collab->collab_mail ?? 'N/A'}}</td>
+                    @if ($user->role == "admin")
                     <td >
 
                         <a href="{{ route('collab.edit',['collab'=>$collab->id]) }}"> <i class="fa fa-edit" aria-hidden="true"></i> </a>
@@ -48,6 +54,7 @@
                         </form> --}}
 
                     </td>
+                    @endif
                 </tr>
             @endforeach
         </tbody>

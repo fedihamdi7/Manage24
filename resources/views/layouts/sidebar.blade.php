@@ -41,11 +41,15 @@
                         <i class='bx bx-street-view'></i>
                         <span class="link_name">Collaborators</span>
                     </a>
+                     @if ($user->role == "admin")
                     <i class='bx bxs-chevron-down arrow'></i>
+                    @endif
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="{{ route('collab.index') }}">Collaborators</a></li>
+                    @if ($user->role == "admin")
                     <li><a href="{{ route('collab.create') }}">Add</a></li>
+                    @endif
                     {{-- <li><a href="#">Edit</a></li>
           <li><a href="#">PHP & MySQL</a></li> --}}
                 </ul>
@@ -56,13 +60,16 @@
                         <i class='bx bxs-devices' ></i>
                         <span class="link_name">Service Line</span>
                     </a>
+                     @if ($user->role == "admin")
                     <i class='bx bxs-chevron-down arrow'></i>
+                    @endif
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="{{ route('service.index') }}">Service Line</a></li>
+                     @if ($user->role == "admin")
                     <li><a href="{{ route('service.create') }}">Add</a></li>
-                    {{-- <li><a href="#">Edit</a></li>
-          <li><a href="#">PHP & MySQL</a></li> --}}
+                    @endif
+
                 </ul>
             </li>
             <li>
@@ -71,11 +78,18 @@
                         <i class='bx bxs-user' ></i>
                         <span class="link_name">Clients</span>
                     </a>
+
+                     @if ($user->role == "admin")
                     <i class='bx bxs-chevron-down arrow'></i>
+                    @endif
+
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="{{ route('client.index') }}">Clients</a></li>
+
+                    @if ($user->role == "admin")
                     <li><a href="{{ route('client.create') }}">Add</a></li>
+                    @endif
 
                 </ul>
             </li>
@@ -85,11 +99,15 @@
                        <i class='bx bxs-bookmark-star' ></i>
                         <span class="link_name">Missions</span>
                     </a>
+                     @if ($user->role == "admin")
                     <i class='bx bxs-chevron-down arrow'></i>
+                    @endif
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="{{ route('mission.index') }}">Mission</a></li>
+                     @if ($user->role == "admin")
                     <li><a href="{{ route('mission.create') }}">Add</a></li>
+                    @endif
 
                 </ul>
             </li>
@@ -99,11 +117,15 @@
                         <i class='bx bx-time'></i>
                         <span class="link_name">Time Management</span>
                     </a>
+                     @if ($user->role == "admin")
                     <i class='bx bxs-chevron-down arrow'></i>
+                    @endif
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="{{ route('time.index') }}">Time Management</a></li>
+                  @if ($user->role == "admin")
                     <li><a href="{{ route('time.create') }}">Add</a></li>
+                    @endif
 
                 </ul>
             </li>
@@ -113,7 +135,9 @@
                         <i class='bx bx-plug'></i>
                         <span class="link_name">Plugins</span>
                     </a>
+                     @if ($user->role == "admin")
                     <i class='bx bxs-chevron-down arrow'></i>
+                    @endif
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Plugins</a></li>
