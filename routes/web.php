@@ -25,3 +25,4 @@ Route::resource('collab', 'admin\CollabController');
 Route::resource('service', 'admin\ServiceController');
 Route::resource('client', 'admin\ClientController');
 Route::resource('mission', 'admin\MissionController');
+Route::resource('time', 'admin\TimeController');
