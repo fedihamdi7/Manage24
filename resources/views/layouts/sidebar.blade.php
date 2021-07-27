@@ -17,12 +17,17 @@
     <title>Manage24</title>
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .active-side{
+            background-color: #605c8a;
+        }
+    </style>
 </head>
 
 <body>
     <div class="sidebar close">
         <div class="logo-details">
-            <img src="{{ asset('images/logo.png') }}" alt="" style="width: 100%">
+            <img src="{{ asset('images/logo.png') }}" alt="" style="width: 62%; margin-left: 21%;">
             {{-- <span class="logo_name">Manage24</span> --}}
         </div>
         <ul class="nav-links">
@@ -35,7 +40,9 @@
           <li><a class="link_name" href="#">Dashboard</a></li>
         </ul>
       </li> --}}
-            <li>
+            <li @if ($page=="collabs")
+                class="active-side"
+            @endif>
                 <div class="iocn-link">
                     <a href="{{ route('collab.index') }}">
                         <i class='bx bx-street-view'></i>
@@ -54,7 +61,9 @@
           <li><a href="#">PHP & MySQL</a></li> --}}
                 </ul>
             </li>
-            <li>
+            <li @if ($page=="service")
+            class="active-side"
+        @endif>
                 <div class="iocn-link">
                     <a href="{{ route('service.index') }}">
                         <i class='bx bxs-devices' ></i>
@@ -72,7 +81,9 @@
 
                 </ul>
             </li>
-            <li>
+            <li @if ($page=="client")
+            class="active-side"
+        @endif>
                 <div class="iocn-link">
                     <a href="{{ route('client.index') }}">
                         <i class='bx bxs-user' ></i>
@@ -93,7 +104,9 @@
 
                 </ul>
             </li>
-            <li>
+            <li @if ($page=="mission")
+            class="active-side"
+        @endif>
                 <div class="iocn-link">
                     <a href="{{ route('mission.index') }}">
                        <i class='bx bxs-bookmark-star' ></i>
@@ -111,7 +124,9 @@
 
                 </ul>
             </li>
-            <li>
+            <li @if ($page=="time")
+            class="active-side"
+        @endif>
                 <div class="iocn-link">
                     <a href="{{ route('time.index') }}">
                         <i class='bx bx-time'></i>

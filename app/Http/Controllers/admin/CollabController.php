@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class CollabController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -24,10 +25,11 @@ class CollabController extends Controller
      */
     public function index()
     {
+        $page='collabs';
         $user = Auth::user();
         $collabs = Collab::get()->sort();
 
-        return view('collabs.collabs',compact('user','collabs'));
+        return view('collabs.collabs',compact('user','collabs','page'));
     }
 
     /**
@@ -37,8 +39,9 @@ class CollabController extends Controller
      */
     public function create()
     {
+        $page='collabs';
         $user = Auth::user();
-        return view('collabs.create',compact('user'));
+        return view('collabs.create',compact('user','page'));
     }
 
     /**
@@ -83,10 +86,11 @@ class CollabController extends Controller
      */
     public function edit(Collab $collab)
     {
+        $page='collabs';
         $user = Auth::user();
         $collabs = Collab::find($collab->id);
         // dd($collabs);
-        return view('collabs.edit',compact('user','collabs'));
+        return view('collabs.edit',compact('user','collabs','page'));
     }
 
     /**

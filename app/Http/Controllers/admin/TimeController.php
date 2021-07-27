@@ -26,10 +26,11 @@ class TimeController extends Controller
      */
     public function index()
     {
+        $page='time';
         $user = Auth::user();
         $times = Time::get()->sort();
 
-        return view('times.times',compact('user','times'));
+        return view('times.times',compact('user','times','page'));
     }
 
     /**
@@ -39,10 +40,11 @@ class TimeController extends Controller
      */
     public function create()
     {
+        $page='time';
         $missions=Mission::get()->sort();
         $collabs=Collab::get()->sort();
         $user = Auth::user();
-        return view('times.create',compact('user','missions','collabs'));
+        return view('times.create',compact('user','missions','collabs','page'));
     }
 
     /**
@@ -87,6 +89,7 @@ class TimeController extends Controller
      */
     public function edit(Time $time)
     {
+        $page='time';
         // dd($time);
         $current_mission = $time->mission_id;
         $current_collab_id = $time->collab_id;
@@ -97,7 +100,7 @@ class TimeController extends Controller
         $user = Auth::user();
         // $services = Service::get()->sort();
 
-        return view('times.edit',compact('user','time','missions','collabs','current_mission','current_collab_name','current_collab_id'));
+        return view('times.edit',compact('user','time','missions','collabs','current_mission','current_collab_name','current_collab_id','page'));
     }
 
     /**

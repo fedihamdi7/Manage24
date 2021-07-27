@@ -24,10 +24,11 @@ class ServiceController extends Controller
      */
     public function index()
     {
+        $page='service';
         $user = Auth::user();
         $services = Service::get()->sort();
 
-        return view('services.services',compact('user','services'));
+        return view('services.services',compact('user','services','page'));
     }
 
     /**
@@ -37,8 +38,9 @@ class ServiceController extends Controller
      */
     public function create()
     {
+        $page='service';
         $user = Auth::user();
-        return view('services.create',compact('user'));
+        return view('services.create',compact('user','page'));
 
     }
 
@@ -80,10 +82,11 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
+        $page='service';
         $user = Auth::user();
         // $services = Service::get()->sort();
 
-        return view('services.edit',compact('user','service'));
+        return view('services.edit',compact('user','service','page'));
     }
 
     /**

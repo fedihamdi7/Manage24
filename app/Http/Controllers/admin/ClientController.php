@@ -24,10 +24,11 @@ class ClientController extends Controller
     public function index()
 
     {
+        $page='client';
         $user = Auth::user();
         $clients = Client::get()->sort();
 
-        return view('clients.clients',compact('user','clients'));
+        return view('clients.clients',compact('user','clients','page'));
     }
 
     /**
@@ -36,8 +37,10 @@ class ClientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    { $user = Auth::user();
-        return view('clients.create',compact('user'));
+    {
+        $page='client';
+        $user = Auth::user();
+        return view('clients.create',compact('user','page'));
     }
 
     /**
@@ -82,9 +85,10 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
+        $page='client';
         $user = Auth::user();
         $client = client::find($client->id);
-        return view('clients.edit',compact('user','client'));
+        return view('clients.edit',compact('user','client','page'));
     }
 
     /**

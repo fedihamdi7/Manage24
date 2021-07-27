@@ -25,10 +25,11 @@ class MissionController extends Controller
      */
     public function index()
     {
+        $page='mission';
         $user = Auth::user();
         $missions = Mission::get()->sort();
 
-        return view('missions.missions',compact('user','missions'));
+        return view('missions.missions',compact('user','missions','page'));
     }
 
     /**
@@ -38,8 +39,9 @@ class MissionController extends Controller
      */
     public function create()
     {
+        $page='mission';
         $user = Auth::user();
-        return view('missions.create',compact('user'));
+        return view('missions.create',compact('user','page'));
     }
 
     /**
@@ -81,6 +83,7 @@ class MissionController extends Controller
      */
     public function edit(Mission $mission)
     {
+        $page='mission';
 
         // $service= Service::find($mission->service_id)->get('service_ligne');
         $service= DB::table('services')
@@ -91,7 +94,7 @@ class MissionController extends Controller
 
         $user = Auth::user();
         $mission = Mission::find($mission->id);
-        return view('missions.edit',compact('user','mission','service','client'));
+        return view('missions.edit',compact('user','mission','service','client','page'));
     }
 
     /**
