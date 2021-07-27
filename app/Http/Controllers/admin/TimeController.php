@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Collab;
 use App\Http\Controllers\Controller;
+use App\Mission;
 use App\Time;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,8 +37,10 @@ class TimeController extends Controller
      */
     public function create()
     {
+        $missions=Mission::get()->sort();
+        $collabs=Collab::get()->sort();
         $user = Auth::user();
-        return view('times.create',compact('user'));
+        return view('times.create',compact('user','missions','collabs'));
     }
 
     /**
@@ -49,8 +53,8 @@ class TimeController extends Controller
     {
         // dd($request);
         $data = $request->validate([
-            'mission_id' => 'required',
-            'collab_id' => 'required',
+            'mission_id' => 'required|numeric',
+            'collab_id' => 'required|numeric',
             'date'=>'required',
             'start_time'=>'required',
             'elapsed_time'=>'required',
@@ -81,10 +85,17 @@ class TimeController extends Controller
      */
     public function edit(Time $time)
     {
+        // dd($time);
+        $current_mission = $time->mission_id;
+        $current_collab_id = $time->collab_id;
+        $current_collab_name = Collab::find($current_collab_id)->value('collab_name');
+        // dd($current_collab_name);
+        $missions=Mission::get()->sort();
+        $collabs=Collab::get()->sort();
         $user = Auth::user();
         // $services = Service::get()->sort();
 
-        return view('times.edit',compact('user','time'));
+        return view('times.edit',compact('user','time','missions','collabs','current_mission','current_collab_name','current_collab_id'));
     }
 
     /**
@@ -97,8 +108,8 @@ class TimeController extends Controller
     public function update(Request $request, Time $time)
     {
         $data = $request->validate([
-            'mission_id' => 'required',
-            'collab_id' => 'required',
+            'mission_id' => 'required|numeric',
+            'collab_id' => 'required|numeric',
             'date'=>'required',
             'start_time'=>'required',
             'elapsed_time'=>'required',

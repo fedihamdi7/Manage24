@@ -18,13 +18,19 @@
             @method('PUT')
         <div class="title-edit"> Edit <span> {{$time->id}} </span> </div>
 
-
+<br>
         <div class="row">
             <div class="col">
 
-                <input type="text" class="form-control @error('mission_id') is-invalid @enderror"
+                <select class="form-select" name="mission_id" aria-label="Default select example">
+                    <option selected value=" {{$current_mission}} "> {{$current_mission}} </option>
+                    @foreach ($missions as $mission )
+                    <option value=" {{$mission->id}} ">{{$mission->id}}</option>
+                    @endforeach
+                  </select>
+                {{-- <input type="text" class="form-control @error('mission_id') is-invalid @enderror"
                     placeholder="Mission id" aria-label="First name" name="mission_id"
-                    value="{{  old('mission_id') ?? $time->mission_id }}">
+                    value="{{  old('mission_id') ?? $time->mission_id }}"> --}}
                 @error('mission_id')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -32,9 +38,15 @@
                 @enderror
             </div>
             <div class="col">
-                <input type="text" class="form-control @error('collab_id') is-invalid @enderror"
+                <select class="form-select" name="collab_id" aria-label="Default select example">
+                    <option selected value=" {{$current_collab_id}} "> {{$current_collab_name}} </option>
+                    @foreach ($collabs as $collab )
+                    <option value=" {{$collab->id}} ">{{$collab->collab_name , $collab->collab_last_name}}</option>
+                    @endforeach
+                  </select>
+                {{-- <input type="text" class="form-control @error('collab_id') is-invalid @enderror"
                     placeholder="Collaborator id" aria-label="Last name" name="collab_id"
-                    value="{{  old('collab_id') ?? $time->collab_id }}">
+                    value="{{  old('collab_id') ?? $time->collab_id }}"> --}}
                 @error('collab_id')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

@@ -17,19 +17,44 @@
             @csrf
 
             <div class="title-edit"> Create Time </div>
+            <br>
             <div class="row">
                 <div class="col">
 
-                    <input type="text" class="form-control @error('mission_id') is-invalid @enderror"
+                    <select class="form-select" name="mission_id" aria-label="Default select example">
+                        <option selected>Select Mission ID</option>
+                        @foreach ($missions as $mission )
+                        <option value=" {{$mission->id}} ">{{$mission->id}}</option>
+                        @endforeach
+                      </select>
+                    @error('mission_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    {{-- <input type="text" class="form-control @error('mission_id') is-invalid @enderror"
                         placeholder="Mission id" aria-label="First name" name="mission_id"
                         value="{{ old('mission_id') }}">
                     @error('mission_id')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                    @enderror
+                    @enderror --}}
                 </div>
                 <div class="col">
+                    <select class="form-select" name="collab_id" aria-label="Default select example">
+                        <option selected>Select Collaborator</option>
+                        @foreach ($collabs as $collab )
+                        <option value=" {{$collab->id}} ">{{$collab->collab_name , $collab->collab_last_name}}</option>
+                        @endforeach
+                      </select>
+                    @error('collab_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                {{-- <div class="col">
                     <input type="text" class="form-control @error('collab_id') is-invalid @enderror"
                         placeholder="Collaborator id" aria-label="Last name" name="collab_id"
                         value="{{ old('collab_id') }}">
@@ -38,7 +63,7 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                </div>
+                </div> --}}
             </div>
             <hr>
             <div class="col-3">
