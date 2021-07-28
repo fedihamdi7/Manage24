@@ -89,7 +89,7 @@ class UserController extends Controller
             'email' => 'required|email',
             'birth' => 'date|nullable',
             'role' => 'required',
-            'phone' => 'nullable|numeric|size:8',
+            'phone' => 'nullable|digits:8',
             'adresse1' => 'nullable',
             'adresse2' => 'nullable',
             'city' => 'nullable',
