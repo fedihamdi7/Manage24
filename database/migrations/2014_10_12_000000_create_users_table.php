@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('role')->default('Collaborator');
             $table->date('birth')->nullable();
+            $table->string('image')->default('default_profile_image.jpg');
             $table->string('phone')->nullable();
             $table->string('adresse1')->nullable();
             $table->string('adresse2')->nullable();
