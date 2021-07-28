@@ -21,7 +21,7 @@
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
-    @if ($user->role == "admin")
+    @if ($user->role == "Admin")
     <a name="" id="" class="btn btn-perso" href="{{route('client.create')}}" role="button" >Add Client</a>
     @endif
     <table class="table caption-top">
@@ -37,7 +37,7 @@
             <th scope="col">Fax</th>
             <th scope="col">Email</th>
             <th scope="col">Contact Person</th>
-            @if ($user->role == "admin")
+            @if ($user->role == "Admin")
             <th scope="col">Edit</th>
             @endif
           </tr>
@@ -54,7 +54,7 @@
                     <td>{{$client->fax ?? 'N/A'}}</td>
                     <td>{{$client->email ?? 'N/A'}}</td>
                     <td>{{$client->contact_person ?? 'N/A'}}</td>
-                    @if ($user->role == "admin")
+                    @if ($user->role == "Admin")
                     <td >
 
                         <a href="{{ route('client.edit',['client'=>$client->id]) }}"> <i class="fa fa-edit" aria-hidden="true"></i> </a>

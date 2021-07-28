@@ -13,7 +13,7 @@
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
-    @if ($user->role == "admin")
+    @if ($user->role == "Admin")
     <a  id="" class="btn btn-perso" href="{{route('time.create')}}" role="button" >Add time</a>
     @endif
     <table class="table caption-top">
@@ -26,7 +26,7 @@
             <th scope="col">Date</th>
             <th scope="col">Start Time</th>
             <th scope="col">Elapsed Time</th>
-            @if ($user->role == "admin")
+            @if ($user->role == "Admin")
             <th scope="col">Edit</th>
             @endif
           </tr>
@@ -40,7 +40,7 @@
                     <td>{{$time->date ?? 'N/A'}}</td>
                     <td>{{$time->start_time ?? 'N/A'}}</td>
                     <td>{{$time->elapsed_time ?? 'N/A'}}</td>
-                    @if ($user->role == "admin")
+                    @if ($user->role == "Admin")
                     <td >
 
                         <a href="{{ route('time.edit',['time'=>$time->id]) }}"> <i class="fa fa-edit" aria-hidden="true"></i> </a>

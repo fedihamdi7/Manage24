@@ -13,7 +13,7 @@
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
-    @if ($user->role == "admin")
+    @if ($user->role == "Admin")
     <a name="{{route('service.create')}}" id="" class="btn btn-perso" href="{{route('collab.create')}}" role="button" >Add Service Line</a>
     @endif
     <table class="table caption-top">
@@ -23,7 +23,7 @@
             <th scope="col">#</th>
             <th scope="col">Service Ligne</th>
             <th scope="col">Description</th>
-            @if ($user->role == "admin")
+            @if ($user->role == "Admin")
             <th scope="col">Edit</th>
             @endif
           </tr>
@@ -34,7 +34,7 @@
                     <th scope="row">{{$service->id}}</th>
                     <td>{{$service->service_ligne ?? 'N/A'}}</td>
                     <td>{{$service->description ?? 'N/A'}}</td>
-                    @if ($user->role == "admin")
+                    @if ($user->role == "Admin")
                     <td >
 
                         <a href="{{ route('service.edit',['service'=>$service->id]) }}"> <i class="fa fa-edit" aria-hidden="true"></i> </a>

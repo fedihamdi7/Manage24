@@ -14,7 +14,7 @@
       <span class="text"></span>
     </div>
 
-    @if ($user->role == "admin")
+    @if ($user->role == "Admin")
     <a name="" id="" class="btn btn-perso" href="{{route('collab.create')}}" role="button" >Add Collaborator</a>
     @endif
 
@@ -29,7 +29,7 @@
             <th scope="col">Date Out</th>
             <th scope="col">Phone</th>
             <th scope="col">Email</th>
-            @if ($user->role == "admin")
+            @if ($user->role == "Admin")
             <th scope="col">Edit</th>
             @endif
           </tr>
@@ -44,7 +44,7 @@
                     <td>{{$collab->collab_dateOut ?? 'N/A'}}</td>
                     <td>{{$collab->collab_phone ?? 'N/A'}}</td>
                     <td>{{$collab->collab_mail ?? 'N/A'}}</td>
-                    @if ($user->role == "admin")
+                    @if ($user->role == "Admin")
                     <td >
 
                         <a href="{{ route('collab.edit',['collab'=>$collab->id]) }}"> <i class="fa fa-edit" aria-hidden="true"></i> </a>
