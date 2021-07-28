@@ -4,7 +4,7 @@ body {
 
 .form-control:focus {
     box-shadow: none;
-    border-color: #BA68C8;
+    border-color: #BA68C8
 }
 
 .profile-button {
@@ -41,4 +41,8 @@ body {
     color: #fff;
     cursor: pointer;
     border: solid 1px #BA68C8
+}
+
+.invalid-feedback{
+    display: block !important;
 }

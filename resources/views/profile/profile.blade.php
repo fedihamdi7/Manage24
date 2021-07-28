@@ -30,28 +30,17 @@
                     <div class="col-md-6"><label class="labels">Last Name</label><input type="text" class="form-control" value="" placeholder="surname"></div>
                 </div> --}}
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Full Name</label><input type="text" class="form-control" value="{{$user->name }} " placeholder="Full Name" name="name">
-                        @error('name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror </div>
-                    <div class="col-md-12"><label class="labels">Email</label><input type="email" class="form-control" placeholder="Email" value="{{$user->email }}" name="email"></div>
-                    <div class="col-md-12"><label class="labels">Role</label><input type="text" readonly class="form-control" placeholder="Role" value="{{$user->role }}" name="role"></div>
-                    <div class="col-md-12"><label class="labels">Date Of Birth</label><input type="date" class="form-control" placeholder="Date Of Birth" value="{{$user->birth }}" name="birth"></div>
-                    <div class="col-md-12"><label class="labels">Phone Number</label><input type="text" class="form-control" placeholder="Phone Number" value="{{$user->phone }}" name="phone">
-                        @error('phone')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    </div>
-                    <div class="col-md-12"><label class="labels">Adresse 1 </label><input type="text" class="form-control" placeholder="Adresse 1" value="{{$user->adresse1 }}" name="adresse1"></div>
-                    <div class="col-md-12"><label class="labels">Adresse 2</label><input type="text" class="form-control" placeholder="Adresse 2" value="{{$user->adresse2}}" name="adresse2"></div>
+                    <div class="col-md-12"><label class="labels">Full Name</label><input type="text" class="form-control" value="{{$user->name }} " placeholder="Full Name" name="name">@error('name')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror </div>
+                    <div class="col-md-12"><label class="labels">Email</label><input type="email" class="form-control" placeholder="Email" value="{{$user->email }}" name="email">@error('email')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror </div>
+                    <div class="col-md-12"><label class="labels">Role</label><input type="text" readonly class="form-control" placeholder="Role" value="{{$user->role }}" name="role">@error('role')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror </div>
+                    <div class="col-md-12"><label class="labels">Date Of Birth</label><input type="date" class="form-control" placeholder="Date Of Birth" value="{{$user->birth }}" name="birth">@error('birth')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror </div>
+                    <div class="col-md-12"><label class="labels">Phone Number</label><input type="text" class="form-control" placeholder="Phone Number" value="{{$user->phone }}" name="phone">@error('phone')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror </div>
+                    <div class="col-md-12"><label class="labels">Adresse 1 </label><input type="text" class="form-control" placeholder="Adresse 1" value="{{$user->adresse1 }}" name="adresse1">@error('adresse1')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror </div>
+                    <div class="col-md-12"><label class="labels">Adresse 2</label><input type="text" class="form-control" placeholder="Adresse 2" value="{{$user->adresse2}}" name="adresse2">@error('adresse2')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror </div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-6"><label class="labels">City</label><input type="text" class="form-control" placeholder="City" value="{{$user->city }}" name="city"></div>
-                    <div class="col-md-6"><label class="labels">State</label><input type="text" class="form-control" placeholder="State" value="{{$user->state }}" name="state"></div>
+                    <div class="col-md-6"><label class="labels">City</label><input type="text" class="form-control" placeholder="City" value="{{$user->city }}" name="city">@error('city')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror </div>
+                    <div class="col-md-6"><label class="labels">State</label><input type="text" class="form-control" placeholder="State" value="{{$user->state }}" name="state">@error('state')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror </div>
                 </div>
                 <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
             </div>
