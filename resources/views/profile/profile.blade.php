@@ -5,20 +5,36 @@
         <span class="text"></span>
     </div>
     @if (session('profileUpdated'))
-    <div class="alert alert-dismissible alert-success fade show suc-msg" role="alert">
+    <div class="alert alert-dismissible alert-success fade show suc-msg alert-perso" role="alert">
         {{ session('profileUpdated') }}
-        <button type="button" class="close-btn" data-dismiss="alert" aria-label="Close">
+        <button type="button" class="close-btn close-btn-perso" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 @endif
-<form action=" {{route('user.update',['user'=>$user])}} " method="POST">
+<form action=" {{route('user.update',['user'=>$user])}} " method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
         <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="images/profileImg/{{ $user->image }}"><span class="font-weight-bold">{{$user->name}}</span><span class="text-black-50">{{$user->role}}</span><span> </span></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                <div class="div-round-img">
+                    <img src="images/profileImg/{{ $user->image }}"  class="img-round">
+                </div>
+                <span class="font-weight-bold">{{$user->name}}</span>
+                <span class="text-black-50">{{$user->role}}</span>
+                <div style="    margin: 9% 0%;
+                border-bottom: 1px solid #a2a2a2;
+                height: 5px;
+                width: 100%;"></div>
+                <span><div class="mb-3">
+
+                  <label for="" class="form-label">Change Profile Picture</label>
+                  <input type="file" class="form-control" name="image" id="" value="{{ $user->image }}" aria-describedby="fileHelpId">
+
+                </div> </span>
+            </div>
         </div>
         <div class="col-md-5 border-right">
             <div class="p-3 py-5">

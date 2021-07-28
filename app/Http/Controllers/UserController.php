@@ -83,7 +83,8 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        // dd($request);
+
+
         $data = $request->validate([
             'name' => 'required',
             'email' => 'required|email',
@@ -94,12 +95,11 @@ class UserController extends Controller
             'adresse2' => 'nullable',
             'city' => 'nullable',
             'state' => 'nullable',
+            'image' => 'nullable',
 
         ]);
 
-        DB::table('users')
-        ->where('id',$user->id)
-        ->update([
+        $update = [
             'name' => $request->name,
             'email' => $request->email,
             'birth' => $request->birth,
@@ -109,13 +109,19 @@ class UserController extends Controller
             'adresse2' => $request->adresse2,
             'city' => $request->city,
             'state' => $request->state,
-        ]);
 
+        ];
 
+        if ($request->hasfile("image")) {
+            $imageName = time() . $request['image']->getClientOriginalName();
+            $request['image']->move(base_path() . '/public/images/profileImg/', $imageName);
+            $update['image'] = $imageName;
+        }
 
-
-
-
+        DB::table('users')
+        ->where('id',$user->id)
+        ->update($update);
+        
         return redirect(route('user.index',compact('user')))->with('profileUpdated','Profile Updated Successfully');
     }
 
