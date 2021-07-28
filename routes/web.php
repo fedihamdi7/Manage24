@@ -26,3 +26,5 @@ Route::resource('service', 'admin\ServiceController');
 Route::resource('client', 'admin\ClientController');
 Route::resource('mission', 'admin\MissionController');
 Route::resource('time', 'admin\TimeController');
+Route::resource('user', 'UserController');
+

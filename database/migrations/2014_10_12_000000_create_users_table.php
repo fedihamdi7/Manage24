@@ -18,7 +18,14 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('role')->default('collab');
+            $table->string('role')->default('Collaborator');
+            $table->date('birth')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('adresse1')->nullable();
+            $table->string('adresse2')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+
             $table->timestamps();
         });
     }

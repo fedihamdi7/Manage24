@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-    {{-- <link rel="icon" href="../images/logo.png"> --}}
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
     <link rel="icon" href="{{ asset('images/logo.png') }}">
     <title>Manage24</title>
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -40,7 +40,7 @@
           <li><a class="link_name" href="#">Dashboard</a></li>
         </ul>
       </li> --}}
-            <li @if ($page=="collabs")
+            <li @if ('' ?? $page=="collabs")
                 class="active-side"
             @endif>
                 <div class="iocn-link">
@@ -48,20 +48,20 @@
                         <i class='bx bx-street-view'></i>
                         <span class="link_name">Collaborators</span>
                     </a>
-                     @if ($user->role == "admin")
+                     @if ($user->role == "Admin")
                     <i class='bx bxs-chevron-down arrow'></i>
                     @endif
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="{{ route('collab.index') }}">Collaborators</a></li>
-                    @if ($user->role == "admin")
+                    @if ($user->role == "Admin")
                     <li><a href="{{ route('collab.create') }}">Add</a></li>
                     @endif
                     {{-- <li><a href="#">Edit</a></li>
           <li><a href="#">PHP & MySQL</a></li> --}}
                 </ul>
             </li>
-            <li @if ($page=="service")
+            <li @if ('' ?? $page=="service")
             class="active-side"
         @endif>
                 <div class="iocn-link">
@@ -69,19 +69,19 @@
                         <i class='bx bxs-devices' ></i>
                         <span class="link_name">Service Line</span>
                     </a>
-                     @if ($user->role == "admin")
+                     @if ($user->role == "Admin")
                     <i class='bx bxs-chevron-down arrow'></i>
                     @endif
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="{{ route('service.index') }}">Service Line</a></li>
-                     @if ($user->role == "admin")
+                     @if ($user->role == "Admin")
                     <li><a href="{{ route('service.create') }}">Add</a></li>
                     @endif
 
                 </ul>
             </li>
-            <li @if ($page=="client")
+            <li @if ('' ?? $page=="client")
             class="active-side"
         @endif>
                 <div class="iocn-link">
@@ -90,7 +90,7 @@
                         <span class="link_name">Clients</span>
                     </a>
 
-                     @if ($user->role == "admin")
+                     @if ($user->role == "Admin")
                     <i class='bx bxs-chevron-down arrow'></i>
                     @endif
 
@@ -98,13 +98,13 @@
                 <ul class="sub-menu">
                     <li><a class="link_name" href="{{ route('client.index') }}">Clients</a></li>
 
-                    @if ($user->role == "admin")
+                    @if ($user->role == "Admin")
                     <li><a href="{{ route('client.create') }}">Add</a></li>
                     @endif
 
                 </ul>
             </li>
-            <li @if ($page=="mission")
+            <li @if ('' ?? $page=="mission")
             class="active-side"
         @endif>
                 <div class="iocn-link">
@@ -112,19 +112,19 @@
                        <i class='bx bxs-bookmark-star' ></i>
                         <span class="link_name">Missions</span>
                     </a>
-                     @if ($user->role == "admin")
+                     @if ($user->role == "Admin")
                     <i class='bx bxs-chevron-down arrow'></i>
                     @endif
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="{{ route('mission.index') }}">Mission</a></li>
-                     @if ($user->role == "admin")
+                     @if ($user->role == "Admin")
                     <li><a href="{{ route('mission.create') }}">Add</a></li>
                     @endif
 
                 </ul>
             </li>
-            <li @if ($page=="time")
+            <li @if ('' ?? $page=="time")
             class="active-side"
         @endif>
                 <div class="iocn-link">
@@ -132,13 +132,13 @@
                         <i class='bx bx-time'></i>
                         <span class="link_name">Time Management</span>
                     </a>
-                     @if ($user->role == "admin")
+                     @if ($user->role == "Admin")
                     <i class='bx bxs-chevron-down arrow'></i>
                     @endif
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="{{ route('time.index') }}">Time Management</a></li>
-                  @if ($user->role == "admin")
+                  @if ($user->role == "Admin")
                     <li><a href="{{ route('time.create') }}">Add</a></li>
                     @endif
 
@@ -150,7 +150,7 @@
                         <i class='bx bx-plug'></i>
                         <span class="link_name">Plugins</span>
                     </a>
-                     @if ($user->role == "admin")
+                     @if ($user->role == "Admin")
                     <i class='bx bxs-chevron-down arrow'></i>
                     @endif
                 </div>
@@ -190,13 +190,18 @@
             </li> --}}
             <li>
                 <div class="profile-details">
+
                     <div class="profile-content">
+                        <a href=" {{route('user.index')}} ">
                         <img src="{{ asset('images/ff.jpg') }}" alt="profileImg">
+                        </a>
                     </div>
+                    <a href=" {{route('user.index')}} ">
                     <div class="name-job">
                         <div class="profile_name">{{ $user->name }}</div>
                         <div class="job">{{ $user->role }}</div>
                     </div>
+                    </a>
 
 
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();

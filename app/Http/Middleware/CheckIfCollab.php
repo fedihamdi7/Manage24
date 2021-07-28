@@ -16,7 +16,7 @@ class CheckIfCollab
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->role != 'collab') {
+        if (Auth::user()->role != 'Collaborator') {
             return redirect('/');
         }
         return $next($request);

@@ -22,3 +22,6 @@ mix.js('resources/js/dashboard.js', 'public/js');
 mix.styles([
     'resources/css/dashboard.css'
 ], 'public/css/dashboard.css');
+mix.styles([
+    'resources/css/profile.css'
+], 'public/css/profile.css');
