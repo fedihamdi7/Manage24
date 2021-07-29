@@ -330,12 +330,13 @@ table{
     font-weight: 500;
     margin-top: 1em;
 }
-.alert-perso{
+.alert-success{
     width: 16% !important;
     padding-right: 0 !important;
 }
 
-.close-btn-perso{
-    position: relative;
-    margin-left: 5%;
+.close-btn{
+    position: relative !important;
+    margin-left: 5% !important;
 }
+

@@ -46,7 +46,6 @@ body {
 .invalid-feedback{
     display: block !important;
 }
-
 .alert-perso{
     width: 16% !important;
     padding-right: 0 !important;
@@ -64,13 +63,6 @@ body {
     border-radius: 50% !important;
 }
 
-.img-round-default{
-    display: inline !important;
-    margin: 0 auto !important;
-    margin-left: 0% !important;
-    height: 100% !important;
-    width: auto !important;
-}
 .img-round{
     display: inline !important;
     margin: 0 auto !important;
