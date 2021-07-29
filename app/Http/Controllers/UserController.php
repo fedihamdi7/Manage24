@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
 
 class UserController extends Controller
 {
@@ -114,14 +115,17 @@ class UserController extends Controller
 
         if ($request->hasfile("image")) {
             $imageName = time() . $request['image']->getClientOriginalName();
-            $request['image']->move(base_path() . '/public/images/profileImg/', $imageName);
+            $request['image']->move(base_path() . '/public/storage/images/profileImg/', $imageName);
             $update['image'] = $imageName;
+            $image = Image::make(public_path("storage/images/profileImg/".$imageName))->fit(300,300);
+            $image->save();
         }
+
 
         DB::table('users')
         ->where('id',$user->id)
         ->update($update);
-        
+
         return redirect(route('user.index',compact('user')))->with('profileUpdated','Profile Updated Successfully');
     }
 

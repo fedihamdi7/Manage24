@@ -20,7 +20,7 @@
         <div class="col-md-3 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                 <div class="div-round-img">
-                    <img src="images/profileImg/{{ $user->image }}"  class="img-round">
+                    <img src="storage/images/profileImg/{{ $user->image }}"  class="img-round">
                 </div>
                 <span class="font-weight-bold">{{$user->name}}</span>
                 <span class="text-black-50">{{$user->role}}</span>
