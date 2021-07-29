@@ -339,18 +339,4 @@ table{
     position: relative;
     margin-left: 5%;
 }
-.div-round-img{
-    width: 150px !important;
-    height: 150px !important;
-    position: relative !important;
-    overflow: hidden !important;
-    border-radius: 50% !important;
-}
 
-.img-round{
-    display: inline !important;
-    margin: 0 auto !important;
-    margin-left: -40% !important;
-    height: 100% !important;
-    width: auto !important;
-}
