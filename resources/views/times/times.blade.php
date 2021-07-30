@@ -35,8 +35,10 @@
             @foreach ( $times as $time )
                 <tr>
                     <th scope="row">{{$time->id}}</th>
-                    <td>{{$time->mission_id ?? 'N/A'}}</td>
-                    <td>{{$time->collab_id ?? 'N/A'}}</td>
+                    {{-- <td>{{$time->mission_id ?? 'N/A'}}</td> --}}
+                    <td>{{$time->mission()->where('id', $time->mission_id)->value('mission_name') ?? 'N/A'}}</td>
+                    <td>{{$time->collab()->where('id', $time->collab_id)->value('collab_name') ?? 'N/A'}}</td>
+                    {{-- <td>{{$time->collab_id ?? 'N/A'}}</td> --}}
                     <td>{{$time->date ?? 'N/A'}}</td>
                     <td>{{$time->start_time ?? 'N/A'}}</td>
                     <td>{{$time->elapsed_time ?? 'N/A'}}</td>

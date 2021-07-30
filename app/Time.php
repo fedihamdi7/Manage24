@@ -9,9 +9,14 @@ class Time extends Model
     //
     protected $guarded=[];
 
-    public function missions()
+    public function mission()
     {
-        return $this->hasMany('App\Mission');
+        return $this->belongsTo('App\Mission');
+    }
+
+    public function collab()
+    {
+        return $this->belongsTo('App\Collab');
     }
 
 }

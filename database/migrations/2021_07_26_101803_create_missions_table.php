@@ -15,6 +15,7 @@ class CreateMissionsTable extends Migration
     {
         Schema::create('missions', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('mission_name');
             $table->bigInteger('service_id')->unsigned();
             $table->bigInteger('client_id')->unsigned();
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade')->onUpdate('cascade');

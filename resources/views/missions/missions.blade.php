@@ -43,8 +43,8 @@
             @foreach ( $missions as $mission )
                 <tr>
                     <th scope="row">{{$mission->id}}</th>
-                    <td>{{$mission->service_id ?? 'N/A'}}</td>
-                    <td>{{$mission->client_id ?? 'N/A'}}</td>
+                    <td>{{$mission->service()->where('id', $mission->service_id)->value('service_ligne') ?? 'N/A'}}</td>
+                    <td>{{$mission->client()->where('id', $mission->client_id)->value('social_reason') ?? 'N/A'}}</td>
                     <td>{{$mission->start_time ?? 'N/A'}}</td>
                     <td>{{$mission->end_time ?? 'N/A'}}</td>
                     <td>{{$mission->elapsed_time ?? 'N/A'}}</td>

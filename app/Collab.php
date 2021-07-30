@@ -8,4 +8,9 @@ class Collab extends Model
 {
     //
     protected $guarded=[];
+
+    public function time()
+    {
+        return $this->hasOne('App\Time');
+    }
 }

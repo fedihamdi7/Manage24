@@ -8,4 +8,8 @@ class Client extends Model
 {
     //
     protected $guarded=[];
+    public function missions()
+    {
+        return $this->hasOne('App\Mission');
+    }
 }

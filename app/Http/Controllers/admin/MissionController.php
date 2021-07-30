@@ -28,6 +28,7 @@ class MissionController extends Controller
         $page='mission';
         $user = Auth::user();
         $missions = Mission::get()->sort();
+        
 
         return view('missions.missions',compact('user','missions','page'));
     }

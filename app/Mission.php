@@ -11,6 +11,14 @@ class Mission extends Model
 
     public function time()
     {
-        return $this->belongsTo('App\Time');
+        return $this->hasOne('App\Time');
+    }
+    public function service()
+    {
+        return $this->belongsTo('App\Service');
+    }
+    public function client()
+    {
+        return $this->belongsTo('App\Client');
     }
 }
