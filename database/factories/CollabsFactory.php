@@ -3,6 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Collab;
+use App\Grade;
 use Faker\Generator as Faker;
 
 $factory->define(Collab::class, function (Faker $faker) {
@@ -13,5 +14,7 @@ $factory->define(Collab::class, function (Faker $faker) {
         'collab_dateOut'=>$faker->date(),
         'collab_phone'=>$faker->numerify('########'),
         'collab_mail'=>$faker->email(),
+        'code_g'=> Grade::get('id')->random(),
+
     ];
 });

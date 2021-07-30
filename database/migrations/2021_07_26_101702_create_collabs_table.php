@@ -21,6 +21,8 @@ class CreateCollabsTable extends Migration
             $table->date('collab_dateOut')->nullable();
             $table->string('collab_phone', 8);
             $table->string('collab_mail')->unique();
+            $table->bigInteger('code_g')->unsigned();
+            $table->foreign('code_g')->references('id')->on('grades')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
 
         });

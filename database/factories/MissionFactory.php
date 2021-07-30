@@ -11,7 +11,8 @@ $factory->define(Mission::class, function (Faker $faker) {
     return [
         'service_id'=> Service::get('id')->random(),
         'client_id'=> Client::get('id')->random(),
-        'date_start'=> $faker->date(),
-        'date_finish'=> $faker->date(),
+        'start_time'=> $faker->time(),
+        'end_time'=> $faker->time(),
+        'elapsed_time'=> $faker->time(),
     ];
 });
