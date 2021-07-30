@@ -13,4 +13,8 @@ class Collab extends Model
     {
         return $this->hasOne('App\Time');
     }
+    public function grade()
+    {
+        return $this->belongsTo('App\Grade');
+    }
 }

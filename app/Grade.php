@@ -8,4 +8,9 @@ class Grade extends Model
 {
     protected $guarded=[];
 
+    public function collab()
+    {
+        return $this->hasMany('App\Collab');
+    }
+
 }

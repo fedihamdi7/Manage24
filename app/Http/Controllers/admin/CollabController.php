@@ -28,7 +28,6 @@ class CollabController extends Controller
         $page='collabs';
         $user = Auth::user();
         $collabs = Collab::get()->sort();
-
         return view('collabs.collabs',compact('user','collabs','page'));
     }
 
