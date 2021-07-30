@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 })->name('/');
 
 Auth::routes();
@@ -28,3 +28,4 @@ Route::resource('mission', 'admin\MissionController');
 Route::resource('time', 'admin\TimeController');
 Route::resource('user', 'UserController');
 
+// Route::get('/login', 'LoginController@index')->name('login');
