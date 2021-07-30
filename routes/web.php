@@ -28,4 +28,6 @@ Route::resource('mission', 'admin\MissionController');
 Route::resource('time', 'admin\TimeController');
 Route::resource('user', 'UserController');
 
-// Route::get('/login', 'LoginController@index')->name('login');
+Route::get('/reg', function () {
+    return view('welcome');
+});
