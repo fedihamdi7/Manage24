@@ -20,7 +20,7 @@
 
 
             <div class="col-12">
-                {{-- <label for="inputPhone" class="form-label">Phone</label> --}}
+                <label>Service</label>
                 <input type="text" class="form-control @error('service_ligne') is-invalid @enderror" id="inputPhone" placeholde name="service_ligne" value="{{$service->service_ligne}} ">
                  @error('service_ligne')
                     <span class="invalid-feedback" role="alert">
@@ -30,9 +30,9 @@
             </div>
             <div class="col-12">
                 {{-- <label for="inputEmail" class="form-label">Email</label> --}}
+                <label for="floatingTextarea2">Description</label>
                 <div class="form-floating">
                     <textarea class="form-control @error('description') is-invalid @enderror" style="height: 12em" placeholder="Leave a comment here" id="floatingTextarea2"  name="description"> {{$service->description ?? ''}} </textarea>
-                    <label for="floatingTextarea2">Description</label>
                     @error('description')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

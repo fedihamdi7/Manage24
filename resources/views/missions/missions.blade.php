@@ -31,8 +31,9 @@
             <th scope="col">Mission</th>
             <th scope="col">Service</th>
             <th scope="col">Client</th>
-            <th scope="col">Date Start</th>
-            <th scope="col">Date Finish</th>
+            <th scope="col">Start Time</th>
+            <th scope="col">Finish Time</th>
+            <th scope="col">Elapsed Time</th>
             @if ($user->role == "Admin")
             <th scope="col">Edit</th>
             @endif
@@ -44,8 +45,9 @@
                     <th scope="row">{{$mission->id}}</th>
                     <td>{{$mission->service_id ?? 'N/A'}}</td>
                     <td>{{$mission->client_id ?? 'N/A'}}</td>
-                    <td>{{$mission->date_start ?? 'N/A'}}</td>
-                    <td>{{$mission->date_finish ?? 'N/A'}}</td>
+                    <td>{{$mission->start_time ?? 'N/A'}}</td>
+                    <td>{{$mission->end_time ?? 'N/A'}}</td>
+                    <td>{{$mission->elapsed_time ?? 'N/A'}}</td>
                     @if ($user->role == "Admin")
                     <td >
 

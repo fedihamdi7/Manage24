@@ -55,8 +55,9 @@ class MissionController extends Controller
         $data = $request->validate([
             'service_id' => 'required',
             'client_id' => 'required',
-            'date_start' => 'required',
-            'date_finish' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'elapsed_time' => 'required',
         ]);
 
         $mission = new Mission();
@@ -107,10 +108,11 @@ class MissionController extends Controller
     public function update(Request $request, Mission $mission)
     {
         $data = $request->validate([
-            'service' => 'required',
-            'client' => 'required',
-            'date_start' => 'required',
-            'date_finish' => 'required',
+            'service_id' => 'required',
+            'client_id' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'elapsed_time' => 'required',
         ]);
 
         DB::table('clients')
@@ -119,8 +121,9 @@ class MissionController extends Controller
             'mission' => $request->mission,
             'service' => $request->service,
             'client' => $request->client,
-            'date_start' => $request->date_start,
-            'date_finish' => $request->date_finish,
+            'start_time' => $request->date_start,
+            'end_time' => $request->date_finish,
+            'elapsed_time' => $request->elapsed_time,
 
         ]);
 

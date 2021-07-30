@@ -16,61 +16,73 @@
         <form method="POST" action="{{ route('collab.store')}}">
             @csrf
         <div class="title-edit"> Create Collaborator </div>
-            <div class="row">
-                <div class="col">
-
-                <input type="text" class="form-control @error('collab_name') is-invalid @enderror"  placeholder="First name " aria-label="First name" name="collab_name" value="{{ old('collab_name')}}">
-                 @error('collab_name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-                </div>
-                <div class="col">
-                <input type="text" class="form-control @error('collab_last_name') is-invalid @enderror" placeholder="Last name" aria-label="Last name" name="collab_last_name" value="{{ old('collab_last_name')}}">
-                 @error('collab_last_name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-                </div>
+        <div class="row">
+            <div class="col">
+                <label >Collaborator First Name</label>
+            <input type="text" class="form-control @error('collab_name') is-invalid @enderror" value="{{old('collab_name') ?? ''}}" placeholder="First name " aria-label="First name" name="collab_name">
+             @error('collab_name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
             </div>
-            <div class="row">
-                <div class="col">
-                <input type="date" class="form-control @error('collab_dateIn') is-invalid @enderror" placeholder="Date In" aria-label="Date In" name="collab_dateIn" value="{{ old('collab_dateIn')}}">
-                 @error('collab_dateIn')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-                </div>
-                <div class="col">
-                <input type="date" class="form-control @error('collab_dateOut') is-invalid @enderror" placeholder="Date Out" aria-label="Date Out" name="collab_dateOut" value="{{ old('collab_dateOut')}}">
-                 @error('collab_dateOut')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-                </div>
+            <div class="col">
+                <label >Collaborator Last Name</label>
+            <input type="text" class="form-control @error('collab_last_name') is-invalid @enderror" value="{{old('collab_last_name') ?? ''}}" placeholder="Last name" aria-label="Last name" name="collab_last_name">
+             @error('collab_last_name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
             </div>
-            <div class="col-12">
-                {{-- <label for="inputPhone" class="form-label">Phone</label> --}}
-                <input type="text" class="form-control @error('collab_phone') is-invalid @enderror" id="inputPhone" placeholder="Phone" name="collab_phone" value="{{ old('collab_phone')}}">
-                 @error('collab_phone')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+        </div>
+        <div class="row">
+            <div class="col">
+                <label >Date In</label>
+            <input type="date" class="form-control @error('collab_dateIn') is-invalid @enderror" placeholder="Date In" aria-label="Date In" name="collab_dateIn" value="{{old('collab_dateIn') ?? ''}}">
+             @error('collab_dateIn')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
             </div>
-            <div class="col-12">
-                {{-- <label for="inputEmail" class="form-label">Email</label> --}}
-                <input type="email" class="form-control @error('collab_mail') is-invalid @enderror" id="inputEmail" placeholder="Email.." name="collab_mail" value="{{ old('collab_mail')}}">
-                 @error('collab_mail')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+            <div class="col">
+                <label >Date Out</label>
+            <input type="date" class="form-control @error('collab_dateOut') is-invalid @enderror" placeholder="Date Out" aria-label="Date Out" name="collab_dateOut" value="{{old('collab_dateOut') ?? ''}}">
+             @error('collab_dateOut')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
             </div>
+        </div>
+        <div class="col-12">
+            <label >Phone</label>
+            <input type="text" class="form-control @error('collab_phone') is-invalid @enderror" id="inputPhone" placeholder="Phone" name="collab_phone" value="{{old('collab_phone') ?? ''}}">
+             @error('collab_phone')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="col-12">
+            <label >Email</label>
+            <input type="email" class="form-control @error('collab_mail') is-invalid @enderror" id="inputEmail" placeholder="Email.." name="collab_mail" value="{{old('collab_mail') ?? ''}}">
+             @error('collab_mail')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="col-12">
+            <label>Grade</label>
+            <input type="text" class="form-control @error('code_g') is-invalid @enderror" id="inputEmail" placeholder="Grade" name="code_g" value="{{old('code_g') ?? ''}}">
+             @error('code_g')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
 
 
                 <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i class="fa fa-save"></i>  Save </button></div>

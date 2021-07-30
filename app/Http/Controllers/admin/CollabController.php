@@ -59,6 +59,7 @@ class CollabController extends Controller
             'collab_dateOut' => 'required',
             'collab_phone' => 'required|size:8',
             'collab_mail' => 'required|email',
+            'code_g' => 'required',
         ]);
 
         $collab = new Collab();
@@ -109,6 +110,7 @@ class CollabController extends Controller
             'collab_dateOut' => 'required',
             'collab_phone' => 'required|size:8',
             'collab_mail' => 'required|email',
+            'code_g' => 'required',
         ]);
 
         DB::table('collabs')
@@ -120,6 +122,7 @@ class CollabController extends Controller
             'collab_dateOut' => $request->collab_dateOut,
             'collab_phone' => $request->collab_phone,
             'collab_mail' => $request->collab_mail,
+            'code_g' => $request->code_g,
         ]);
 
 

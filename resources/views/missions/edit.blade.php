@@ -19,7 +19,7 @@
             <div class="title-edit"> Edit Mission </div>
             <div class="row">
                 <div class="col">
-
+                    <label for="">Service</label>
                     <input type="text" class="form-control @error('service') is-invalid @enderror"
                         placeholder="Service" aria-label="First name" name="service"
                         value="{{ $service->first()->service_ligne ?? ''  }}">
@@ -30,6 +30,7 @@
                     @enderror
                 </div>
                 <div class="col">
+                    <label for="">Client</label>
                     <input type="text" class="form-control @error('client') is-invalid @enderror"
                         placeholder="client" aria-label="Last name" name="client"
                         value="{{ $client ?? old('client') ?? '' }}">
@@ -40,26 +41,44 @@
                     @enderror
                 </div>
             </div>
-            <div class="col-12">
+            <div class="row">
+                <div class="col">
 
-                <input type="date" class="form-control @error('date_start') is-invalid @enderror" id="inputPhone"
-                 name="date_start" value="{{  $mission->date_start ?? ''}}">
-                @error('date_start')
+                    <label for="">Start Time</label>
+                    <input type="time" class="form-control @error('start_time') is-invalid @enderror" id="inputPhone"
+                 name="start_time" value="{{  $mission->start_time ?? ''}}">
+                @error('start_time')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
+                </div>
+                <div class="col">
+                    <label for="">End Time</label>
+                    <input type="time" class="form-control @error('end_time') is-invalid @enderror" id="inputPhone"
+                    name="end_time" value="{{  $mission->end_time ?? ''}}">
+                   @error('end_time')
+                       <span class="invalid-feedback" role="alert">
+                           <strong>{{ $message }}</strong>
+                       </span>
+                   @enderror
+                </div>
             </div>
-            <div class="col-12">
 
-                <input type="date" class="form-control @error('date_finish') is-invalid @enderror" id="inputPhone"
-                 name="date_finish" value="{{  $mission->date_finish ?? ''}}">
-                @error('date_finish')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+            <div class="col-12">
+                <label for="">Elapsed Time</label>
+                <input type="time" class="form-control @error('elapsed_time') is-invalid @enderror" id="inputPhone"
+                name="elapsed_time" value="{{  $mission->elapsed_time ?? ''}}">
+               @error('elapsed_time')
+                   <span class="invalid-feedback" role="alert">
+                       <strong>{{ $message }}</strong>
+                   </span>
+               @enderror
+
             </div>
+
+
+
 
 
 

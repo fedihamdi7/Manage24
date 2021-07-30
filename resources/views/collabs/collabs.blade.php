@@ -29,6 +29,7 @@
             <th scope="col">Date Out</th>
             <th scope="col">Phone</th>
             <th scope="col">Email</th>
+            <th scope="col">Grade</th>
             @if ($user->role == "Admin")
             <th scope="col">Edit</th>
             @endif
@@ -44,6 +45,7 @@
                     <td>{{$collab->collab_dateOut ?? 'N/A'}}</td>
                     <td>{{$collab->collab_phone ?? 'N/A'}}</td>
                     <td>{{$collab->collab_mail ?? 'N/A'}}</td>
+                    <td>{{$collab->code_g ?? 'N/A'}}</td>
                     @if ($user->role == "Admin")
                     <td >
 

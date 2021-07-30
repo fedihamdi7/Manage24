@@ -193,7 +193,7 @@
 
                     <div class="profile-content">
                         <a href=" {{route('user.index')}} ">
-                        <img src="storage/images/profileImg/{{ $user->image }}" alt="profileImg">
+                        <img src="{{ asset('/storage/images/profileImg/') }}/{{ $user->image }}" alt="profileImg">
                         </a>
                     </div>
                     <a href=" {{route('user.index')}} ">
