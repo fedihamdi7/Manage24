@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/login.css">
 </head>
-<body>
+<body style="background-image:url('images/background.png') ">
   <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
     <div class="container">
       <div class="card login-card">
@@ -22,7 +22,7 @@
           <div class="col-md-7">
             <div class="card-body">
               <div class="brand-wrapper">
-                <img src="images/logo.png" alt="logo" class="logo">
+                <img src="images/logo.png" style="width: 21%;" alt="logo" >
               </div>
               <p class="login-card-description">Sign into your account</p>
               <form method="POST" action="{{ route('login') }}">
