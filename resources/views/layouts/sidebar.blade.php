@@ -27,7 +27,7 @@
 <body>
     <div class="sidebar close">
         <div class="logo-details">
-            <img src="{{ asset('images/logo.png') }}" alt="" style="width: 62%; margin-left: 21%;">
+            <img src="{{ asset('images/logo.png') }}" alt="" style="width: 49%;margin-left: 27%;margin-top: 11%;">
             {{-- <span class="logo_name">Manage24</span> --}}
         </div>
         <ul class="nav-links">
