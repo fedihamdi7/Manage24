@@ -21,6 +21,7 @@
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
+    <a name="" id="" class="btn btn-perso" href="{{route('mission.pdf')}}" role="button" ><i class="fa fa-download" aria-hidden="true">Download</i></a>
     @if ($user->role == "Admin")
     <a name="" id="" class="btn btn-perso" href="{{route('mission.create')}}" role="button" >Add Mission</a>
     @endif

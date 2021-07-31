@@ -11,6 +11,7 @@
 |
 */
 
+use App\Mission;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -31,3 +32,25 @@ Route::resource('user', 'UserController');
 Route::get('/reg', function () {
     return view('welcome');
 });
+
+Route::get('/pdf', function () {
+    $page='mission';
+    $user = Auth::user();
+    $missions = Mission::get()->sort();
+    $time = Carbon\Carbon::now();
+
+
+    $pdf = PDF::loadview('missions.pdf',compact('user','missions','page','time'));
+    $pdf->setPaper('A4', 'landscape');
+
+    return $pdf->download("file.pdf");
+})->name('mission.pdf');
+// Route::get('/pdfs', function () {
+//     $page='mission';
+//     $user = Auth::user();
+//     $missions = Mission::get()->sort();
+
+//     $time = Carbon\Carbon::now();
+
+//     return view('missions.pdf',compact('user','missions','page','time'));
+// });
