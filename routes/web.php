@@ -37,4 +37,5 @@ Route::get('/reg', function () {
 
 Route::get('pdf-mission','admin\MissionController@pdf')->name('mission.pdf');
 Route::get('pdf-time','admin\TimeController@pdf')->name('time.pdf');
+Route::get('pdf-collab','admin\CollabController@pdf')->name('collab.pdf');
 

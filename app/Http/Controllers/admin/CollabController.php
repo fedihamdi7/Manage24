@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class CollabController extends Controller
 {
@@ -31,7 +33,18 @@ class CollabController extends Controller
         $collabs = Collab::get()->sort();
         return view('collabs.collabs',compact('user','collabs','page'));
     }
+    public function pdf(){
+        $page='collabs';
+        $user = Auth::user();
+        $collabs = Collab::get()->sort();
+        $time = Carbon::now();
 
+
+        $pdf = PDF::loadview('collabs.pdf',compact('user','collabs','page','time'));
+        $pdf->setPaper('A4', 'landscape');
+
+        return $pdf->download("file.pdf");
+    }
     /**
      * Show the form for creating a new resource.
      *
