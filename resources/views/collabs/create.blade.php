@@ -74,14 +74,35 @@
                 </span>
             @enderror
         </div>
-        <div class="col-12">
-            <label>Grade</label>
-            <input type="text" class="form-control @error('code_g') is-invalid @enderror" id="inputEmail" placeholder="Grade" name="code_g" value="{{old('code_g') ?? ''}}">
-             @error('code_g')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+        <div class="row">
+            <div class="col">
+                <label>Grade</label>
+                {{-- <input type="text" class="form-control @error('code_g') is-invalid @enderror" id="inputEmail" placeholder="Grade" name="code_g" value="{{old('code_g') ?? ''}}"> --}}
+                <select class="form-select" name="grade_id" aria-label="Default select example">
+                    <option selected value="">Select Grade</option>
+                    @foreach ($grades as $grade )
+                    <option value="{{$grade->id}}">{{$grade->id}} - {{$grade->grade}}</option>
+                    @endforeach
+                  </select>
+                @error('grade_id')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            <div class="col">
+                <label>Service Ligne</label>
+                <select class="form-select" name="service_id" aria-label="Default select example">
+                    <option selected value="">Select Service</option>
+                    @foreach ($services as $service )
+                    <option value=" {{$service->id}} ">{{$service->id}} - {{$service->service_ligne}}</option>
+                    @endforeach
+                  </select>                @error('service_id')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
         </div>
 
 

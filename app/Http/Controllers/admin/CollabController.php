@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Collab;
 use App\Grade;
 use App\Http\Controllers\Controller;
+use App\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -70,7 +71,9 @@ class CollabController extends Controller
     {
         $page='collabs';
         $user = Auth::user();
-        return view('collabs.create',compact('user','page'));
+        $grades= Grade::get();
+        $services=Service::get();
+        return view('collabs.create',compact('user','page','grades','services'));
     }
 
     /**
@@ -81,7 +84,7 @@ class CollabController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        // dd($request);
         $data = $request->validate([
             'collab_name' => 'required',
             'collab_last_name' => 'required',
@@ -90,6 +93,7 @@ class CollabController extends Controller
             'collab_phone' => 'required|size:8',
             'collab_mail' => 'required|email',
             'grade_id' => 'required',
+            'service_id' => 'required',
         ]);
 
         $collab = new Collab();
@@ -118,13 +122,14 @@ class CollabController extends Controller
     public function edit(Collab $collab)
     {
         $current_grade = $collab->grade()->where('id', $collab->grade_id)->value('grade');
+        $current_service = $collab->service()->where('id', $collab->service_id)->value('service_ligne');
         $page='collabs';
         $user = Auth::user();
         $collabs = Collab::find($collab->id);
         $g= Grade::find($collab->grade_id)->value('grade');
         $grades=Grade::get()->sort();
-
-        return view('collabs.edit',compact('user','collabs','collab','page','g','grades','current_grade'));
+        $services = Service::get()->sort();
+        return view('collabs.edit',compact('user','collabs','collab','page','g','grades','current_grade','services','current_service'));
     }
 
     /**
@@ -144,6 +149,7 @@ class CollabController extends Controller
             'collab_phone' => 'required|size:8',
             'collab_mail' => 'required|email',
             'grade_id' => 'required',
+            'service_id' => 'required',
         ]);
 
         DB::table('collabs')
@@ -156,6 +162,7 @@ class CollabController extends Controller
             'collab_phone' => $request->collab_phone,
             'collab_mail' => $request->collab_mail,
             'grade_id' => $request->grade_id,
+            'service_id' => $request->service_id,
         ]);
 
 

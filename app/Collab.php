@@ -17,4 +17,9 @@ class Collab extends Model
     {
         return $this->belongsTo('App\Grade');
     }
+
+    public function service()
+    {
+        return $this->belongsTo('App\Service');
+    }
 }

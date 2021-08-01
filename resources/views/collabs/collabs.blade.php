@@ -31,6 +31,7 @@
             <th scope="col">Phone</th>
             <th scope="col">Email</th>
             <th scope="col">Grade</th>
+            <th scope="col">Service</th>
             @if ($user->role == "Admin")
             <th scope="col">Edit</th>
             @endif
@@ -49,6 +50,7 @@
                     <td>{{$collab->collab_mail ?? 'N/A'}}</td>
                     {{-- <td>{{$collab->grade_id ?? 'N/A'}}</td> --}}
                     <td>{{$collab->grade()->where('id', $collab->grade_id)->value('grade') ?? 'N/A'}}</td>
+                    <td>{{$collab->service()->where('id', $collab->service_id)->value('service_ligne') ?? 'N/A'}}</td>
                     @if ($user->role == "Admin")
                     <td >
 
