@@ -36,6 +36,8 @@
             <th scope="col">Phone</th>
             <th scope="col">Email</th>
             <th scope="col">Contact Person</th>
+            <th scope="col">Website</th>
+            <th scope="col">Type</th>
             @if ($user->role == "Admin")
             <th scope="col">Edit</th>
             @endif
@@ -51,6 +53,8 @@
                     <td>{{$client->phone ?? 'N/A'}}</td>
                     <td>{{$client->email ?? 'N/A'}}</td>
                     <td>{{$client->contact_person ?? 'N/A'}}</td>
+                    <td>{{$client->website ?? 'N/A'}}</td>
+                    <td>{{$client->type ?? 'N/A'}}</td>
                     @if ($user->role == "Admin")
                     <td >
 

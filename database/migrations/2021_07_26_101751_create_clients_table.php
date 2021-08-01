@@ -23,6 +23,8 @@ class CreateClientsTable extends Migration
             $table->string('fax')->nullable();
             $table->string('email')->nullable();
             $table->string('contact_person')->nullable();
+            $table->string('website')->nullable();
+            $table->enum('type', ['local', 'foreign'])->nullable();
             $table->timestamps();
 
         });

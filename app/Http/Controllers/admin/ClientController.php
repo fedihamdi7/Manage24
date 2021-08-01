@@ -71,6 +71,8 @@ class ClientController extends Controller
             'phone' => 'required|size:8',
             'email' => 'email',
             'contact_person' => 'required',
+            'website' => 'required',
+            'type' => 'required',
         ]);
 
         $client = new Client();
@@ -119,6 +121,8 @@ class ClientController extends Controller
             'phone' => 'required|size:8',
             'email' => 'email',
             'contact_person' => 'required',
+            'website' => 'required',
+            'type' => 'required',
         ]);
 
         DB::table('clients')
@@ -132,6 +136,8 @@ class ClientController extends Controller
             'fax' => $request->fax,
             'email' => $request->email,
             'contact_person' => $request->contact_person,
+            'website' => $request->website,
+            'type' => $request->type,
 
         ]);
 

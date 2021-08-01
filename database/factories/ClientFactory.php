@@ -15,5 +15,7 @@ $factory->define(Client::class, function (Faker $faker) {
         'fax'=> $faker->phoneNumber(),
         'email'=> $faker->email(),
         'contact_person'=> $faker->word(),
+        'website'=> $faker->url(),
+        'type'=> $faker->randomElement($array = array ('local','foreign')),
     ];
 });

@@ -106,6 +106,28 @@
                 @enderror
             </div>
 
+            <div class="row">
+               <div class="col">
+                <label for="">Website</label>
+                <input type="text" class="form-control @error('website') is-invalid @enderror"
+                placeholder="Website" name="website" value="{{ old('website') }}">
+            @error('website')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+               </div>
+               <div class="col">
+                <div class="form-group">
+                  <label for="">Type</label>
+                  <select class="form-control" name="type" id="">
+                    <option value="local">Local</option>
+                    <option value="foreign">Foreign</option>
+                  </select>
+                </div>
+               </div>
+            </div>
+
 
             <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i
                         class="fa fa-save"></i> Save </button></div>

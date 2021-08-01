@@ -8,6 +8,7 @@
     <style>
         table {
           font-family: Poppins, Helvetica, sans-serif;
+          font-size: 10px;
           border-collapse: collapse;
           width: 100%;
         }
@@ -54,7 +55,7 @@
     <img src="images/logo.png" alt="">
 
     <table class="table caption-top">
-        <caption class="cap-style" style="margin-left: 46%;">Clients List</caption>
+        <caption class="cap-style" >Clients List</caption>
         <thead class="table-light">
           <tr>
             <th scope="col">#</th>
@@ -64,6 +65,8 @@
             <th scope="col">Phone</th>
             <th scope="col">Email</th>
             <th scope="col">Contact Person</th>
+            <th scope="col">Website</th>
+            <th scope="col">Type</th>
           </tr>
         </thead>
         <tbody>
@@ -76,6 +79,8 @@
                     <td>{{$client->phone ?? 'N/A'}}</td>
                     <td>{{$client->email ?? 'N/A'}}</td>
                     <td>{{$client->contact_person ?? 'N/A'}}</td>
+                    <td>{{$client->website ?? 'N/A'}}</td>
+                    <td>{{$client->type ?? 'N/A'}}</td>
                 </tr>
             @endforeach
         </tbody>
