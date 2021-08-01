@@ -45,6 +45,22 @@ class CollabController extends Controller
 
         return $pdf->download("file.pdf");
     }
+    public function pdfOne(Collab $collab){
+
+        $current_grade = $collab->grade()->where('id', $collab->grade_id)->value('grade');
+        $page='collabs';
+        $user = Auth::user();
+        $collabs = Collab::find($collab->id);
+        $g= Grade::find($collab->grade_id)->value('grade');
+        $grades=Grade::get()->sort();
+        $time = Carbon::now();
+
+
+        $pdf = PDF::loadview('collabs.onepdf',compact('user','collabs','collab','page','g','grades','current_grade','time'));
+        $pdf->setPaper('A4', 'landscape');
+
+        return $pdf->download("file.pdf");
+    }
     /**
      * Show the form for creating a new resource.
      *

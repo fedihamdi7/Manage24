@@ -34,6 +34,7 @@
             @if ($user->role == "Admin")
             <th scope="col">Edit</th>
             @endif
+            <th scope="col">Download</th>
           </tr>
         </thead>
         <tbody>
@@ -59,6 +60,8 @@
 
                     </td>
                     @endif
+
+                    <td > <a href=" {{route('onecollab.pdf',['collab'=>$collab])}} " style="color: rgb(139, 101, 101);margin-left: 37%;"> <i class="fa fa-download" aria-hidden="true"></i></a></td>
                 </tr>
             @endforeach
         </tbody>
