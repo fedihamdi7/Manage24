@@ -45,8 +45,8 @@
                     <td>{{$collab->collab_dateOut ?? 'N/A'}}</td>
                     <td>{{$collab->collab_phone ?? 'N/A'}}</td>
                     <td>{{$collab->collab_mail ?? 'N/A'}}</td>
-                    {{-- <td>{{$collab->code_g ?? 'N/A'}}</td> --}}
-                    <td>{{$collab->grade()->where('id', $collab->code_g)->value('grade') ?? 'N/A'}}</td>
+                    {{-- <td>{{$collab->grade_id ?? 'N/A'}}</td> --}}
+                    <td>{{$collab->grade()->where('id', $collab->grade_id)->value('grade') ?? 'N/A'}}</td>
                     @if ($user->role == "Admin")
                     <td >
 

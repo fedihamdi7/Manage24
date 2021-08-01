@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Collab;
+use App\Grade;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,6 +52,7 @@ class CollabController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         $data = $request->validate([
             'collab_name' => 'required',
             'collab_last_name' => 'required',
@@ -58,7 +60,7 @@ class CollabController extends Controller
             'collab_dateOut' => 'required',
             'collab_phone' => 'required|size:8',
             'collab_mail' => 'required|email',
-            'code_g' => 'required',
+            'grade_id' => 'required',
         ]);
 
         $collab = new Collab();
@@ -86,11 +88,14 @@ class CollabController extends Controller
      */
     public function edit(Collab $collab)
     {
+        $current_grade = $collab->grade()->where('id', $collab->grade_id)->value('grade');
         $page='collabs';
         $user = Auth::user();
         $collabs = Collab::find($collab->id);
-        // dd($collabs);
-        return view('collabs.edit',compact('user','collabs','page'));
+        $g= Grade::find($collab->grade_id)->value('grade');
+        $grades=Grade::get()->sort();
+
+        return view('collabs.edit',compact('user','collabs','collab','page','g','grades','current_grade'));
     }
 
     /**
@@ -109,7 +114,7 @@ class CollabController extends Controller
             'collab_dateOut' => 'required',
             'collab_phone' => 'required|size:8',
             'collab_mail' => 'required|email',
-            'code_g' => 'required',
+            'grade_id' => 'required',
         ]);
 
         DB::table('collabs')
@@ -121,7 +126,7 @@ class CollabController extends Controller
             'collab_dateOut' => $request->collab_dateOut,
             'collab_phone' => $request->collab_phone,
             'collab_mail' => $request->collab_mail,
-            'code_g' => $request->code_g,
+            'grade_id' => $request->grade_id,
         ]);
 
 

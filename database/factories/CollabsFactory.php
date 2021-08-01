@@ -14,7 +14,7 @@ $factory->define(Collab::class, function (Faker $faker) {
         'collab_dateOut'=>$faker->date(),
         'collab_phone'=>$faker->numerify('########'),
         'collab_mail'=>$faker->email(),
-        'code_g'=> Grade::get('id')->random(),
+        'grade_id'=> Grade::get('id')->random(),
 
     ];
 });

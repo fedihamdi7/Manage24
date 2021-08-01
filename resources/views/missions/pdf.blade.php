@@ -68,7 +68,7 @@
         <tbody>
             @foreach ( $missions as $mission )
                 <tr>
-                    <th scope="row">{{$mission->id}}</th>
+                    <th scope="row">{{$mission->mission_name}}</th>
                     <td>{{$mission->service()->where('id', $mission->service_id)->value('service_ligne') ?? 'N/A'}}</td>
                     <td>{{$mission->client()->where('id', $mission->client_id)->value('social_reason') ?? 'N/A'}}</td>
                     <td>{{$mission->start_time ?? 'N/A'}}</td>
