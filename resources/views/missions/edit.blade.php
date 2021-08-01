@@ -52,7 +52,7 @@
 
                     <label for="">Start Date</label>
                     <input type="date" class="form-control @error('date_start') is-invalid @enderror" id="inputPhone"
-                 name="date_start" value="{{  $mission->date_start ?? ''}}">
+                 name="date_start" value="{{$mission->date_start ?? ''}}">
                 @error('date_start')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -87,7 +87,9 @@
             <div class="col">
 
                <label for="">Path</label>
-               <input type="file" id="imgInp" webkitdirectory directory class="form-control  @error('path') is-invalid @enderror" name="path" id="" placeholder="" aria-describedby="fileHelpId" value="{{  $mission->path ?? ''}}">
+               {{-- <input type="file" id="imgInp" webkitdirectory directory class="form-control  @error('path') is-invalid @enderror" name="path" id="" placeholder="" aria-describedby="fileHelpId" value="{{  $mission->path ?? ''}}"> --}}
+               <input type="text" class="form-control  @error('path') is-invalid @enderror" name="path" id="" placeholder="Path" aria-describedby="fileHelpId" value="{{$mission->path ?? ''}}">
+
                @error('path')
                <span class="invalid-feedback" role="alert">
                    <strong>{{ $message }}</strong>

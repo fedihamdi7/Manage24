@@ -127,7 +127,6 @@ class MissionController extends Controller
     {
         // dd($request);
         $data = $request->validate([
-            'mission_name' => 'required',
             'service_id' => 'required',
             'client_id' => 'required',
             'date_start' => 'required',
@@ -139,9 +138,10 @@ class MissionController extends Controller
         DB::table('missions')
         ->where('id',$mission->id)
         ->update([
+            'mission_name' => $mission->mission_name,
             'service_id' => $request->service_id,
             'client_id' => $request->client_id,
-            'date_start' => $request->start_time,
+            'date_start' => $request->date_start,
             'date_finish' => $request->date_finish,
             'year' => $request->year,
             'path' => $request->path,

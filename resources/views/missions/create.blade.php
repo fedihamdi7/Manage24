@@ -94,7 +94,8 @@
             <div class="col">
 
                <label for="">Path</label>
-               <input type="file" id="imgInp" webkitdirectory directory class="form-control  @error('path') is-invalid @enderror" name="path" id="" placeholder="" aria-describedby="fileHelpId" value="{{''}}">
+               {{-- <input type="file" id="imgInp" webkitdirectory directory class="form-control  @error('path') is-invalid @enderror" name="path" id="" placeholder="" aria-describedby="fileHelpId" value="{{''}}"> --}}
+               <input type="text" class="form-control  @error('path') is-invalid @enderror" name="path" id="" placeholder="Path" aria-describedby="fileHelpId" value="{{''}}">
                @error('path')
                <span class="invalid-feedback" role="alert">
                    <strong>{{ $message }}</strong>
