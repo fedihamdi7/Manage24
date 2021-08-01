@@ -28,7 +28,7 @@ class MissionController extends Controller
         $page='mission';
         $user = Auth::user();
         $missions = Mission::get()->sort();
-        
+
 
         return view('missions.missions',compact('user','missions','page'));
     }
@@ -41,8 +41,10 @@ class MissionController extends Controller
     public function create()
     {
         $page='mission';
+        $clients=Client::get()->sort();
+        $services=Service::get()->sort();
         $user = Auth::user();
-        return view('missions.create',compact('user','page'));
+        return view('missions.create',compact('user','page','services','clients'));
     }
 
     /**
@@ -54,6 +56,7 @@ class MissionController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
+            'mission_name' => 'required',
             'service_id' => 'required',
             'client_id' => 'required',
             'start_time' => 'required',
@@ -86,17 +89,13 @@ class MissionController extends Controller
     public function edit(Mission $mission)
     {
         $page='mission';
-
-        // $service= Service::find($mission->service_id)->get('service_ligne');
-        $service= DB::table('services')
-        ->where('id',$mission->service_id)
-        ->get('service_ligne');
-        $c= Client::find($mission->client_id);
-        $client= $c->contact_person;
-
+        $current_service = $mission->service()->where('id', $mission->service_id)->value('service_ligne');
+        $current_client= $mission->client()->where('id', $mission->client_id)->value('social_reason');
+        $clients=Client::get()->sort();
+        $services=Service::get()->sort();
         $user = Auth::user();
         $mission = Mission::find($mission->id);
-        return view('missions.edit',compact('user','mission','service','client','page'));
+        return view('missions.edit',compact('user','mission','services','clients','page','current_service','current_client'));
     }
 
     /**
@@ -108,6 +107,7 @@ class MissionController extends Controller
      */
     public function update(Request $request, Mission $mission)
     {
+        // dd($request);
         $data = $request->validate([
             'service_id' => 'required',
             'client_id' => 'required',
@@ -116,14 +116,13 @@ class MissionController extends Controller
             'elapsed_time' => 'required',
         ]);
 
-        DB::table('clients')
+        DB::table('missions')
         ->where('id',$mission->id)
         ->update([
-            'mission' => $request->mission,
-            'service' => $request->service,
-            'client' => $request->client,
-            'start_time' => $request->date_start,
-            'end_time' => $request->date_finish,
+            'service_id' => $request->service_id,
+            'client_id' => $request->client_id,
+            'start_time' => $request->start_time,
+            'end_time' => $request->end_time,
             'elapsed_time' => $request->elapsed_time,
 
         ]);

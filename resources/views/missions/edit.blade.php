@@ -16,13 +16,16 @@
         <form method="POST" action="{{route('mission.update',['mission'=>$mission]) }}">
             @csrf
             @method('PUT')
-            <div class="title-edit"> Edit Mission </div>
+            <div class="title-edit"> Edit Mission {{$mission->mission_name}} </div>
             <div class="row">
                 <div class="col">
                     <label for="">Service</label>
-                    <input type="text" class="form-control @error('service') is-invalid @enderror"
-                        placeholder="Service" aria-label="First name" name="service"
-                        value="{{ $service->first()->service_ligne ?? ''  }}">
+                        <select class="form-select" name="service_id" aria-label="Default select example">
+                            <option selected value=" {{$mission->service_id}} "> {{$current_service}} </option>
+                            @foreach ($services as $service )
+                            <option value=" {{$service->id}} ">{{$service->id}} - {{$service->service_ligne}}</option>
+                            @endforeach
+                          </select>
                     @error('service')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -31,9 +34,12 @@
                 </div>
                 <div class="col">
                     <label for="">Client</label>
-                    <input type="text" class="form-control @error('client') is-invalid @enderror"
-                        placeholder="client" aria-label="Last name" name="client"
-                        value="{{ $client ?? old('client') ?? '' }}">
+                        <select class="form-select" name="client_id" aria-label="Default select example">
+                            <option selected value=" {{$mission->client_id}} "> {{$current_client}} </option>
+                            @foreach ($clients as $client )
+                            <option value=" {{$client->id}} ">{{$client->id}} - {{$client->social_reason}}</option>
+                            @endforeach
+                          </select>
                     @error('client')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

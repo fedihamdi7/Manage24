@@ -22,9 +22,9 @@
                 <div class="col">
 
                     <select class="form-select" name="mission_id" aria-label="Default select example">
-                        <option selected>Select Mission ID</option>
+                        <option selected style="background-color: #e4e9f7;">Select Mission</option>
                         @foreach ($missions as $mission )
-                        <option value=" {{$mission->id}} ">{{$mission->id}}</option>
+                        <option value=" {{$mission->id}} ">{{$mission->mission_name}}</option>
                         @endforeach
                       </select>
                     @error('mission_id')
@@ -43,7 +43,7 @@
                 </div>
                 <div class="col">
                     <select class="form-select" name="collab_id" aria-label="Default select example">
-                        <option selected>Select Collaborator</option>
+                        <option selected style="background-color: #e4e9f7;">Select Collaborator</option>
                         @foreach ($collabs as $collab )
                         <option value=" {{$collab->id}} ">{{$collab->collab_name , $collab->collab_last_name}}</option>
                         @endforeach

@@ -21,11 +21,11 @@
 <br>
         <div class="row">
             <div class="col">
-
+                <label for="" style="margin-bottom: 2%">Mission</label>
                 <select class="form-select" name="mission_id" aria-label="Default select example">
-                    <option selected value=" {{$current_mission}} "> {{$current_mission}} </option>
+                    <option selected value=" {{$time->mission_id}} "> {{$time->mission()->where('id', $time->mission_id)->value('mission_name')}} </option>
                     @foreach ($missions as $mission )
-                    <option value=" {{$mission->id}} ">{{$mission->id}}</option>
+                    <option value=" {{$mission->id}} ">{{$mission->id}} - {{$mission->mission_name}}</option>
                     @endforeach
                   </select>
                 {{-- <input type="text" class="form-control @error('mission_id') is-invalid @enderror"
@@ -38,10 +38,11 @@
                 @enderror
             </div>
             <div class="col">
+                <label for="" style="margin-bottom: 2%">Collaborator</label>
                 <select class="form-select" name="collab_id" aria-label="Default select example">
-                    <option selected value=" {{$current_collab_id}} "> {{$current_collab_name}} </option>
+                    <option selected value=" {{$time->collab_id}} ">  {{$current_collab_name }} {{$current_collab_last_name}} </option>
                     @foreach ($collabs as $collab )
-                    <option value=" {{$collab->id}} ">{{$collab->collab_name , $collab->collab_last_name}}</option>
+                    <option value=" {{$collab->id}} ">{{$collab->id}} - {{$collab->collab_name}} {{$collab->collab_last_name}}</option>
                     @endforeach
                   </select>
                 {{-- <input type="text" class="form-control @error('collab_id') is-invalid @enderror"

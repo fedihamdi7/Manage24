@@ -18,11 +18,21 @@
 
             <div class="title-edit"> Add Mission </div>
             <div class="row">
+                <div >
+                  <label for="mb-0">Mission Name</label>
+                  <input type="text" style="margin-top: 1%"
+                    class="form-control" name="mission_name" id="" aria-describedby="helpId" placeholder="Mission Name">
+                </div>
+            </div>
+            <div class="row">
                 <div class="col">
                     <label for="">Service</label>
-                    <input type="text" class="form-control @error('service') is-invalid @enderror"
-                        placeholder="Service" aria-label="First name" name="service"
-                        value="{{ old('service') ?? '' }}">
+                    <select class="form-select" name="service_id" aria-label="Default select example">
+                        <option selected value="">Select Service</option>
+                        @foreach ($services as $service )
+                        <option value=" {{$service->id}} ">{{$service->id}} - {{$service->service_ligne}}</option>
+                        @endforeach
+                      </select>
                     @error('service')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -31,9 +41,12 @@
                 </div>
                 <div class="col">
                     <label for="">Client</label>
-                    <input type="text" class="form-control @error('client') is-invalid @enderror"
-                        placeholder="client" aria-label="Last name" name="client"
-                        value="{{ old('client') ?? '' }}">
+                    <select class="form-select" name="client_id" aria-label="Default select example">
+                        <option selected value="">Select Client</option>
+                        @foreach ($clients as $client )
+                        <option value=" {{$client->id}} ">{{$client->id}} - {{$client->social_reason}}</option>
+                        @endforeach
+                      </select>
                     @error('client')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

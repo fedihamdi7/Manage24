@@ -90,17 +90,14 @@ class TimeController extends Controller
     public function edit(Time $time)
     {
         $page='time';
-        // dd($time);
-        $current_mission = $time->mission_id;
-        $current_collab_id = $time->collab_id;
-        $current_collab_name = Collab::find($current_collab_id)->value('collab_name');
-        // dd($current_collab_name);
+        $current_collab_name = $time->collab()->where('id', $time->collab_id)->value('collab_name');
+        $current_collab_last_name = $time->collab()->where('id', $time->collab_id)->value('collab_last_name');
         $missions=Mission::get()->sort();
         $collabs=Collab::get()->sort();
         $user = Auth::user();
-        // $services = Service::get()->sort();
 
-        return view('times.edit',compact('user','time','missions','collabs','current_mission','current_collab_name','current_collab_id','page'));
+
+        return view('times.edit',compact('user','time','missions','collabs','current_collab_name','current_collab_last_name','page'));
     }
 
     /**
@@ -132,7 +129,10 @@ class TimeController extends Controller
 
         ]);
 
-        return redirect(route('time.edit',compact('time')))->with('timeUpdated','Time Updated Successfully');
+        $current_collab_name = Collab::find($request->collab_id)->value('collab_name');
+
+
+        return redirect(route('time.edit',compact('time','current_collab_name')))->with('timeUpdated','Time Updated Successfully');
     }
 
     /**
