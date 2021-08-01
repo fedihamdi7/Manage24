@@ -30,6 +30,7 @@ Route::resource('client', 'admin\ClientController');
 Route::resource('mission', 'admin\MissionController');
 Route::resource('time', 'admin\TimeController');
 Route::resource('user', 'UserController');
+Route::resource('grade', 'admin\GradeController');
 
 Route::get('/reg', function () {
     return view('welcome');
@@ -41,4 +42,5 @@ Route::get('pdf-collablist','admin\CollabController@pdf')->name('collab.pdf');
 Route::get('pdf-collab/{collab}','admin\CollabController@pdfOne')->name('onecollab.pdf');
 Route::get('pdf-service','admin\ServiceController@pdf')->name('service.pdf');
 Route::get('pdf-client','admin\ClientController@pdf')->name('client.pdf');
+Route::get('pdf-grade','admin\GradeController@pdf')->name('grade.pdf');
 

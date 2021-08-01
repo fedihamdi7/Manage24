@@ -144,6 +144,26 @@
 
                 </ul>
             </li>
+            <li @if ('' ?? $page=="grade")
+            class="active-side"
+        @endif>
+                <div class="iocn-link">
+                    <a href="{{ route('grade.index') }}">
+                        <i class='bx bxs-graduation'></i>
+                        <span class="link_name">Grades</span>
+                    </a>
+                     @if ($user->role == "Admin")
+                    <i class='bx bxs-chevron-down arrow'></i>
+                    @endif
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="{{ route('grade.index') }}">Grades</a></li>
+                  @if ($user->role == "Admin")
+                    <li><a href="{{ route('grade.create') }}">Add</a></li>
+                    @endif
+
+                </ul>
+            </li>
             {{-- <li>
                 <div class="iocn-link">
                     <a href="#">
