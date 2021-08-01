@@ -51,7 +51,7 @@
 </head>
 <body>
     {{-- <img src=" {{asset('images/logo.png')}} " alt=""> --}}
-    <img src="C:\Users\Legion 5\Desktop\Stage\Manage24\public\images\logo.png" alt="">
+    <img src="images/logo.png" alt="">
 
     <table class="table caption-top" style="width: 100% !important; ">
         <caption class="cap-style" style="margin-left: 0%;">Grades List</caption>
