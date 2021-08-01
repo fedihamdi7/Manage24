@@ -17,8 +17,10 @@ class CreateTimesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('mission_id')->unsigned();
             $table->bigInteger('collab_id')->unsigned();
-            $table->date('date');
+            $table->date('date_start');
+            $table->date('date_finish');
             $table->time('start_time');
+            $table->time('finish_time');
             $table->time('elapsed_time');
             $table->foreign('collab_id')->references('id')->on('collabs')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('mission_id')->references('id')->on('missions')->onDelete('cascade')->onUpdate('cascade');

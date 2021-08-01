@@ -56,15 +56,27 @@
             </div>
         </div>
         <hr>
-        <div class="col-3">
-            <label for="date">Date</label>
-            <input type="date" id="#date" class="form-control @error('date') is-invalid @enderror"
-                placeholder="Date In" aria-label="Date In" name="date" value="{{  old('date') ?? $time->date }}">
-            @error('date')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+        <div class="row">
+            <div class="col">
+                <label for="date">Date Start</label>
+                <input type="date" id="#date" class="form-control @error('date_start') is-invalid @enderror"
+                    placeholder="Date Start" aria-label="Date In" name="date_start" value="{{  old('date_start') ?? $time->date_start }}">
+                @error('date_start')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            <div class="col">
+                <label for="date">Date Finish</label>
+                <input type="date" id="#date" class="form-control @error('date_finish') is-invalid @enderror"
+                    placeholder="Date Finish" aria-label="Date In" name="date_finish" value="{{  old('date_finish') ?? $time->date_finish }}">
+                @error('date_finish')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
         </div>
         <hr>
         <div class="row">
@@ -78,6 +90,18 @@
                     </span>
                 @enderror
             </div>
+            <div class="col">
+                <label for="date">Finish Time</label>
+                <input type="time" class="form-control @error('finish_time') is-invalid @enderror"
+                    aria-label="Last name" name="finish_time" value="{{  old('finish_time') ?? $time->finish_time }}">
+                @error('finish_time')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+        <div class="row">
             <div class="col">
                 <label for="date">Elapsed Time</label>
                 <input type="time" class="form-control @error('elapsed_time') is-invalid @enderror"

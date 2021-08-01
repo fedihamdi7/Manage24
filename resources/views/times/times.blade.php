@@ -25,8 +25,10 @@
             <th scope="col">#</th>
             <th scope="col">Mission</th>
             <th scope="col">Collaborator</th>
-            <th scope="col">Date</th>
+            <th scope="col">Date Start</th>
+            <th scope="col">Date Finish</th>
             <th scope="col">Start Time</th>
+            <th scope="col">Finish Time</th>
             <th scope="col">Elapsed Time</th>
             @if ($user->role == "Admin")
             <th scope="col">Edit</th>
@@ -41,8 +43,10 @@
                     <td>{{$time->mission()->where('id', $time->mission_id)->value('mission_name') ?? 'N/A'}}</td>
                     <td>{{$time->collab()->where('id', $time->collab_id)->value('collab_name') ?? 'N/A'}}</td>
                     {{-- <td>{{$time->collab_id ?? 'N/A'}}</td> --}}
-                    <td>{{$time->date ?? 'N/A'}}</td>
+                    <td>{{$time->date_start ?? 'N/A'}}</td>
+                    <td>{{$time->date_finish ?? 'N/A'}}</td>
                     <td>{{$time->start_time ?? 'N/A'}}</td>
+                    <td>{{$time->finish_time ?? 'N/A'}}</td>
                     <td>{{$time->elapsed_time ?? 'N/A'}}</td>
                     @if ($user->role == "Admin")
                     <td >

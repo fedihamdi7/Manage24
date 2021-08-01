@@ -75,8 +75,10 @@ class TimeController extends Controller
         $data = $request->validate([
             'mission_id' => 'required|numeric',
             'collab_id' => 'required|numeric',
-            'date'=>'required',
+            'date_start'=>'required',
+            'date_finish'=>'required',
             'start_time'=>'required',
+            'finish_time'=>'required',
             'elapsed_time'=>'required',
 
         ]);
@@ -128,8 +130,10 @@ class TimeController extends Controller
         $data = $request->validate([
             'mission_id' => 'required|numeric',
             'collab_id' => 'required|numeric',
-            'date'=>'required',
+            'date_start'=>'required',
+            'date_finish'=>'required',
             'start_time'=>'required',
+            'finish_time'=>'required',
             'elapsed_time'=>'required',
 
         ]);
@@ -139,8 +143,10 @@ class TimeController extends Controller
         ->update([
             'mission_id' => $request->mission_id,
             'collab_id' => $request->collab_id,
-            'date'=>$request->date,
+            'date_start'=>$request->date_start,
+            'date_finish'=>$request->date_finish,
             'start_time'=>$request->start_time,
+            'finish_time'=>$request->finish_time,
             'elapsed_time'=>$request->elapsed_time,
 
         ]);
