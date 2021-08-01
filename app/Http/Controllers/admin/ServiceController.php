@@ -7,7 +7,8 @@ use App\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Carbon;
+use Barryvdh\DomPDF\Facade as PDF;
 class ServiceController extends Controller
 {
     public function __construct()
@@ -29,6 +30,19 @@ class ServiceController extends Controller
         $services = Service::get()->sort();
 
         return view('services.services',compact('user','services','page'));
+    }
+
+    public function pdf(){
+        $page='service';
+        $user = Auth::user();
+        $services = Service::get()->sort();
+        $time = Carbon::now();
+
+
+        $pdf = PDF::loadview('services.pdf',compact('user','services','page','time'));
+        $pdf->setPaper('A4', 'landscape');
+
+        return $pdf->download("file.pdf");
     }
 
     /**

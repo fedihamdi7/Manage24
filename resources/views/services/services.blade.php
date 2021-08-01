@@ -13,6 +13,8 @@
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
+    <a name="" id="" style="background-color: #fb1e00;" class="btn btn-perso" href="{{route('service.pdf')}}" role="button" ><i class="fa fa-download" aria-hidden="true">Download</i></a>
+
     @if ($user->role == "Admin")
     <a name="{{route('service.create')}}" id="" class="btn btn-perso" href="{{route('collab.create')}}" role="button" >Add Service Line</a>
     @endif
