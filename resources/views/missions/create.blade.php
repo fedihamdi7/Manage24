@@ -57,38 +57,53 @@
             <div class="row">
                 <div class="col">
 
-                    <label for="">Start Time</label>
-                    <input type="time" class="form-control @error('start_time') is-invalid @enderror" id="inputPhone"
-                 name="start_time" value="{{  old('start_time') ?? ''}}">
-                @error('start_time')
+                    <label for="">Start Date</label>
+                    <input type="date" class="form-control @error('date_start') is-invalid @enderror" id="inputPhone"
+                 name="date_start" value="{{''}}">
+                @error('date_start')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
                 </div>
                 <div class="col">
-                    <label for="">End Time</label>
-                    <input type="time" class="form-control @error('end_time') is-invalid @enderror" id="inputPhone"
-                    name="end_time" value="{{  old('end_time') ?? ''}}">
-                   @error('end_time')
+                    <label for="">Finish Date</label>
+                    <input type="date" class="form-control @error('date_finish') is-invalid @enderror" id="inputPhone"
+                    name="date_finish" value="{{''}}">
+                   @error('date_finish')
                        <span class="invalid-feedback" role="alert">
                            <strong>{{ $message }}</strong>
                        </span>
                    @enderror
                 </div>
             </div>
-
-            <div class="col-12">
-                <label for="">Elapsed Time</label>
-                <input type="time" class="form-control @error('elapsed_time') is-invalid @enderror" id="inputPhone"
-                name="elapsed_time" value="{{  old('elapsed_time') ?? ''}}">
-               @error('elapsed_time')
+        <div class="row">
+            <div class="col">
+                <label for="">Year</label>
+                {{-- <input type="year" class="form-control @error('elapsed_time') is-invalid @enderror" id="inputPhone"
+                name="elapsed_time" value="{{''}}"> --}}
+                <input type="number" placeholder="YYYY" min="2000" max="2100" class="form-control @error('year') is-invalid @enderror" id="inputPhone" name="year" value="{{''}}">
+               @error('year')
                    <span class="invalid-feedback" role="alert">
                        <strong>{{ $message }}</strong>
                    </span>
                @enderror
 
             </div>
+
+            <div class="col">
+
+               <label for="">Path</label>
+               <input type="file" id="imgInp" webkitdirectory directory class="form-control  @error('path') is-invalid @enderror" name="path" id="" placeholder="" aria-describedby="fileHelpId" value="{{''}}">
+               @error('path')
+               <span class="invalid-feedback" role="alert">
+                   <strong>{{ $message }}</strong>
+               </span>
+           @enderror
+            </div>
+        </div>
+
+
 
 
 

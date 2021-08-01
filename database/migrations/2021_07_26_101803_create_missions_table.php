@@ -20,9 +20,10 @@ class CreateMissionsTable extends Migration
             $table->bigInteger('client_id')->unsigned();
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade')->onUpdate('cascade');
-            $table->time('start_time');
-            $table->time('end_time');
-            $table->time('elapsed_time');
+            $table->date('date_start')->nullable();
+            $table->date('date_finish')->nullable();
+            $table->year('year')->nullable();
+            $table->string('path')->nullable();
             $table->timestamps();
         });
     }

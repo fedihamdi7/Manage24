@@ -60,9 +60,10 @@
             <th scope="col">Mission</th>
             <th scope="col">Service</th>
             <th scope="col">Client</th>
-            <th scope="col">Start Time</th>
-            <th scope="col">Finish Time</th>
-            <th scope="col">Elapsed Time</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">Finish Date</th>
+            <th scope="col">Year</th>
+            <th scope="col">Path</th>
           </tr>
         </thead>
         <tbody>
@@ -71,9 +72,10 @@
                     <th scope="row">{{$mission->mission_name}}</th>
                     <td>{{$mission->service()->where('id', $mission->service_id)->value('service_ligne') ?? 'N/A'}}</td>
                     <td>{{$mission->client()->where('id', $mission->client_id)->value('social_reason') ?? 'N/A'}}</td>
-                    <td>{{$mission->start_time ?? 'N/A'}}</td>
-                    <td>{{$mission->end_time ?? 'N/A'}}</td>
-                    <td>{{$mission->elapsed_time ?? 'N/A'}}</td>
+                    <td>{{$mission->date_start ?? 'N/A'}}</td>
+                    <td>{{$mission->date_finish ?? 'N/A'}}</td>
+                    <td>{{$mission->year ?? 'N/A'}}</td>
+                    <td>{{$mission->path ?? 'N/A'}}</td>
 
                 </tr>
             @endforeach
