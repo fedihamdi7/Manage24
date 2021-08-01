@@ -21,6 +21,7 @@
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
+    <a name="" id="" style="background-color: #fb1e00;" class="btn btn-perso" href="{{route('client.pdf')}}" role="button" ><i class="fa fa-download" aria-hidden="true">Download</i></a>
     @if ($user->role == "Admin")
     <a name="" id="" class="btn btn-perso" href="{{route('client.create')}}" role="button" >Add Client</a>
     @endif
@@ -32,9 +33,7 @@
             <th scope="col">Social Reason</th>
             <th scope="col">Activity</th>
             <th scope="col">Adresse 1</th>
-            <th scope="col">Adresse 2</th>
             <th scope="col">Phone</th>
-            <th scope="col">Fax</th>
             <th scope="col">Email</th>
             <th scope="col">Contact Person</th>
             @if ($user->role == "Admin")
@@ -49,9 +48,7 @@
                     <td>{{$client->social_reason ?? 'N/A'}}</td>
                     <td>{{$client->activity ?? 'N/A'}}</td>
                     <td>{{$client->adresse1 ?? 'N/A'}}</td>
-                    <td>{{$client->adresse2 ?? 'N/A'}}</td>
                     <td>{{$client->phone ?? 'N/A'}}</td>
-                    <td>{{$client->fax ?? 'N/A'}}</td>
                     <td>{{$client->email ?? 'N/A'}}</td>
                     <td>{{$client->contact_person ?? 'N/A'}}</td>
                     @if ($user->role == "Admin")
