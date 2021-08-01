@@ -6,6 +6,8 @@ use App\Collab;
 use App\Http\Controllers\Controller;
 use App\Mission;
 use App\Time;
+use Barryvdh\DomPDF\Facade as PDF;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -19,6 +21,20 @@ class TimeController extends Controller
 
 
     }
+
+    public function pdf(){
+        $page='time';
+        $user = Auth::user();
+        $times = Time::get()->sort();
+        $DT = Carbon::now();
+
+
+        $pdf = PDF::loadview('times.pdf',compact('user','times','page','DT'));
+        $pdf->setPaper('A4', 'landscape');
+
+        return $pdf->download("file.pdf");
+    }
+
     /**
      * Display a listing of the resource.
      *

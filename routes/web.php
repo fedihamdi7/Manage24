@@ -11,9 +11,11 @@
 |
 */
 
+use App\Http\Controllers\admin\MissionController;
 use App\Mission;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Barryvdh\DomPDF\Facade as PDF;
 
 Route::get('/', function () {
     return view('login');
@@ -33,24 +35,6 @@ Route::get('/reg', function () {
     return view('welcome');
 });
 
-Route::get('/pdf', function () {
-    $page='mission';
-    $user = Auth::user();
-    $missions = Mission::get()->sort();
-    $time = Carbon\Carbon::now();
+Route::get('pdf-mission','admin\MissionController@pdf')->name('mission.pdf');
+Route::get('pdf-time','admin\TimeController@pdf')->name('time.pdf');
 
-
-    $pdf = PDF::loadview('missions.pdf',compact('user','missions','page','time'));
-    $pdf->setPaper('A4', 'landscape');
-
-    return $pdf->download("file.pdf");
-})->name('mission.pdf');
-// Route::get('/pdfs', function () {
-//     $page='mission';
-//     $user = Auth::user();
-//     $missions = Mission::get()->sort();
-
-//     $time = Carbon\Carbon::now();
-
-//     return view('missions.pdf',compact('user','missions','page','time'));
-// });

@@ -9,6 +9,10 @@ use App\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
+use Barryvdh\DomPDF\Facade as PDF;
+
+
 
 class MissionController extends Controller
 {
@@ -33,6 +37,19 @@ class MissionController extends Controller
         return view('missions.missions',compact('user','missions','page'));
     }
 
+
+    public function pdf(){
+        $page='mission';
+        $user = Auth::user();
+        $missions = Mission::get()->sort();
+        $time = Carbon::now();
+
+
+        $pdf = PDF::loadview('missions.pdf',compact('user','missions','page','time'));
+        $pdf->setPaper('A4', 'landscape');
+
+        return $pdf->download("file.pdf");
+    }
     /**
      * Show the form for creating a new resource.
      *

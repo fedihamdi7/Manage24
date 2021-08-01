@@ -13,6 +13,8 @@
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
+    <a name="" id="" style="background-color: #fb1e00;" class="btn btn-perso" href="{{route('time.pdf')}}" role="button" ><i class="fa fa-download" aria-hidden="true">Download</i></a>
+
     @if ($user->role == "Admin")
     <a  id="" class="btn btn-perso" href="{{route('time.create')}}" role="button" >Add time</a>
     @endif
