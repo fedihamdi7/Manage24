@@ -14,7 +14,7 @@ class ClientController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('admin')->except(['index']);
+        $this->middleware('admin')->except(['index','pdf']);
 
     }
     /**

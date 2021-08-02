@@ -19,7 +19,7 @@ class CollabController extends Controller
     {
         $this->middleware('auth');
 
-        $this->middleware('admin')->except(['index']);
+        $this->middleware('admin')->except(['index','pdf']);
 
     }
     /**
