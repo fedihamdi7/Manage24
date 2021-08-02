@@ -12,11 +12,11 @@
         </button>
     </div>
 @endif
-<form action=" {{route('user.update',['user'=>$user])}} " method="POST" enctype="multipart/form-data">
+<form action=" {{route('user.update',['user'=>$user])}} " method="POST" enctype="multipart/form-data" style="margin-top: -3%;">
     @csrf
     @method('PUT')
 <div class="container rounded bg-white mt-5 mb-5">
-    <div class="row">
+    <div class="row" style="width: 116%;">
         <div class="col-md-3 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                 <div class="div-round-img">
@@ -35,6 +35,8 @@
 
                 </div> </span>
             </div>
+    <a name="" id="" style="background-color: #fb1e00; top: -31%;left: 300%;" class="btn btn-perso" href="{{route('profile.pdf')}}" role="button" ><i class="fa fa-download" aria-hidden="true">{{__('Download')}}</i></a>
+
         </div>
         <div class="col-md-5 border-right">
             <div class="p-3 py-5">
@@ -63,7 +65,8 @@
         </div>
         {{-- <div class="col-md-4">
             <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
+                <div class="d-flex justify-content-between align-items-center experience"><span><a href=" {{route('profile.pdf')}} "> <button class="btn btn-outline-danger">{{__('Download')}}</button> </a> </span></div><br>
+                <div class="d-flex justify-content-between align-items-center experience"><span>{{__('Download')}}</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
                 <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
                 <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
             </div>
@@ -74,7 +77,7 @@
 </div>
 
 
-</form>
+
 
 </section>
 

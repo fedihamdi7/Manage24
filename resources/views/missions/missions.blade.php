@@ -26,7 +26,7 @@
     <a name="" id="" class="btn btn-perso" href="{{route('mission.create')}}" role="button" >{{__('Add Mission')}}</a>
     @endif
     <table class="table caption-top">
-        <caption class="cap-style" style="margin-left: 32%;">{{__('Missions List')}}</caption>
+        <caption class="cap-style" style="margin-left: 40%;">{{__('Missions List')}}</caption>
         <thead class="table-light">
           <tr>
             <th scope="col">{{__('Mission')}}</th>

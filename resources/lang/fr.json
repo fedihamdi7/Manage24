@@ -788,7 +788,9 @@
     "Phone Number" : "Numéro de téléphone",
     "State" : "État",
     "Save Profile" : "Enregistrer Profil",
-    "Profile Updated Successfully" : "Profile Mis a jour avec succès"
+    "Profile Updated Successfully" : "Profile Mis a jour avec succès",
+    "Profile Picture" : "Photo de Profile",
+    "Clients List" : "Liste des clients"
 
 
 }

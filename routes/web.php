@@ -43,6 +43,7 @@ Route::get('pdf-collab/{collab}','admin\CollabController@pdfOne')->name('onecoll
 Route::get('pdf-service','admin\ServiceController@pdf')->name('service.pdf');
 Route::get('pdf-client','admin\ClientController@pdf')->name('client.pdf');
 Route::get('pdf-grade','admin\GradeController@pdf')->name('grade.pdf');
+Route::get('pdf-profile','UserController@pdf')->name('profile.pdf');
 
 Route::get('lo', function () {
 return view('auth.login');

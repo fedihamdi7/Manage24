@@ -27,7 +27,7 @@
     <a  id="" class="btn btn-perso" href="{{route('time.create')}}" role="button" >{{__('Add Time')}}</a>
     @endif
     <table class="table caption-top">
-        <caption class="cap-style">{{__('Times')}}</caption>
+        <caption class="cap-style" style="margin-left: 41%;">{{__('Times')}}</caption>
         <thead class="table-light">
           <tr>
             <th scope="col">#</th>

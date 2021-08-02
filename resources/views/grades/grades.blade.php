@@ -26,7 +26,7 @@
     <a name="" id="" class="btn btn-perso" href="{{route('grade.create')}}" role="button" >{{__('Add grade')}}</a>
     @endif
     <table class="table caption-top" style="width: 36% !important; ">
-        <caption class="cap-style" style="margin-left: 46%;">{{__('Grades List')}}</caption>
+        <caption class="cap-style" style="margin-left: 33%;">{{__('Grades List')}}</caption>
         <thead class="table-light">
           <tr>
             <th scope="col">#</th>

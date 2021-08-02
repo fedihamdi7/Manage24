@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class UserController extends Controller
 {
@@ -138,5 +140,17 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    public function pdf(){
+        $page='profile';
+        $user = Auth::user();
+        $time = Carbon::now();
+
+
+        $pdf = PDF::loadview('profile.pdf',compact('user','page','time'));
+        $pdf->setPaper('A4', 'portrait');
+
+        return $pdf->download("file.pdf");
     }
 }
