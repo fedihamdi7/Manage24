@@ -82,27 +82,27 @@
                 </tr>
                 <tr>
                     <th>{{__('Date Of Birth')}}</th>
-                    <td>{{$user->birth }}</td>
+                    <td>{{$user->birth ?? __('N/A')}}</td>
                 </tr>
                 <tr>
                     <th>{{__('Phone Number')}}</th>
-                    <td>{{$user->phone }}</td>
+                    <td>{{$user->phone ?? __('N/A')}}</td>
                 </tr>
                 <tr>
                     <th>{{__('Adresse 1')}}</th>
-                    <td>{{$user->adresse1 }}</td>
+                    <td>{{$user->adresse1 ?? __('N/A')}}</td>
                 </tr>
                 <tr>
                     <th>{{__('Adresse 2')}}</th>
-                    <td>{{$user->adresse2 }}</td>
+                    <td>{{$user->adresse2 ?? __('N/A')}}</td>
                 </tr>
                 <tr>
                     <th>{{__('City')}}</th>
-                    <td>{{$user->city }}</td>
+                    <td>{{$user->city ?? __('N/A')}}</td>
                 </tr>
                 <tr>
                     <th>{{__('State')}}</th>
-                    <td>{{$user->state }}</td>
+                    <td>{{$user->state ?? __('N/A')}}</td>
                 </tr>
 
         </tbody>

@@ -790,7 +790,8 @@
     "Save Profile" : "Enregistrer Profil",
     "Profile Updated Successfully" : "Profile Mis a jour avec succès",
     "Profile Picture" : "Photo de Profile",
-    "Clients List" : "Liste des clients"
+    "Clients List" : "Liste des clients",
+    "N/A" : "Pas Disponible"
 
 
 }
