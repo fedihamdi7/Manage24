@@ -78,7 +78,7 @@
                 </tr>
                 <tr>
                     <th>{{__('Role')}}</th>
-                    <td>{{$user->role }}</td>
+                    <td>{{__($user->role) }}</td>
                 </tr>
                 <tr>
                     <th>{{__('Date Of Birth')}}</th>
