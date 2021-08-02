@@ -15,8 +15,8 @@
     <div class="container cont-edit">
         <form method="POST" action="{{ route('grade.store') }}">
             @csrf
-            <div class="title-edit"> Create Grade </div>
-            <label for="" >Grade</label>
+            <div class="title-edit"> {{__('Add grade')}} </div>
+            <label for="" >{{__('Grade')}}</label>
             <div class="form-group">
 
               <textarea class="form-control" name="grade" id="" rows="5"></textarea>
@@ -24,7 +24,7 @@
 
 
             <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i
-                        class="fa fa-save"></i> Save </button></div>
+                        class="fa fa-save"></i> {{__('Save')}} </button></div>
         </form>
 
     </div>

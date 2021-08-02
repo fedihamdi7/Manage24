@@ -54,16 +54,16 @@
     <img src="images/logo.png" alt="">
 
     <table class="table caption-top">
-        <caption class="cap-style">Missions List</caption>
+        <caption class="cap-style">{{__('Missions List')}}</caption>
         <thead class="table-light">
           <tr>
-            <th scope="col">Mission</th>
-            <th scope="col">Service</th>
-            <th scope="col">Client</th>
-            <th scope="col">Start Date</th>
-            <th scope="col">Finish Date</th>
-            <th scope="col">Year</th>
-            <th scope="col">Path</th>
+            <th scope="col">{{__('Mission')}}</th>
+            <th scope="col">{{__('Service')}}</th>
+            <th scope="col">{{__('Client')}}</th>
+            <th scope="col">{{__('Start Date')}}</th>
+            <th scope="col">{{__('Finish Date')}}</th>
+            <th scope="col">{{__('Year')}}</th>
+            <th scope="col">{{__('Path')}}</th>
           </tr>
         </thead>
         <tbody>

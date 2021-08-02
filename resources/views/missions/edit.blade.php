@@ -16,10 +16,10 @@
         <form method="POST" action="{{route('mission.update',['mission'=>$mission]) }}">
             @csrf
             @method('PUT')
-            <div class="title-edit"> Edit Mission {{$mission->mission_name}} </div>
+            <div class="title-edit"> {{__('Edit')}} Mission {{$mission->mission_name}} </div>
             <div class="row">
                 <div class="col">
-                    <label for="">Service</label>
+                    <label for="">{{__('Service')}}</label>
                         <select class="form-select" name="service_id" aria-label="Default select example">
                             <option selected value=" {{$mission->service_id}} "> {{$current_service}} </option>
                             @foreach ($services as $service )
@@ -50,7 +50,8 @@
             <div class="row">
                 <div class="col">
 
-                    <label for="">Start Date</label>
+                    <label for="">{{__('Start Date')}}</label>
+
                     <input type="date" class="form-control @error('date_start') is-invalid @enderror" id="inputPhone"
                  name="date_start" value="{{$mission->date_start ?? ''}}">
                 @error('date_start')
@@ -60,7 +61,8 @@
                 @enderror
                 </div>
                 <div class="col">
-                    <label for="">Finish Date</label>
+                    <label for="">{{__('Finish Date')}}</label>
+
                     <input type="date" class="form-control @error('date_finish') is-invalid @enderror" id="inputPhone"
                     name="date_finish" value="{{  $mission->date_finish ?? ''}}">
                    @error('date_finish')
@@ -72,7 +74,8 @@
             </div>
         <div class="row">
             <div class="col">
-                <label for="">Year</label>
+                <label for="">{{__('Year')}}</label>
+
                 {{-- <input type="year" class="form-control @error('elapsed_time') is-invalid @enderror" id="inputPhone"
                 name="elapsed_time" value="{{  $mission->elapsed_time ?? ''}}"> --}}
                 <input type="number" placeholder="YYYY" min="2000" max="2100" class="form-control @error('year') is-invalid @enderror" id="inputPhone" name="year" value="{{  $mission->year ?? ''}}">
@@ -86,9 +89,10 @@
 
             <div class="col">
 
-               <label for="">Path</label>
+                <label for="">{{__('Path')}}</label>
+
                {{-- <input type="file" id="imgInp" webkitdirectory directory class="form-control  @error('path') is-invalid @enderror" name="path" id="" placeholder="" aria-describedby="fileHelpId" value="{{  $mission->path ?? ''}}"> --}}
-               <input type="text" class="form-control  @error('path') is-invalid @enderror" name="path" id="" placeholder="Path" aria-describedby="fileHelpId" value="{{$mission->path ?? ''}}">
+               <input type="text" class="form-control  @error('path') is-invalid @enderror" name="path" id="" placeholder="{{__('Path')}}" aria-describedby="fileHelpId" value="{{$mission->path ?? ''}}">
 
                @error('path')
                <span class="invalid-feedback" role="alert">
@@ -104,8 +108,8 @@
 
 
             <div id="both-btn">
-                <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i class="fa fa-save"></i>  Save </button></div>
-                <a href="" title="Delete" onclick="event.preventDefault();document.querySelector('#delete-event-form').submit()"> <div class="col sub-btn"><button type="submit" class="btn btn-block btn-outline-danger"><i class="fa fa-trash"></i>  Delete </button></div> </a>
+                <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i class="fa fa-save"></i>  {{__('Save')}}  </button></div>
+                <a href="" title="Delete" onclick="event.preventDefault();document.querySelector('#delete-event-form').submit()"> <div class="col sub-btn"><button type="submit" class="btn btn-block btn-outline-danger"><i class="fa fa-trash"></i>  {{__('Delete')}}  </button></div> </a>
             </div>
                 <div class="Del-Form-Button">
             </form>

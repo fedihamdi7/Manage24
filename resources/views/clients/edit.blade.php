@@ -16,12 +16,13 @@
         <form method="POST" action="{{route('client.update',['client'=>$client]) }}">
             @csrf
             @method('PUT')
-            <div class="title-edit"> Edit Client </div>
+            <div class="title-edit"> {{__('Edit Client')}} </div>
+
             <div class="row">
                 <div class="col">
 
                     <input type="text" class="form-control @error('social_reason') is-invalid @enderror"
-                        placeholder="Social Reason" aria-label="First name" name="social_reason"
+                        placeholder="{{__('Social Reason')}}" aria-label="First name" name="social_reason"
                         value="{{ $client->social_reason ?? ''  }}">
                     @error('social_reason')
                         <span class="invalid-feedback" role="alert">
@@ -31,7 +32,7 @@
                 </div>
                 <div class="col">
                     <input type="text" class="form-control @error('activity') is-invalid @enderror"
-                        placeholder="Activity" aria-label="Last name" name="activity"
+                        placeholder="{{__('Activity')}}" aria-label="Last name" name="activity"
                         value="{{ old('activity') ?? $client->activity  ??  '' }}">
                     @error('activity')
                         <span class="invalid-feedback" role="alert">
@@ -43,7 +44,7 @@
             <div class="col-12">
 
                 <input type="text" class="form-control @error('adresse1') is-invalid @enderror" id="inputPhone"
-                    placeholder="Adresse 1" name="adresse1" value="{{  $client->adresse1 ?? ''}}">
+                    placeholder="{{__('Adresse 1')}}" name="adresse1" value="{{  $client->adresse1 ?? ''}}">
                 @error('adresse1')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -65,7 +66,7 @@
                 <div class="col">
 
                     <input type="text" class="form-control @error('phone') is-invalid @enderror"
-                        placeholder="Phone" aria-label="First name" name="phone"
+                        placeholder="{{__('Phone')}}" aria-label="First name" name="phone"
                         value="{{  old('phone') ?? $client->phone ??  '' }}">
                     @error('phone')
                         <span class="invalid-feedback" role="alert">
@@ -76,7 +77,7 @@
                 <div class="col">
 
                     <input type="text" class="form-control @error('fax') is-invalid @enderror"
-                        placeholder="Fax" aria-label="First name" name="fax"
+                        placeholder="{{__('Fax')}}" aria-label="First name" name="fax"
                         value="{{  $client->fax ?? '' }}">
                     @error('fax')
                         <span class="invalid-feedback" role="alert">
@@ -89,7 +90,7 @@
             </div>
             <div class="col-12">
                 <input type="email" class="form-control @error('email') is-invalid @enderror" id="inputEmail"
-                    placeholder="Email.." name="email" value="{{  $client->email ?? '' }}">
+                    placeholder="{{__('Email')}}" name="email" value="{{  $client->email ?? '' }}">
                 @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -99,7 +100,7 @@
 
             <div class="col-12">
                 <input type="text" class="form-control @error('contact_person') is-invalid @enderror"
-                    placeholder="Contact Person" name="contact_person" value="{{ $client->contact_person ?? '' }}">
+                    placeholder="{{__('Contact Person')}}" name="contact_person" value="{{ $client->contact_person ?? '' }}">
                 @error('contact_person')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -108,9 +109,9 @@
             </div>
             <div class="row">
                 <div class="col">
-                 <label for="">Website</label>
+                 <label for="">{{__('Website')}}</label>
                  <input type="text" class="form-control @error('website') is-invalid @enderror"
-                 placeholder="Website" name="website" value="{{ $client->website ?? old('website') }}">
+                 placeholder="{{__('Website')}}" name="website" value="{{ $client->website ?? old('website') }}">
              @error('website')
                  <span class="invalid-feedback" role="alert">
                      <strong>{{ $message }}</strong>
@@ -119,19 +120,19 @@
                 </div>
                 <div class="col">
                  <div class="form-group">
-                   <label for="">Type</label>
+                   <label for="">{{__('Type')}}</label>
                    <select class="form-control" name="type" id="">
                      <option selected value="{{$client->type}}">{{$client->type}}</option>
-                     <option value="local">Local</option>
-                     <option value="foreign">Foreign</option>
+                     <option value="local">{{__('Local')}}</option>
+                     <option value="foreign">{{__('Foreign')}}</option>
                    </select>
                  </div>
                 </div>
              </div>
 
             <div id="both-btn">
-                <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i class="fa fa-save"></i>  Save </button></div>
-                <a href="" title="Delete" onclick="event.preventDefault();document.querySelector('#delete-event-form').submit()"> <div class="col sub-btn"><button type="submit" class="btn btn-block btn-outline-danger"><i class="fa fa-trash"></i>  Delete </button></div> </a>
+                <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i class="fa fa-save"></i>  {{__('Save')}} </button></div>
+                <a href="" title="Delete" onclick="event.preventDefault();document.querySelector('#delete-event-form').submit()"> <div class="col sub-btn"><button type="submit" class="btn btn-block btn-outline-danger"><i class="fa fa-trash"></i>  {{__('Delete')}} </button></div> </a>
             </div>
                 <div class="Del-Form-Button">
             </form>

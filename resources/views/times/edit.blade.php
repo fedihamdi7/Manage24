@@ -16,12 +16,12 @@
         <form method="POST" action="{{ route('time.update',['time'=>$time])}}">
             @csrf
             @method('PUT')
-        <div class="title-edit"> Edit <span> {{$time->id}} </span> </div>
+        <div class="title-edit"> {{__('Edit')}} <span> {{$time->id}} </span> </div>
 
 <br>
         <div class="row">
             <div class="col">
-                <label for="" style="margin-bottom: 2%">Mission</label>
+                <label for="" style="margin-bottom: 2%">{{__('Mission')}}</label>
                 <select class="form-select" name="mission_id" aria-label="Default select example">
                     <option selected value=" {{$time->mission_id}} "> {{$time->mission()->where('id', $time->mission_id)->value('mission_name')}} </option>
                     @foreach ($missions as $mission )
@@ -38,7 +38,7 @@
                 @enderror
             </div>
             <div class="col">
-                <label for="" style="margin-bottom: 2%">Collaborator</label>
+                <label for="" style="margin-bottom: 2%">{{__('Collaborator')}}</label>
                 <select class="form-select" name="collab_id" aria-label="Default select example">
                     <option selected value=" {{$time->collab_id}} ">  {{$current_collab_name }} {{$current_collab_last_name}} </option>
                     @foreach ($collabs as $collab )
@@ -58,7 +58,7 @@
         <hr>
         <div class="row">
             <div class="col">
-                <label for="date">Date Start</label>
+                <label for="date">{{__('Start Date')}}</label>
                 <input type="date" id="#date" class="form-control @error('date_start') is-invalid @enderror"
                     placeholder="Date Start" aria-label="Date In" name="date_start" value="{{  old('date_start') ?? $time->date_start }}">
                 @error('date_start')
@@ -68,7 +68,7 @@
                 @enderror
             </div>
             <div class="col">
-                <label for="date">Date Finish</label>
+                <label for="date">{{__('Finish Date')}}</label>
                 <input type="date" id="#date" class="form-control @error('date_finish') is-invalid @enderror"
                     placeholder="Date Finish" aria-label="Date In" name="date_finish" value="{{  old('date_finish') ?? $time->date_finish }}">
                 @error('date_finish')
@@ -81,7 +81,7 @@
         <hr>
         <div class="row">
             <div class="col">
-                <label for="date">Start Time</label>
+                <label for="date">{{__('Start Time')}}</label>
                 <input type="time" class="form-control @error('start_time') is-invalid @enderror"
                     aria-label="First name" name="start_time" value="{{  old('start_time') ?? $time->start_time }}">
                 @error('start_time')
@@ -91,7 +91,7 @@
                 @enderror
             </div>
             <div class="col">
-                <label for="date">Finish Time</label>
+                <label for="date">{{__('Finish Time')}}</label>
                 <input type="time" class="form-control @error('finish_time') is-invalid @enderror"
                     aria-label="Last name" name="finish_time" value="{{  old('finish_time') ?? $time->finish_time }}">
                 @error('finish_time')
@@ -103,7 +103,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <label for="date">Elapsed Time</label>
+                <label for="date">{{__('Elapsed Time')}}</label>
                 <input type="time" class="form-control @error('elapsed_time') is-invalid @enderror"
                     aria-label="Last name" name="elapsed_time" value="{{  old('elapsed_time') ?? $time->elapsed_time }}">
                 @error('elapsed_time')
@@ -117,8 +117,8 @@
 
 
             <div id="both-btn">
-                <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i class="fa fa-save"></i>  Save </button></div>
-                <a href="" title="Delete" onclick="event.preventDefault();document.querySelector('#delete-event-form').submit()"> <div class="col sub-btn"><button type="submit" class="btn btn-block btn-outline-danger"><i class="fa fa-trash"></i>  Delete </button></div> </a>
+                <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i class="fa fa-save"></i>  {{__('Save')}} </button></div>
+                <a href="" title="Delete" onclick="event.preventDefault();document.querySelector('#delete-event-form').submit()"> <div class="col sub-btn"><button type="submit" class="btn btn-block btn-outline-danger"><i class="fa fa-trash"></i>  {{__('Delete')}} </button></div> </a>
             </div>
                 <div class="Del-Form-Button">
             </form>

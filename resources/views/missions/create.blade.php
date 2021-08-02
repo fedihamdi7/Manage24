@@ -16,19 +16,19 @@
         <form method="POST" action="{{route('mission.store') }}">
             @csrf
 
-            <div class="title-edit"> Add Mission </div>
+            <div class="title-edit"> {{__('Add Mission')}} </div>
             <div class="row">
                 <div >
-                  <label for="mb-0">Mission Name</label>
+                  <label for="mb-0">{{__('Mission Name')}}</label>
                   <input type="text" style="margin-top: 1%"
-                    class="form-control" name="mission_name" id="" aria-describedby="helpId" placeholder="Mission Name">
+                    class="form-control" name="mission_name" id="" aria-describedby="helpId" placeholder="{{__('Mission Name')}}">
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <label for="">Service</label>
+                    <label for="">{{__('Service')}}</label>
                     <select class="form-select" name="service_id" aria-label="Default select example">
-                        <option selected value="">Select Service</option>
+                        <option selected value="">{{__('Select Service')}}</option>
                         @foreach ($services as $service )
                         <option value=" {{$service->id}} ">{{$service->id}} - {{$service->service_ligne}}</option>
                         @endforeach
@@ -42,7 +42,7 @@
                 <div class="col">
                     <label for="">Client</label>
                     <select class="form-select" name="client_id" aria-label="Default select example">
-                        <option selected value="">Select Client</option>
+                        <option selected value="">{{__('Select Client')}}</option>
                         @foreach ($clients as $client )
                         <option value=" {{$client->id}} ">{{$client->id}} - {{$client->social_reason}}</option>
                         @endforeach
@@ -57,7 +57,7 @@
             <div class="row">
                 <div class="col">
 
-                    <label for="">Start Date</label>
+                    <label for="">{{__('Start Date')}}</label>
                     <input type="date" class="form-control @error('date_start') is-invalid @enderror" id="inputPhone"
                  name="date_start" value="{{''}}">
                 @error('date_start')
@@ -67,7 +67,7 @@
                 @enderror
                 </div>
                 <div class="col">
-                    <label for="">Finish Date</label>
+                    <label for="">{{__('Finish Date')}}</label>
                     <input type="date" class="form-control @error('date_finish') is-invalid @enderror" id="inputPhone"
                     name="date_finish" value="{{''}}">
                    @error('date_finish')
@@ -79,7 +79,7 @@
             </div>
         <div class="row">
             <div class="col">
-                <label for="">Year</label>
+                <label for="">{{__('Year')}}</label>
                 {{-- <input type="year" class="form-control @error('elapsed_time') is-invalid @enderror" id="inputPhone"
                 name="elapsed_time" value="{{''}}"> --}}
                 <input type="number" placeholder="YYYY" min="2000" max="2100" class="form-control @error('year') is-invalid @enderror" id="inputPhone" name="year" value="{{''}}">
@@ -93,9 +93,9 @@
 
             <div class="col">
 
-               <label for="">Path</label>
+               <label for="">{{__('Path')}}</label>
                {{-- <input type="file" id="imgInp" webkitdirectory directory class="form-control  @error('path') is-invalid @enderror" name="path" id="" placeholder="" aria-describedby="fileHelpId" value="{{''}}"> --}}
-               <input type="text" class="form-control  @error('path') is-invalid @enderror" name="path" id="" placeholder="Path" aria-describedby="fileHelpId" value="{{''}}">
+               <input type="text" class="form-control  @error('path') is-invalid @enderror" name="path" id="" placeholder="{{__('Path')}}" aria-describedby="fileHelpId" value="{{''}}">
                @error('path')
                <span class="invalid-feedback" role="alert">
                    <strong>{{ $message }}</strong>
@@ -110,7 +110,7 @@
 
 
 
-                <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i class="fa fa-save"></i>  Save </button></div>
+                <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i class="fa fa-save"></i>  {{__('Save')}} </button></div>
 
         </div>
 

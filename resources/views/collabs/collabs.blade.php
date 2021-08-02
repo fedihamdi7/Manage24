@@ -9,33 +9,41 @@
         </button>
     </div>
     @endif
+    @if (session('collabDeleted'))
+    <div class="alert alert-dismissible alert-success fade show suc-msg" style="margin-bottom: 0px" role="alert">
+        {{ session('collabDeleted') }}
+        <button type="button" class="close-btn" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
     <div class="home-content">
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
-    <a name="" id="" style="background-color: #fb1e00;" class="btn btn-perso" href="{{route('collab.pdf')}}" role="button" ><i class="fa fa-download" aria-hidden="true">Download</i></a>
+    <a name="" id="" style="background-color: #fb1e00;" class="btn btn-perso" href="{{route('collab.pdf')}}" role="button" ><i class="fa fa-download" aria-hidden="true">{{ __('Download')}}</i></a>
 
     @if ($user->role == "Admin")
-    <a name="" id="" class="btn btn-perso" href="{{route('collab.create')}}" role="button" >Add Collaborator</a>
+    <a name="" id="" class="btn btn-perso" href="{{route('collab.create')}}" role="button" >{{ __('Add Collaborator')}}</a>
     @endif
 
     <table class="table caption-top">
-        <caption class="cap-style">Collaborators List</caption>
+        <caption class="cap-style">{{ __('Collaborators List')}}</caption>
         <thead class="table-light">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Date In</th>
-            <th scope="col">Date Out</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Email</th>
-            <th scope="col">Grade</th>
-            <th scope="col">Service</th>
+            <th scope="col">{{ __('Name')}}</th>
+            <th scope="col">{{ __('Last Name')}}</th>
+            <th scope="col">{{ __('Date In')}}</th>
+            <th scope="col">{{ __('Date Out')}}</th>
+            <th scope="col">{{ __('Phone')}}</th>
+            <th scope="col">{{ __('Email')}}</th>
+            <th scope="col">{{ __('Grade')}}</th>
+            <th scope="col">{{ __('Service')}}</th>
             @if ($user->role == "Admin")
-            <th scope="col">Edit</th>
+            <th scope="col">{{ __('Edit')}}</th>
             @endif
-            <th scope="col">Download</th>
+            <th scope="col">{{ __('Download')}}</th>
           </tr>
         </thead>
         <tbody>

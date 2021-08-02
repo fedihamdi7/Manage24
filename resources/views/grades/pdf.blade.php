@@ -54,11 +54,11 @@
     <img src="images/logo.png" alt="">
 
     <table class="table caption-top" style="width: 100% !important; ">
-        <caption class="cap-style" style="margin-left: 0%;">Grades List</caption>
+        <caption class="cap-style" style="margin-left: 0%;">{{__('Grades List')}}</caption>
         <thead class="table-light">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Grade</th>
+            <th scope="col">{{__('Grade')}}</th>
           </tr>
         </thead>
         <tbody>

@@ -21,6 +21,12 @@
         .active-side{
             background-color: #605c8a;
         }
+        .hover-change:hover{
+            color: rgb(53, 53, 148);
+            cursor: pointer;
+            font-size: 17px;
+            transition: 0.3s;
+        }
     </style>
 </head>
 
@@ -46,16 +52,16 @@
                 <div class="iocn-link">
                     <a href="{{ route('collab.index') }}">
                         <i class='bx bx-street-view'></i>
-                        <span class="link_name">Collaborators</span>
+                        <span class="link_name">{{__('Collaborators')}}</span>
                     </a>
                      @if ($user->role == "Admin")
                     <i class='bx bxs-chevron-down arrow'></i>
                     @endif
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link_name" href="{{ route('collab.index') }}">Collaborators</a></li>
+                    <li><a class="link_name" href="{{ route('collab.index') }}">{{__('Collaborators')}}</a></li>
                     @if ($user->role == "Admin")
-                    <li><a href="{{ route('collab.create') }}">Add</a></li>
+                    <li><a href="{{ route('collab.create') }}">{{__('Add')}}</a></li>
                     @endif
                     {{-- <li><a href="#">Edit</a></li>
           <li><a href="#">PHP & MySQL</a></li> --}}
@@ -67,16 +73,16 @@
                 <div class="iocn-link">
                     <a href="{{ route('service.index') }}">
                         <i class='bx bxs-devices' ></i>
-                        <span class="link_name">Service Line</span>
+                        <span class="link_name">{{__('Service Line')}}</span>
                     </a>
                      @if ($user->role == "Admin")
                     <i class='bx bxs-chevron-down arrow'></i>
                     @endif
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link_name" href="{{ route('service.index') }}">Service Line</a></li>
+                    <li><a class="link_name" href="{{ route('service.index') }}">{{__('Service Line')}}</a></li>
                      @if ($user->role == "Admin")
-                    <li><a href="{{ route('service.create') }}">Add</a></li>
+                    <li><a href="{{ route('service.create') }}">{{__('Add')}}</a></li>
                     @endif
 
                 </ul>
@@ -87,7 +93,7 @@
                 <div class="iocn-link">
                     <a href="{{ route('client.index') }}">
                         <i class='bx bxs-user' ></i>
-                        <span class="link_name">Clients</span>
+                        <span class="link_name">{{__('Clients')}}</span>
                     </a>
 
                      @if ($user->role == "Admin")
@@ -96,10 +102,10 @@
 
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link_name" href="{{ route('client.index') }}">Clients</a></li>
+                    <li><a class="link_name" href="{{ route('client.index') }}">{{__('Clients')}}</a></li>
 
                     @if ($user->role == "Admin")
-                    <li><a href="{{ route('client.create') }}">Add</a></li>
+                    <li><a href="{{ route('client.create') }}">{{__('Add')}}</a></li>
                     @endif
 
                 </ul>
@@ -110,16 +116,16 @@
                 <div class="iocn-link">
                     <a href="{{ route('mission.index') }}">
                        <i class='bx bxs-bookmark-star' ></i>
-                        <span class="link_name">Missions</span>
+                        <span class="link_name">{{__('Missions')}}</span>
                     </a>
                      @if ($user->role == "Admin")
                     <i class='bx bxs-chevron-down arrow'></i>
                     @endif
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link_name" href="{{ route('mission.index') }}">Mission</a></li>
+                    <li><a class="link_name" href="{{ route('mission.index') }}">{{__('Missions')}}</a></li>
                      @if ($user->role == "Admin")
-                    <li><a href="{{ route('mission.create') }}">Add</a></li>
+                    <li><a href="{{ route('mission.create') }}">{{__('Add')}}</a></li>
                     @endif
 
                 </ul>
@@ -130,16 +136,16 @@
                 <div class="iocn-link">
                     <a href="{{ route('time.index') }}">
                         <i class='bx bx-time'></i>
-                        <span class="link_name">Time Management</span>
+                        <span class="link_name">{{__('Time Managment')}}</span>
                     </a>
                      @if ($user->role == "Admin")
                     <i class='bx bxs-chevron-down arrow'></i>
                     @endif
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link_name" href="{{ route('time.index') }}">Time Management</a></li>
+                    <li><a class="link_name" href="{{ route('time.index') }}">{{__('Time Managment')}}</a></li>
                   @if ($user->role == "Admin")
-                    <li><a href="{{ route('time.create') }}">Add</a></li>
+                    <li><a href="{{ route('time.create') }}">{{__('Add')}}</a></li>
                     @endif
 
                 </ul>
@@ -150,38 +156,40 @@
                 <div class="iocn-link">
                     <a href="{{ route('grade.index') }}">
                         <i class='bx bxs-graduation'></i>
-                        <span class="link_name">Grades</span>
+                        <span class="link_name">{{__('Grades')}}</span>
                     </a>
                      @if ($user->role == "Admin")
                     <i class='bx bxs-chevron-down arrow'></i>
                     @endif
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link_name" href="{{ route('grade.index') }}">Grades</a></li>
+                    <li><a class="link_name" href="{{ route('grade.index') }}">{{__('Grades')}}</a></li>
                   @if ($user->role == "Admin")
-                    <li><a href="{{ route('grade.create') }}">Add</a></li>
+                    <li><a href="{{ route('grade.create') }}">{{__('Add')}}</a></li>
                     @endif
 
                 </ul>
             </li>
-            {{-- <li>
+            <li>
                 <div class="iocn-link">
                     <a href="#">
-                        <i class='bx bx-plug'></i>
-                        <span class="link_name">Plugins</span>
+                        <i class='bx bx-cog'></i>
+                        <span class="link_name">{{__('Language')}}</span>
                     </a>
                      @if ($user->role == "Admin")
                     <i class='bx bxs-chevron-down arrow'></i>
                     @endif
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link_name" href="#">Plugins</a></li>
-                    <li><a href="#">UI Face</a></li>
-                    <li><a href="#">Pigments</a></li>
-                    <li><a href="#">Box Icons</a></li>
+                    <li><a class="link_name" href="#">{{__('Language')}}</a></li>
+                    @foreach(config('app.languages') as $langLocale => $langName)
+                   <li>  <a  href="{{ url()->current() }}?change_language={{ $langLocale }}">{{ strtoupper($langLocale) }} ({{ __($langName) }})</a></li>
+                    @endforeach
+                    {{-- <li><a href="#">{{__('English')}}</a></li>
+                    <li><a href="#">{{__('French')}}</a></li> --}}
                 </ul>
             </li>
-            <li>
+            {{-- <li>
                 <a href="#">
                     <i class='bx bx-compass'></i>
                     <span class="link_name">Explore</span>
@@ -213,13 +221,13 @@
 
                     <div class="profile-content">
                         <a href=" {{route('user.index')}} ">
-                        <img src="{{ asset('/storage/images/profileImg/') }}/{{ $user->image }}" alt="profileImg">
+                        <img src="{{ asset('/storage/images/profileImg/') }}/{{ $user->image }}" onerror="this.onerror=null;this.src='storage/images/profileImg/default_profile_image.jpg';" alt="profileImg">
                         </a>
                     </div>
                     <a href=" {{route('user.index')}} ">
                     <div class="name-job">
-                        <div class="profile_name">{{ $user->name }}</div>
-                        <div class="job">{{ $user->role }}</div>
+                        <div class="profile_name">{{$user->name }}</div>
+                        <div class="job">{{ __($user->role) }}</div>
                     </div>
                     </a>
 

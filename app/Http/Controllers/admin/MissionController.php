@@ -84,7 +84,7 @@ class MissionController extends Controller
 
         $mission = new Mission();
         $mission->create($data);
-        return redirect(route('mission.index',))->with('missionCreated','Mission Added Successfully');
+        return redirect(route('mission.index',))->with('missionCreated',__('Mission Added Successfully'));
     }
 
     /**
@@ -148,7 +148,7 @@ class MissionController extends Controller
 
         ]);
 
-        return redirect(route('mission.edit',compact('mission')))->with('missionUpdated','Mission Updated Successfully');
+        return redirect(route('mission.edit',compact('mission')))->with('missionUpdated',__('Mission Updated Successfully'));
     }
 
     /**
@@ -160,6 +160,6 @@ class MissionController extends Controller
     public function destroy(Mission $mission)
     {
         $mission->delete();
-        return redirect()->route('mission.index')->with('missionDeleted','Mission Deleted Successfully');
+        return redirect()->route('mission.index')->with('missionDeleted',__('Mission Deleted Successfully'));
     }
 }

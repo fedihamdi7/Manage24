@@ -21,18 +21,18 @@
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
-    <a name="" id="" style="background-color: #fb1e00;" class="btn btn-perso" href="{{route('grade.pdf')}}" role="button" ><i class="fa fa-download" aria-hidden="true">Download</i></a>
+    <a name="" id="" style="background-color: #fb1e00;" class="btn btn-perso" href="{{route('grade.pdf')}}" role="button" ><i class="fa fa-download" aria-hidden="true">{{__('Download')}}</i></a>
     @if ($user->role == "Admin")
-    <a name="" id="" class="btn btn-perso" href="{{route('grade.create')}}" role="button" >Add grade</a>
+    <a name="" id="" class="btn btn-perso" href="{{route('grade.create')}}" role="button" >{{__('Add grade')}}</a>
     @endif
     <table class="table caption-top" style="width: 36% !important; ">
-        <caption class="cap-style" style="margin-left: 46%;">Grades List</caption>
+        <caption class="cap-style" style="margin-left: 46%;">{{__('Grades List')}}</caption>
         <thead class="table-light">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Grade</th>
+            <th scope="col">{{__('Grade')}}</th>
             @if ($user->role == "Admin")
-            <th scope="col">Edit</th>
+            <th scope="col">{{__('Edit')}}</th>
             @endif
           </tr>
         </thead>

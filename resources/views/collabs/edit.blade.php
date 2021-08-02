@@ -16,12 +16,12 @@
         <form method="POST" action="{{ route('collab.update',['collab'=>$collabs])}}">
             @csrf
             @method('PUT')
-        <div class="title-edit"> Edit <span> {{$collabs->collab_name}} </span> </div>
+        <div class="title-edit"> {{__('Edit')}} <span> {{$collabs->collab_name}} </span> </div>
             <div class="row">
                 <div class="col">
-                    <label >Collaborator First Name</label>
+                    <label >{{ __('Name')}}</label>
                 <input type="hidden"  value="{{$collabs->id}}"  name="id">
-                <input type="text" class="form-control @error('collab_name') is-invalid @enderror" value="{{$collabs->collab_name}}" placeholder="First name " aria-label="First name" name="collab_name">
+                <input type="text" class="form-control @error('collab_name') is-invalid @enderror" value="{{$collabs->collab_name}}" placeholder="{{ __('Name')}}" aria-label="First name" name="collab_name">
                  @error('collab_name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -29,8 +29,8 @@
                 @enderror
                 </div>
                 <div class="col">
-                    <label >Collaborator Last Name</label>
-                <input type="text" class="form-control @error('collab_last_name') is-invalid @enderror" value="{{$collabs->collab_last_name}}" placeholder="Last name" aria-label="Last name" name="collab_last_name">
+                    <label >{{ __('Last Name')}}</label>
+                <input type="text" class="form-control @error('collab_last_name') is-invalid @enderror" value="{{$collabs->collab_last_name}}" placeholder="{{ __('Last Name')}}" aria-label="Last name" name="collab_last_name">
                  @error('collab_last_name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -40,8 +40,8 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <label >Date In</label>
-                <input type="date" class="form-control @error('collab_dateIn') is-invalid @enderror" placeholder="Date In" aria-label="Date In" name="collab_dateIn" value="{{$collabs->collab_dateIn}}">
+                    <label >{{ __('Date In')}}</label>
+                <input type="date" class="form-control @error('collab_dateIn') is-invalid @enderror" placeholder="{{ __('Date In')}}" aria-label="Date In" name="collab_dateIn" value="{{$collabs->collab_dateIn}}">
                  @error('collab_dateIn')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -49,8 +49,8 @@
                 @enderror
                 </div>
                 <div class="col">
-                    <label >Date Out</label>
-                <input type="date" class="form-control @error('collab_dateOut') is-invalid @enderror" placeholder="Date Out" aria-label="Date Out" name="collab_dateOut" value="{{$collabs->collab_dateOut}}">
+                    <label >{{ __('Date Out')}}</label>
+                <input type="date" class="form-control @error('collab_dateOut') is-invalid @enderror" placeholder="{{ __('Date Out')}}" aria-label="Date Out" name="collab_dateOut" value="{{$collabs->collab_dateOut}}">
                  @error('collab_dateOut')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -59,8 +59,8 @@
                 </div>
             </div>
             <div class="col-12">
-                <label >Phone</label>
-                <input type="text" class="form-control @error('collab_phone') is-invalid @enderror" id="inputPhone" placeholder="Phone" name="collab_phone" value="{{$collabs->collab_phone}} ">
+                <label >{{ __('Phone')}}</label>
+                <input type="text" class="form-control @error('collab_phone') is-invalid @enderror" id="inputPhone" placeholder="{{ __('Phone')}}" name="collab_phone" value="{{$collabs->collab_phone}} ">
                  @error('collab_phone')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -68,8 +68,8 @@
                 @enderror
             </div>
             <div class="col-12">
-                <label >Email</label>
-                <input type="email" class="form-control @error('collab_mail') is-invalid @enderror" id="inputEmail" placeholder="Email.." name="collab_mail" value="{{$collabs->collab_mail}}">
+                <label >{{ __('Email')}}</label>
+                <input type="email" class="form-control @error('collab_mail') is-invalid @enderror" id="inputEmail" placeholder="{{ __('Email')}}" name="collab_mail" value="{{$collabs->collab_mail}}">
                  @error('collab_mail')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -78,7 +78,7 @@
             </div>
             <div class="row">
             <div class="col">
-                <label>Grade</label>
+                <label >{{ __('Grade')}}</label>
                 <select class="form-select" name="grade_id" aria-label="Default select example">
                     <option selected value=" {{$collab->grade_id}} "> {{$current_grade}} </option>
                     @foreach ($grades as $grade )
@@ -92,7 +92,7 @@
                 @enderror
             </div>
             <div class="col">
-                <label>Service</label>
+                <label >{{ __('Service Line')}}</label>
                 <select class="form-select" name="service_id" aria-label="Default select example">
                     <option selected value=" {{$collab->service_id}} "> {{$current_service}} </option>
                     @foreach ($services as $service )
@@ -108,8 +108,8 @@
         </div>
 
             <div id="both-btn">
-                <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i class="fa fa-save"></i>  Save </button></div>
-                <a href="" title="Delete {{ $collabs->collab_name.' '.$collabs->collab_last_name }}" onclick="event.preventDefault();document.querySelector('#delete-event-form').submit()"> <div class="col sub-btn"><button type="submit" class="btn btn-block btn-outline-danger"><i class="fa fa-trash"></i>  Delete </button></div> </a>
+                <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i class="fa fa-save"></i>  {{__('Save')}} </button></div>
+                <a href="" title="Delete {{ $collabs->collab_name.' '.$collabs->collab_last_name }}" onclick="event.preventDefault();document.querySelector('#delete-event-form').submit()"> <div class="col sub-btn"><button type="submit" class="btn btn-block btn-outline-danger"><i class="fa fa-trash"></i>  {{__('Delete')}} </button></div> </a>
             </div>
                 <div class="Del-Form-Button">
             </form>

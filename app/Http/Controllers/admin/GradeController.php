@@ -67,7 +67,7 @@ class GradeController extends Controller
 
         $grade = new Grade();
         $grade->create($data);
-        return redirect(route('grade.index',))->with('gradeCreated','Grade Added Successfully');
+        return redirect(route('grade.index',))->with('gradeCreated',__('Grade Added Successfully'));
     }
 
     /**
@@ -116,7 +116,7 @@ class GradeController extends Controller
 
         ]);
 
-        return redirect(route('grade.edit',compact('grade')))->with('gradeUpdated','Grade Updated Successfully');
+        return redirect(route('grade.edit',compact('grade')))->with('gradeUpdated',__('Grade Updated Successfully'));
     }
 
     /**
@@ -128,6 +128,6 @@ class GradeController extends Controller
     public function destroy(Grade $grade)
     {
         $grade->delete();
-        return redirect()->route('grade.index')->with('gradeDeleted','Grade Deleted Successfully');
+        return redirect()->route('grade.index')->with('gradeDeleted',__('Grade Deleted Successfully'));
     }
 }

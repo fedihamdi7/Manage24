@@ -54,18 +54,18 @@
     <img src="images/logo.png" alt="">
 
     <table class="table caption-top">
-        <caption class="cap-style">Collaborators List</caption>
+        <caption class="cap-style">{{ __('Collaborators List')}}</caption>
         <thead class="table-light">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Date In</th>
-            <th scope="col">Date Out</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Email</th>
-            <th scope="col">Grade</th>
-            <th scope="col">Service</th>
+            <th scope="col">{{ __('Name')}}</th>
+            <th scope="col">{{ __('Last Name')}}</th>
+            <th scope="col">{{ __('Date In')}}</th>
+            <th scope="col">{{ __('Date Out')}}</th>
+            <th scope="col">{{ __('Phone')}}</th>
+            <th scope="col">{{ __('Email')}}</th>
+            <th scope="col">{{ __('Grade')}}</th>
+            <th scope="col">{{ __('Service')}}</th>
           </tr>
         </thead>
         <tbody>

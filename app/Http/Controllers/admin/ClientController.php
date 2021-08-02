@@ -77,7 +77,7 @@ class ClientController extends Controller
 
         $client = new Client();
         $client->create($data);
-        return redirect(route('client.index',))->with('clientCreated','Client Added Successfully');
+        return redirect(route('client.index',))->with('clientCreated',__('Client Added Successfully'));
     }
 
     /**
@@ -141,7 +141,7 @@ class ClientController extends Controller
 
         ]);
 
-        return redirect(route('client.edit',compact('client')))->with('clientUpdated','Client Updated Successfully');
+        return redirect(route('client.edit',compact('client')))->with('clientUpdated',__('Client Updated Successfully'));
     }
 
     /**
@@ -153,6 +153,6 @@ class ClientController extends Controller
     public function destroy(Client $client)
     {
         $client->delete();
-        return redirect()->route('client.index')->with('clientDeleted','Client Deleted Successfully');
+        return redirect()->route('client.index')->with('clientDeleted',__('Client Deleted Successfully'));
     }
 }

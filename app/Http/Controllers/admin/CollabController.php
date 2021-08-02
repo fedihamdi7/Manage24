@@ -98,7 +98,7 @@ class CollabController extends Controller
 
         $collab = new Collab();
         $collab->create($data);
-        return redirect(route('collab.index',))->with('collabCreated','Collaborator Added Successfully');
+        return redirect(route('collab.index',))->with('collabCreated',__('Collaborator Added Successfully'));
 
     }
 
@@ -170,7 +170,7 @@ class CollabController extends Controller
 
 
 
-        return redirect(route('collab.edit',compact('collab')))->with('collabUpdated','Collaborator Updated Successfully');
+        return redirect(route('collab.edit',compact('collab')))->with('collabUpdated',__('Collaborator Updated Successfully'));
 
     }
 
@@ -183,6 +183,6 @@ class CollabController extends Controller
     public function destroy(Collab $collab,Request $request)
     {
      $collab->delete();
-     return redirect()->route('collab.index');
+     return redirect()->route('collab.index')->with('collabDeleted',__('Collaborator Deleted Successfully'));
     }
 }

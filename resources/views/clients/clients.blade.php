@@ -21,25 +21,25 @@
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
-    <a name="" id="" style="background-color: #fb1e00;" class="btn btn-perso" href="{{route('client.pdf')}}" role="button" ><i class="fa fa-download" aria-hidden="true">Download</i></a>
+    <a name="" id="" style="background-color: #fb1e00;" class="btn btn-perso" href="{{route('client.pdf')}}" role="button" ><i class="fa fa-download" aria-hidden="true">{{__('Download')}}</i></a>
     @if ($user->role == "Admin")
-    <a name="" id="" class="btn btn-perso" href="{{route('client.create')}}" role="button" >Add Client</a>
+    <a name="" id="" class="btn btn-perso" href="{{route('client.create')}}" role="button" >{{__('Add Client')}}</a>
     @endif
     <table class="table caption-top">
-        <caption class="cap-style" style="margin-left: 46%;">Clients List</caption>
+        <caption class="cap-style" style="margin-left: 46%;">{{__('Clients List')}}</caption>
         <thead class="table-light">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Social Reason</th>
-            <th scope="col">Activity</th>
-            <th scope="col">Adresse 1</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Email</th>
-            <th scope="col">Contact Person</th>
-            <th scope="col">Website</th>
-            <th scope="col">Type</th>
+            <th scope="col">{{__('Social Reason')}}</th>
+            <th scope="col">{{__('Activity')}}</th>
+            <th scope="col">{{__('Adresse 1')}}</th>
+            <th scope="col">{{__('Phone')}}</th>
+            <th scope="col">{{__('Email')}}</th>
+            <th scope="col">{{__('Contact Person')}}</th>
+            <th scope="col">{{__('Website')}}</th>
+            <th scope="col">{{__('Type')}}</th>
             @if ($user->role == "Admin")
-            <th scope="col">Edit</th>
+            <th scope="col">{{__('Edit')}}</th>
             @endif
           </tr>
         </thead>

@@ -85,7 +85,7 @@ class TimeController extends Controller
 
         $time = new Time();
         $time->create($data);
-        return redirect(route('time.index'))->with('timeCreated','Time Added Successfully');
+        return redirect(route('time.index'))->with('timeCreated',__('Time Added Successfully'));
     }
 
     /**
@@ -154,7 +154,7 @@ class TimeController extends Controller
         $current_collab_name = Collab::find($request->collab_id)->value('collab_name');
 
 
-        return redirect(route('time.edit',compact('time','current_collab_name')))->with('timeUpdated','Time Updated Successfully');
+        return redirect(route('time.edit',compact('time','current_collab_name')))->with('timeUpdated',__('Time Updated Successfully'));
     }
 
     /**
@@ -166,6 +166,6 @@ class TimeController extends Controller
     public function destroy(Time $time)
     {
         $time->delete();
-        return redirect()->route('time.index');
+        return redirect()->route('time.index')->with('timeDeleted',__('Time Deleted Successfully'));
     }
 }

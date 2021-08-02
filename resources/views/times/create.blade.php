@@ -16,13 +16,13 @@
         <form method="POST" action="{{ route('time.store') }}">
             @csrf
 
-            <div class="title-edit"> Create Time </div>
+            <div class="title-edit"> {{__('Create Time')}} </div>
             <br>
             <div class="row">
                 <div class="col">
 
                     <select class="form-select" name="mission_id" aria-label="Default select example">
-                        <option selected style="background-color: #e4e9f7;">Select Mission</option>
+                        <option selected style="background-color: #e4e9f7;">{{__('Select Mission')}}</option>
                         @foreach ($missions as $mission )
                         <option value=" {{$mission->id}} ">{{$mission->mission_name}}</option>
                         @endforeach
@@ -43,7 +43,7 @@
                 </div>
                 <div class="col">
                     <select class="form-select" name="collab_id" aria-label="Default select example">
-                        <option selected style="background-color: #e4e9f7;">Select Collaborator</option>
+                        <option selected style="background-color: #e4e9f7;">{{__('Select Collaborator')}}</option>
                         @foreach ($collabs as $collab )
                         <option value=" {{$collab->id}} ">{{$collab->collab_name , $collab->collab_last_name}}</option>
                         @endforeach
@@ -68,7 +68,7 @@
             <hr>
             <div class="row">
                 <div class="col">
-                    <label for="date">Date Start</label>
+                    <label for="date">{{__('Date Start')}}</label>
                     <input type="date" id="#date" class="form-control @error('date_start') is-invalid @enderror"
                         placeholder="Date Start" aria-label="Date In" name="date_start" value="{{  old('date_start') }}">
                     @error('date_start')
@@ -78,7 +78,7 @@
                     @enderror
                 </div>
                 <div class="col">
-                    <label for="date">Date Finish</label>
+                    <label for="date">{{__('Date Finish')}}</label>
                     <input type="date" id="#date" class="form-control @error('date_finish') is-invalid @enderror"
                         placeholder="Date Finish" aria-label="Date In" name="date_finish" value="{{  old('date_finish') }}">
                     @error('date_finish')
@@ -91,7 +91,7 @@
             <hr>
             <div class="row">
                 <div class="col">
-                    <label for="date">Start Time</label>
+                    <label for="date">{{__('Start Time')}}</label>
                     <input type="time" class="form-control @error('start_time') is-invalid @enderror"
                         aria-label="First name" name="start_time" value="{{  old('start_time') }}">
                     @error('start_time')
@@ -101,7 +101,7 @@
                     @enderror
                 </div>
                 <div class="col">
-                    <label for="date">Finish Time</label>
+                    <label for="date">{{__('Finish Time')}}</label>
                     <input type="time" class="form-control @error('finish_time') is-invalid @enderror"
                         aria-label="Last name" name="finish_time" value="{{  old('finish_time') }}">
                     @error('finish_time')
@@ -113,7 +113,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <label for="date">Elapsed Time</label>
+                    <label for="date">{{__('Elapsed Time')}}</label>
                     <input type="time" class="form-control @error('elapsed_time') is-invalid @enderror"
                         aria-label="Last name" name="elapsed_time" value="{{  old('elapsed_time') }}">
                     @error('elapsed_time')
@@ -126,7 +126,7 @@
 
 
             <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i
-                        class="fa fa-save"></i> Save </button></div>
+                        class="fa fa-save"></i> {{__('Save')}} </button></div>
         </form>
     </div>
 

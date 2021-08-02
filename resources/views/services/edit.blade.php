@@ -16,11 +16,11 @@
         <form method="POST" action="{{ route('service.update',['service'=>$service])}}">
             @csrf
             @method('PUT')
-        <div class="title-edit"> Edit <span> {{$service->service_ligne}} </span> </div>
+        <div class="title-edit"> {{__('Edit')}} <span> {{$service->service_ligne}} </span> </div>
 
 
             <div class="col-12">
-                <label>Service</label>
+                <label>{{__('Service')}}</label>
                 <input type="text" class="form-control @error('service_ligne') is-invalid @enderror" id="inputPhone" placeholde name="service_ligne" value="{{$service->service_ligne}} ">
                  @error('service_ligne')
                     <span class="invalid-feedback" role="alert">
@@ -30,7 +30,7 @@
             </div>
             <div class="col-12">
                 {{-- <label for="inputEmail" class="form-label">Email</label> --}}
-                <label for="floatingTextarea2">Description</label>
+                <label for="floatingTextarea2">{{__('Description')}}</label>
                 <div class="form-floating">
                     <textarea class="form-control @error('description') is-invalid @enderror" style="height: 12em" placeholder="Leave a comment here" id="floatingTextarea2"  name="description"> {{$service->description ?? ''}} </textarea>
                     @error('description')
@@ -49,8 +49,8 @@
             </div>
 
             <div id="both-btn">
-                <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i class="fa fa-save"></i>  Save </button></div>
-                <a href="" title="Delete {{ $service->collab_name.' '.$service->collab_last_name }}" onclick="event.preventDefault();document.querySelector('#delete-event-form').submit()"> <div class="col sub-btn"><button type="submit" class="btn btn-block btn-outline-danger"><i class="fa fa-trash"></i>  Delete </button></div> </a>
+                <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i class="fa fa-save"></i>  {{__('Save')}} </button></div>
+                <a href="" title="Delete {{ $service->collab_name.' '.$service->collab_last_name }}" onclick="event.preventDefault();document.querySelector('#delete-event-form').submit()"> <div class="col sub-btn"><button type="submit" class="btn btn-block btn-outline-danger"><i class="fa fa-trash"></i>  {{__('Delete')}} </button></div> </a>
             </div>
                 <div class="Del-Form-Button">
             </form>

@@ -74,7 +74,7 @@ class ServiceController extends Controller
 
         $service = new Service();
         $service->create($data);
-        return redirect(route('service.index',))->with('serviceCreated','Service Line Added Successfully');
+        return redirect(route('service.index',))->with('serviceCreated',__('Service Line Added Successfully'));
     }
 
     /**
@@ -126,7 +126,7 @@ class ServiceController extends Controller
 
         ]);
 
-        return redirect(route('service.edit',compact('service')))->with('serviceUpdated','Service Ligne Updated Successfully');
+        return redirect(route('service.edit',compact('service')))->with('serviceUpdated',__('Service Ligne Updated Successfully'));
     }
 
     /**
@@ -138,6 +138,6 @@ class ServiceController extends Controller
     public function destroy(Service $service)
     {
         $service->delete();
-        return redirect()->route('service.index');
+        return redirect()->route('service.index')->with('serviceDeleted',__('Service Ligne Deleted Successfully'));
     }
 }

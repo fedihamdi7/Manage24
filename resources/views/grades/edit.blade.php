@@ -16,8 +16,9 @@
         <form method="POST" action="{{route('grade.update',['grade'=>$grade]) }}">
             @csrf
             @method('PUT')
-            <div class="title-edit"> Edit {{$grade->grade}} </div>
-            <label for="" >Grade</label>
+            <div class="title-edit"> {{__('Edit')}} {{$grade->grade}} </div>
+            <label for="" >{{__('Grade')}}</label>
+
             <div class="form-group">
 
               <textarea class="form-control" name="grade" id="" rows="5">{{ old('grade') ?? $grade->grade}}</textarea>
@@ -25,8 +26,8 @@
 
 
             <div id="both-btn">
-                <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i class="fa fa-save"></i>  Save </button></div>
-                <a href="" title="Delete" onclick="event.preventDefault();document.querySelector('#delete-event-form').submit()"> <div class="col sub-btn"><button type="submit" class="btn btn-block btn-outline-danger"><i class="fa fa-trash"></i>  Delete </button></div> </a>
+                <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i class="fa fa-save"></i>  {{__('Save')}} </button></div>
+                <a href="" title="Delete" onclick="event.preventDefault();document.querySelector('#delete-event-form').submit()"> <div class="col sub-btn"><button type="submit" class="btn btn-block btn-outline-danger"><i class="fa fa-trash"></i>  {{__('Delete')}} </button></div> </a>
             </div>
                 <div class="Del-Form-Button">
             </form>

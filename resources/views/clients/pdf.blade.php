@@ -54,19 +54,19 @@
     {{-- <img src=" {{asset('images/logo.png')}} " alt=""> --}}
     <img src="images/logo.png" alt="">
 
-    <table class="table caption-top">
-        <caption class="cap-style" >Clients List</caption>
+    <table class="table caption-top">{{__('Clients List')}}</caption>
+
         <thead class="table-light">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Social Reason</th>
-            <th scope="col">Activity</th>
-            <th scope="col">Adresse 1</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Email</th>
-            <th scope="col">Contact Person</th>
-            <th scope="col">Website</th>
-            <th scope="col">Type</th>
+            <th scope="col">{{__('Social Reason')}}</th>
+            <th scope="col">{{__('Activity')}}</th>
+            <th scope="col">{{__('Adresse 1')}}</th>
+            <th scope="col">{{__('Phone')}}</th>
+            <th scope="col">{{__('Email')}}</th>
+            <th scope="col">{{__('Contact Person')}}</th>
+            <th scope="col">{{__('Website')}}</th>
+            <th scope="col">{{__('Type')}}</th>
           </tr>
         </thead>
         <tbody>

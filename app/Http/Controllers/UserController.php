@@ -126,7 +126,7 @@ class UserController extends Controller
         ->where('id',$user->id)
         ->update($update);
 
-        return redirect(route('user.index',compact('user')))->with('profileUpdated','Profile Updated Successfully');
+        return redirect(route('user.index',compact('user')))->with('profileUpdated',__('Profile Updated Successfully'));
     }
 
     /**

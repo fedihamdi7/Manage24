@@ -16,12 +16,12 @@
         <form method="POST" action="{{ route('service.store')}}">
             @csrf
 
-        <div class="title-edit"> Create Service Line </div>
+        <div class="title-edit"> {{__('Add Service Line')}} </div>
 
 
             <div class="col-12">
                 {{-- <label for="inputPhone" class="form-label">Phone</label> --}}
-                <input type="text" class="form-control @error('service_ligne') is-invalid @enderror" id="inputPhone" placeholder="Service Line" name="service_ligne" value="{{old('service_ligne')}}">
+                <input type="text" class="form-control @error('service_ligne') is-invalid @enderror" id="inputPhone" placeholder="{{__('Service Line')}}" name="service_ligne" value="{{old('service_ligne')}}">
                  @error('service_ligne')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -30,9 +30,9 @@
             </div>
             <div class="col-12">
                 {{-- <label for="inputEmail" class="form-label">Email</label> --}}
+                <label for="">{{__('Description')}}</label>
                 <div class="form-floating">
-                    <textarea class="form-control @error('description') is-invalid @enderror" style="height: 12em" placeholder="Leave a comment here" id="floatingTextarea2"  name="description">{{old('description')}}</textarea>
-                    <label for="floatingTextarea2">Description</label>
+                    <textarea class="form-control @error('description') is-invalid @enderror" style="height: 12em" placeholder="{{__('Description')}}" id="floatingTextarea2"  name="description">{{old('description')}}</textarea>
                     @error('description')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -44,7 +44,7 @@
             </div>
 
 
-                <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i class="fa fa-save"></i>  Save </button></div>
+                <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i class="fa fa-save"></i>  {{__('Save')}} </button></div>
 
         </div>
     </div>

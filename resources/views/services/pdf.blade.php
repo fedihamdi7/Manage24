@@ -54,12 +54,12 @@
     <img src="images/logo.png" alt="">
 
     <table class="table caption-top">
-        <caption class="cap-style">Service Line</caption>
+        <caption class="cap-style">{{__('Service Line')}}</caption>
         <thead class="table-light">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Service Ligne</th>
-            <th scope="col">Description</th>
+            <th scope="col">{{__('Service Line')}}</th>
+            <th scope="col">{{__('Description')}}</th>
 
           </tr>
         </thead>

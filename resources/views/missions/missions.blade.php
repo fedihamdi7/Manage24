@@ -21,23 +21,23 @@
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
-    <a name="" id="" style="background-color: #fb1e00;" class="btn btn-perso" href="{{route('mission.pdf')}}" role="button" ><i class="fa fa-download" aria-hidden="true">Download</i></a>
+    <a name="" id="" style="background-color: #fb1e00;" class="btn btn-perso" href="{{route('mission.pdf')}}" role="button" ><i class="fa fa-download" aria-hidden="true">{{__('Download')}}</i></a>
     @if ($user->role == "Admin")
-    <a name="" id="" class="btn btn-perso" href="{{route('mission.create')}}" role="button" >Add Mission</a>
+    <a name="" id="" class="btn btn-perso" href="{{route('mission.create')}}" role="button" >{{__('Add Mission')}}</a>
     @endif
     <table class="table caption-top">
-        <caption class="cap-style" style="margin-left: 32%;">Missions List</caption>
+        <caption class="cap-style" style="margin-left: 32%;">{{__('Missions List')}}</caption>
         <thead class="table-light">
           <tr>
-            <th scope="col">Mission</th>
-            <th scope="col">Service</th>
-            <th scope="col">Client</th>
-            <th scope="col">Start Date</th>
-            <th scope="col">Finish Date</th>
-            <th scope="col">Year</th>
-            <th scope="col">Path</th>
+            <th scope="col">{{__('Mission')}}</th>
+            <th scope="col">{{__('Service')}}</th>
+            <th scope="col">{{__('Client')}}</th>
+            <th scope="col">{{__('Start Date')}}</th>
+            <th scope="col">{{__('Finish Date')}}</th>
+            <th scope="col">{{__('Year')}}</th>
+            <th scope="col">{{__('Path')}}</th>
             @if ($user->role == "Admin")
-            <th scope="col">Edit</th>
+            <th scope="col">{{__('Edit')}}</th>
             @endif
           </tr>
         </thead>

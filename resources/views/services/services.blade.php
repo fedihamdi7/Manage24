@@ -9,24 +9,32 @@
         </button>
     </div>
     @endif
+    @if (session('serviceDeleted'))
+    <div class="alert alert-dismissible alert-success fade show suc-msg" style="margin-bottom: 0px" role="alert">
+        {{ session('serviceDeleted') }}
+        <button type="button" class="close-btn" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
     <div class="home-content">
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
-    <a name="" id="" style="background-color: #fb1e00;" class="btn btn-perso" href="{{route('service.pdf')}}" role="button" ><i class="fa fa-download" aria-hidden="true">Download</i></a>
+    <a name="" id="" style="background-color: #fb1e00;" class="btn btn-perso" href="{{route('service.pdf')}}" role="button" ><i class="fa fa-download" aria-hidden="true">{{__('Download')}}</i></a>
 
     @if ($user->role == "Admin")
-    <a name="{{route('service.create')}}" id="" class="btn btn-perso" href="{{route('collab.create')}}" role="button" >Add Service Line</a>
+    <a name="{{route('service.create')}}" id="" class="btn btn-perso" href="{{route('service.create')}}" role="button" >{{__('Add Service Line')}}</a>
     @endif
     <table class="table caption-top">
-        <caption class="cap-style">Service Line</caption>
+        <caption class="cap-style">{{__('Service Line')}}</caption>
         <thead class="table-light">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Service Ligne</th>
-            <th scope="col">Description</th>
+            <th scope="col">{{__('Service Line')}}</th>
+            <th scope="col">{{__('Description')}}</th>
             @if ($user->role == "Admin")
-            <th scope="col">Edit</th>
+            <th scope="col">{{__('Edit')}}</th>
             @endif
           </tr>
         </thead>
