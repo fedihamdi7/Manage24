@@ -78,10 +78,18 @@ class TimeController extends Controller
             'date_start'=>'required',
             'date_finish'=>'required',
             'start_time'=>'required',
-            'finish_time'=>'required',
-            'elapsed_time'=>'required',
-
+            'finish_time'=>'required|after:start_time',
         ]);
+        // $elapsed=($request->finish_time) - ($request->start_time);
+        $fdate = Carbon::parse($request->start_time);
+        $tdate = Carbon::parse($request->finish_time);
+        $hours = $tdate->diffInHours($fdate);
+        $seconds = $tdate->diffInSeconds($fdate)/60;
+        $sec =gmdate("s", $seconds);
+        $data['elapsed_time'] =$hours.':'.$sec;
+
+
+
 
         $time = new Time();
         $time->create($data);
@@ -134,9 +142,14 @@ class TimeController extends Controller
             'date_finish'=>'required',
             'start_time'=>'required',
             'finish_time'=>'required',
-            'elapsed_time'=>'required',
 
         ]);
+        $fdate = Carbon::parse($request->start_time);
+        $tdate = Carbon::parse($request->finish_time);
+        $hours = $tdate->diffInHours($fdate);
+        $seconds = $tdate->diffInSeconds($fdate)/60;
+        $sec =gmdate("s", $seconds);
+        // $data['elapsed_time'] =$hours.':'.$sec;
 
         DB::table('times')
         ->where('id',$time->id)
@@ -147,7 +160,7 @@ class TimeController extends Controller
             'date_finish'=>$request->date_finish,
             'start_time'=>$request->start_time,
             'finish_time'=>$request->finish_time,
-            'elapsed_time'=>$request->elapsed_time,
+            'elapsed_time'=>$hours.':'.$sec,
 
         ]);
 

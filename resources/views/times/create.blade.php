@@ -111,7 +111,7 @@
                     @enderror
                 </div>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col">
                     <label for="date">{{__('Elapsed Time')}}</label>
                     <input type="time" class="form-control @error('elapsed_time') is-invalid @enderror"
@@ -122,7 +122,7 @@
                         </span>
                     @enderror
                 </div>
-            </div>
+            </div> --}}
 
 
             <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i

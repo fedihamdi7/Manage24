@@ -104,7 +104,7 @@
         <div class="row">
             <div class="col">
                 <label for="date">{{__('Elapsed Time')}}</label>
-                <input type="time" class="form-control @error('elapsed_time') is-invalid @enderror"
+                <input type="time" disabled class="form-control @error('elapsed_time') is-invalid @enderror"
                     aria-label="Last name" name="elapsed_time" value="{{  old('elapsed_time') ?? $time->elapsed_time }}">
                 @error('elapsed_time')
                     <span class="invalid-feedback" role="alert">
