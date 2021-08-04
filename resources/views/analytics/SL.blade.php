@@ -5,7 +5,7 @@
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
-    <form method="POST" action="{{ route('MG.search') }}" style="width: 23%;display: flex;height: 4%;position: absolute;left: 36%;top: 14%;">
+    <form method="POST" action="{{ route('SL.search') }}" style="width: 23%;display: flex;height: 4%;position: absolute;left: 28%;top: 14%;">
         @csrf
     {{-- <select class="form-select" id="search" name="mission_id" aria-label="Default select example">
         @foreach ($missions_list as $list )
@@ -13,8 +13,8 @@
         @endforeach
       </select> --}}
       <div style="display: flex;
-      column-gap: 11%;
-      margin-right: 15%;
+      column-gap: 1%;
+      margin-right: -112%;
       margin-top: -12%;">
         <div >
 
@@ -37,12 +37,27 @@
                </span>
            @enderror
         </div>
+
+        <div>
+            <select class="form-select" name="service_id" aria-label="Default select example" style="margin-top: 17%; width: 115%;">
+                <option selected style="background-color: #e4e9f7;">{{__('Select Service')}}</option>
+                @foreach ($services_list as $serv )
+                <option value="{{$serv->id}}">{{$serv->service_ligne}}</option>
+                @endforeach
+              </select>
+            @error('collab_id')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
     </div>
 
 
     <div><button type="submit" class="btn btn-block btn-outline-primary" style="height: 38px;
-        width: 138px;"><i
-        class="fa fa-save"></i> {{__('Search')}} </button></div>
+        width: 138px; margin-left: -178%;
+    margin-top: 34%;"><i
+        class="fa fa-search"></i> {{__('Search')}} </button></div>
     </form>
 
 
@@ -55,7 +70,7 @@
             <tr>
                 <th>{{__('id')}}</th>
                 <th>{{__('Mission')}}</th>
-                <th>{{__('Total Hours')}}</th>
+                <th>{{__('Client')}}</th>
             </tr>
         </thead>
         <tbody style="border: 0.5px">
@@ -64,7 +79,7 @@
                 <tr>
                     <th>{{$mission->id}}</th>
                     <td>{{$mission->mission_name }}</td>
-                    <td>{{$mission->time()->where('mission_id', $mission->id)->value('finish_time') ?? 'N/A' }}</td>
+                    <td>{{$mission->client()->where('id',$mission->client_id)->value('social_reason') }}</td>
 
                 </tr>
 

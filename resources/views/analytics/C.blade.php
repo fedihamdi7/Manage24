@@ -42,7 +42,7 @@
             <select class="form-select" name="collab_id" aria-label="Default select example" style="margin-top: 17%; width: 115%;">
                 <option selected style="background-color: #e4e9f7;">{{__('Select Collaborator')}}</option>
                 @foreach ($collabs as $collab )
-                <option value=" {{$collab->id}} ">{{$collab->collab_name , $collab->collab_last_name}}</option>
+                <option value=" {{$collab->id}} ">{{$collab->collab_name}} {{$collab->collab_last_name}}</option>
                 @endforeach
               </select>
             @error('collab_id')

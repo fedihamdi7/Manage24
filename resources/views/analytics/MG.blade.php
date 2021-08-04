@@ -5,7 +5,7 @@
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
-    <form method="POST" action="{{ route('MG.search') }}" style="width: 23%;display: flex;height: 4%;position: absolute;left: 36%;top: 14%;">
+    <form method="POST" action="{{ route('MG.search') }}" style="width: 23%;display: flex;height: 4%;position: absolute;left: 28%;top: 14%;">
         @csrf
     {{-- <select class="form-select" id="search" name="mission_id" aria-label="Default select example">
         @foreach ($missions_list as $list )

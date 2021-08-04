@@ -5,16 +5,16 @@
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
-    <form method="POST" action="{{ route('MG.search') }}" style="width: 23%;display: flex;height: 4%;position: absolute;left: 36%;top: 14%;">
+    <form method="POST" action="{{ route('G.search') }}" style="width: 23%;display: flex;height: 4%;position: absolute;left: 28%;top: 14%;">
         @csrf
     {{-- <select class="form-select" id="search" name="mission_id" aria-label="Default select example">
         @foreach ($missions_list as $list )
         <option value=" {{$list->id}} ">{{$list->mission_name}}</option>
         @endforeach
-      </select> --}}
+      </select>
       <div style="display: flex;
-      column-gap: 11%;
-      margin-right: 15%;
+      column-gap: 1%;
+      margin-right: -112%;
       margin-top: -12%;">
         <div >
 
@@ -36,13 +36,28 @@
                    <strong>{{ $message }}</strong>
                </span>
            @enderror
+        </div> --}}
+
+        <div>
+            <select class="form-select" name="grade_id" aria-label="Default select example" style="margin-top: 17%; width: 115%;">
+                <option selected style="background-color: #e4e9f7;">{{__('Select Grade')}}</option>
+                @foreach ($grade_list as $grad )
+                <option value="{{$grad->id}}">{{__($grad->grade)}}</option>
+                @endforeach
+              </select>
+            @error('collab_id')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
-    </div>
+    {{-- </div> --}}
 
 
     <div><button type="submit" class="btn btn-block btn-outline-primary" style="height: 38px;
-        width: 138px;"><i
-        class="fa fa-save"></i> {{__('Search')}} </button></div>
+        width: 138px; margin-left: 40%;
+    margin-top: 28%;"><i
+        class="fa fa-search"></i> {{__('Search')}} </button></div>
     </form>
 
 
@@ -54,8 +69,10 @@
         <thead class="table-light">
             <tr>
                 <th>{{__('id')}}</th>
-                <th>{{__('Mission')}}</th>
-                <th>{{__('Total Hours')}}</th>
+                <th>{{__('Name')}}</th>
+                <th>{{__('Last Name')}}</th>
+                <th>{{__('Grade')}}</th>
+                <th>{{__('Email')}}</th>
             </tr>
         </thead>
         <tbody style="border: 0.5px">
@@ -63,8 +80,10 @@
                 @foreach ( $missions as $mission )
                 <tr>
                     <th>{{$mission->id}}</th>
-                    <td>{{$mission->mission_name }}</td>
-                    <td>{{$mission->time()->where('mission_id', $mission->id)->value('finish_time') ?? 'N/A' }}</td>
+                    <td>{{$mission->collab_name}}</td>
+                    <td>{{$mission->collab_last_name}}</td>
+                    <td>{{__($mission->grade)}}</td>
+                    <td>{{$mission->collab_mail}}</td>
 
                 </tr>
 

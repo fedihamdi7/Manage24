@@ -40,7 +40,7 @@
             @foreach ( $grades as $grade )
                 <tr>
                     <th scope="row">{{$grade->id}}</th>
-                    <td>{{$grade->grade ?? 'N/A'}}</td>
+                    <td>{{__($grade->grade) ?? 'N/A'}}</td>
                     @if ($user->role == "Admin")
                     <td >
 

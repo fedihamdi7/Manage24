@@ -16,12 +16,12 @@
         <form method="POST" action="{{route('grade.update',['grade'=>$grade]) }}">
             @csrf
             @method('PUT')
-            <div class="title-edit"> {{__('Edit')}} {{$grade->grade}} </div>
+            <div class="title-edit"> {{__('Edit')}} {{__($grade->grade)}} </div>
             <label for="" >{{__('Grade')}}</label>
 
             <div class="form-group">
 
-              <textarea class="form-control" name="grade" id="" rows="5">{{ old('grade') ?? $grade->grade}}</textarea>
+              <textarea class="form-control" name="grade" id="" rows="5">{{ old('grade') ?? __($grade->grade)}}</textarea>
             </div>
 
 
