@@ -11,7 +11,7 @@ class Service extends Model
 
     public function missions()
     {
-        return $this->belongsTo('App\Mission');
+        return $this->hasMany('App\Mission');
     }
     public function collabs()
     {

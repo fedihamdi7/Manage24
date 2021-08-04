@@ -32,6 +32,21 @@ Route::resource('time', 'admin\TimeController');
 Route::resource('user', 'UserController');
 Route::resource('grade', 'admin\GradeController');
 
+
+Route::get('analytic-MG','admin\AnalyticController@MG')->name('analytic.MG');
+Route::get('analytic-M','admin\AnalyticController@M')->name('analytic.M');
+Route::get('analytic-C','admin\AnalyticController@C')->name('analytic.C');
+Route::get('analytic-CD','admin\AnalyticController@CD')->name('analytic.CD');
+Route::get('analytic-SL','admin\AnalyticController@SL')->name('analytic.SL');
+Route::get('analytic-G','admin\AnalyticController@G')->name('analytic.G');
+Route::POST('analytic-MG-search','admin\AnalyticController@MGsearch')->name('MG.search');
+Route::POST('analytic-M-search','admin\AnalyticController@Msearch')->name('M.search');
+Route::POST('analytic-C-search','admin\AnalyticController@Csearch')->name('C.search');
+Route::POST('analytic-CD-search','admin\AnalyticController@CDsearch')->name('CD.search');
+Route::POST('analytic-SL-search','admin\AnalyticController@SLsearch')->name('SL.search');
+Route::POST('analytic-G-search','admin\AnalyticController@Gsearch')->name('G.search');
+
+
 Route::get('/reg', function () {
     return view('welcome');
 });

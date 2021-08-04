@@ -11,7 +11,7 @@ class Mission extends Model
 
     public function time()
     {
-        return $this->hasOne('App\Time');
+        return $this->hasMany('App\Time');
     }
     public function service()
     {

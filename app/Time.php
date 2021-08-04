@@ -18,5 +18,9 @@ class Time extends Model
     {
         return $this->belongsTo('App\Collab');
     }
+    public function client()
+    {
+        return $this->belongsTo('App\Client');
+    }
 
 }

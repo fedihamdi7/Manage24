@@ -791,7 +791,15 @@
     "Profile Updated Successfully" : "Profile Mis a jour avec succès",
     "Profile Picture" : "Photo de Profile",
     "Clients List" : "Liste des clients",
-    "N/A" : "Pas Disponible"
+    "N/A" : "Pas Disponible",
+    "Analytics" : "Etat",
+    "Total Hours" : "Heures Total",
+    "Analytic ALL Missions" : "Etat Tout Missions",
+    "Analytic By Mission" : "Etat Par Mission",
+    "Analytic By Collaborator" : "Etat Par Collaborateur",
+    "Analytic By Collaborator Details" : "Etat Par Collaborateur Détails",
+    "Analytic By Service Line" : "Etat Par Ligne De Service",
+    "Analytic By Grade" : "Etat Par Grade"
 
 
 }
