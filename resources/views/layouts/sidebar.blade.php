@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
-<html lang="en" dir="ltr">
+<html lang="{{ app()->getLocale() }}" dir="ltr">
 
 <head>
     <meta charset="UTF-8">

@@ -54,9 +54,7 @@
     {{-- </div> --}}
 
 
-    <div><button type="submit" class="btn btn-block btn-outline-primary" style="height: 38px;
-        width: 138px; margin-left: 40%;
-    margin-top: 28%;"><i
+    <div><button type="submit" class="btn btn-block btn-outline-primary" style="height: 38px;width: 138px; margin-left: 40%;margin-top: 28%; @if ( (app()->getLocale()) == "en" ) height: 36px;width: 138px;margin-left: 31%;margin-top: 23%; @endif"><i
         class="fa fa-search"></i> {{__('Search')}} </button></div>
     </form>
 

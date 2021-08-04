@@ -39,7 +39,7 @@
         </div>
 
         <div>
-            <select class="form-select" name="collab_id" aria-label="Default select example" style="margin-top: 17%; width: 115%;">
+            <select class="form-select" name="collab_id" aria-label="Default select example" style="margin-top: 15.5%; width: 115%; @if ( (app()->getLocale()) == "en" )  width: 78%; @endif">
                 <option selected style="background-color: #e4e9f7;">{{__('Select Collaborator')}}</option>
                 @foreach ($collabs as $collab )
                 <option value=" {{$collab->id}} ">{{$collab->collab_name}} {{$collab->collab_last_name}}</option>
@@ -54,10 +54,8 @@
     </div>
 
 
-    <div><button type="submit" class="btn btn-block btn-outline-primary" style="height: 38px;
-        width: 138px; margin-left: -178%;
-    margin-top: 34%;"><i
-        class="fa fa-search"></i> {{__('Search')}} </button></div>
+    <div><button type="submit" class="btn btn-block btn-outline-primary" style="height: 38px;width: 138px; margin-left: -200%;margin-top: 34%; @if ( (app()->getLocale()) == "en" )  margin-left: -199%; @endif">
+        <i class="fa fa-search"></i> {{__('Search')}} </button></div>
     </form>
 
 

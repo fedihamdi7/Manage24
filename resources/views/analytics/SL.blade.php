@@ -39,7 +39,7 @@
         </div>
 
         <div>
-            <select class="form-select" name="service_id" aria-label="Default select example" style="margin-top: 17%; width: 115%;">
+            <select class="form-select" name="service_id" aria-label="Default select example" style="margin-top: 17%; width: 115%; @if ( (app()->getLocale()) == "en" ) margin-top:32% @endif ">
                 <option selected style="background-color: #e4e9f7;">{{__('Select Service')}}</option>
                 @foreach ($services_list as $serv )
                 <option value="{{$serv->id}}">{{$serv->service_ligne}}</option>
@@ -54,9 +54,7 @@
     </div>
 
 
-    <div><button type="submit" class="btn btn-block btn-outline-primary" style="height: 38px;
-        width: 138px; margin-left: -178%;
-    margin-top: 34%;"><i
+    <div><button type="submit" class="btn btn-block btn-outline-primary" style="height: 38px;width: 138px; margin-left: -188%;margin-top: 34%; @if ( (app()->getLocale()) == "en" )     margin-left: -85%; @endif"><i
         class="fa fa-search"></i> {{__('Search')}} </button></div>
     </form>
 
