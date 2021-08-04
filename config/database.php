@@ -66,11 +66,11 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' =>isset($DATABASE_URL["host"]) ? $DATABASE_URL["host"] : null,
-            'port' => isset($DATABASE_URL["port"]) ? $DATABASE_URL["port"] : null,
-            'database' => isset($DATABASE_URL["path"]) ? ltrim($DATABASE_URL["path"],"/") : null,
-            'username' => isset($DATABASE_URL["user"]) ? $DATABASE_URL["user"]: null,
-            'password' => isset($DATABASE_URL["pass"]) ? $DATABASE_URL["pass"]: null,
+            'host' =>'ec2-52-17-1-206.eu-west-1.compute.amazonaws.com',
+            'port' => 5432,
+            'database' => 'd50b6ms29qvpak',
+            'username' => 'xndpwpaybyoxks',
+            'password' => '6a4bf38a5234eb51a69240d7d154d45296f98c5ce6f72b6d11c637b76228e080',
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
