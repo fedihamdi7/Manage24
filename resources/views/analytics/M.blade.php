@@ -16,7 +16,7 @@
       column-gap: 1%;
       margin-right: -112%;
       margin-top: -12%;">
-        <div >
+        <div style="    z-index: 15;">
 
             <label for="">{{__('Start Date')}}</label>
             <input type="date" class="form-control @error('date_start') is-invalid @enderror" id="inputPhone"
@@ -54,7 +54,7 @@
     </div>
 
 
-    <div><button type="submit" class="btn btn-block btn-outline-primary" style="height: 38px;width: 138px; margin-left: -142%;margin-top: 34%; @if ( (app()->getLocale()) == "en" )  margin-left: -86%; @endif"><i
+    <div><button type="submit" class="btn btn-block btn-outline-primary" style="z-index:15 ;height: 38px;width: 138px; margin-left: -142%;margin-top: 34%; @if ( (app()->getLocale()) == "en" )  margin-left: -86%; @endif"><i
         class="fa fa-search"></i> {{__('Search')}} </button></div>
     </form>
 
@@ -66,8 +66,8 @@
         <caption class="cap-style">{{__('Result')}}</caption>
         <thead class="table-light">
             <tr>
-                <th>{{__('id')}}</th>
                 <th>{{__('Mission')}}</th>
+                <th>{{__('Collaborator')}}</th>
                 <th>{{__('Total Hours')}}</th>
             </tr>
         </thead>
@@ -75,13 +75,18 @@
 
                 @foreach ( $missions as $mission )
                 <tr>
-                    <th>{{$mission->id}}</th>
-                    <td>{{$mission->mission_name }}</td>
-                    <td>{{$mission->time()->where('mission_id', $mission->id)->value('finish_time') ?? 'N/A' }}</td>
+                    <th>{{$mission->mission()->where('id',$mission->mission_id)->value('mission_name')}}</th>
+                    <td>{{$mission->collab()->where('id',$mission->collab_id)->value('collab_name')}}</td>
+                    <td>{{$mission->elapsed_time }}</td>
 
                 </tr>
 
                 @endforeach
+                <tr>
+                    <td></td>
+                    <td> <span style="padding-left: 89%;font-weight: bold;"> {{__('Total')}}</span> </td>
+                    <td> {{$tt}}</td>
+                </tr>
                 {{-- <tr>
                     <th>{{__('Client')}}</th>
                     <td>{{$missions->client()->where('id', $missions->client_id)->value('social_reason') ?? 'N/A'}}</td>

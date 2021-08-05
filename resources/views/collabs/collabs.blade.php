@@ -50,15 +50,15 @@
             @foreach ( $collabs as $collab )
                 <tr>
                     <th scope="row">{{$collab->id}}</th>
-                    <td>{{$collab->collab_name ?? 'N/A'}}</td>
-                    <td>{{$collab->collab_last_name ?? 'N/A'}}</td>
-                    <td>{{$collab->collab_dateIn ?? 'N/A'}}</td>
-                    <td>{{$collab->collab_dateOut ?? 'N/A'}}</td>
-                    <td>{{$collab->collab_phone ?? 'N/A'}}</td>
-                    <td>{{$collab->collab_mail ?? 'N/A'}}</td>
-                    {{-- <td>{{$collab->grade_id ?? 'N/A'}}</td> --}}
-                    <td>{{$collab->grade()->where('id', $collab->grade_id)->value('grade') ?? 'N/A'}}</td>
-                    <td>{{$collab->service()->where('id', $collab->service_id)->value('service_ligne') ?? 'N/A'}}</td>
+                    <td>{{$collab->collab_name ?? __('N/A')}}</td>
+                    <td>{{$collab->collab_last_name ?? __('N/A')}}</td>
+                    <td>{{$collab->collab_dateIn ?? __('N/A')}}</td>
+                    <td>{{$collab->collab_dateOut ?? __('N/A')}}</td>
+                    <td>{{$collab->collab_phone ?? __('N/A')}}</td>
+                    <td>{{$collab->collab_mail ?? __('N/A')}}</td>
+                    {{-- <td>{{$collab->grade_id ?? __('N/A')}}</td> --}}
+                    <td>{{__($collab->grade()->where('id', $collab->grade_id)->value('grade')) ?? __('N/A')}}</td>
+                    <td>{{$collab->service()->where('id', $collab->service_id)->value('service_ligne') ?? __('N/A')}}</td>
                     @if ($user->role == "Admin")
                     <td >
 

@@ -66,9 +66,9 @@
         <caption class="cap-style">{{__('Result')}}</caption>
         <thead class="table-light">
             <tr>
-                <th>{{__('id')}}</th>
+                <th>{{__('Code Mission')}}</th>
                 <th>{{__('Mission')}}</th>
-                <th>{{__('Client')}}</th>
+                <th>{{__('Total Hours')}}</th>
             </tr>
         </thead>
         <tbody style="border: 0.5px">
@@ -77,8 +77,10 @@
                 <tr>
                     <th>{{$mission->id}}</th>
                     <td>{{$mission->mission_name }}</td>
-                    <td>{{$mission->client()->where('id',$mission->client_id)->value('social_reason') }}</td>
-
+                    <td> {{
+                        $totalSecondsDiff = (abs(strtotime($mission->date_start)- (strtotime($mission->date_finish))))/60/60 . __(' Hours').' / '.(abs(strtotime($mission->date_start)- (strtotime($mission->date_finish))))/60/60/24 .__(' Days')
+                        }}</td>
+                        
                 </tr>
 
                 @endforeach

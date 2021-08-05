@@ -47,6 +47,18 @@ class AnalyticController extends Controller
 
         $missions=Mission::where('date_start','>=',$request->date_start)->where('date_finish','<=',$request->date_finish)->get();
 
+        // foreach ($missions as $m) {
+        //     $ds = strtotime($m->date_start);
+        //     $df = strtotime($m->date_finish);
+        //     $totalSecondsDiff = abs($ds-$df); //42600225
+        //     $totalMinutesDiff = $totalSecondsDiff/60; //710003.75
+        //     $totalHoursDiff   = $totalSecondsDiff/60/60;//11833.39
+        //     $totalDaysDiff    = $totalSecondsDiff/60/60/24; //493.05
+        //     $totalMonthsDiff  = $totalSecondsDiff/60/60/24/30; //16.43
+        //     $totalYearsDiff   = $totalSecondsDiff/60/60/24/365; //1.35
+
+        // }
+
         return view('analytics.MG',compact('user','page','missions','missions_list'));
 
     }
@@ -69,15 +81,55 @@ class AnalyticController extends Controller
         $page='analytics';
         $user = Auth::user();
         $missions_list=Mission::get()->sort();
-
+        $missions=null;
+        $tt=null;
        $request->validate([
             'date_start' => 'required',
             'date_finish' => 'required',
             'mission_id' => 'required|numeric'
         ]);
-        $missions=Mission::where('date_start','>=',$request->date_start)->where('date_finish','<=',$request->date_finish)->where('id',$request->mission_id)->get();
+        $data=Mission::where('date_start','>=',$request->date_start)->where('date_finish','<=',$request->date_finish)->where('id',$request->mission_id)->get();
+        // dd($data->count());
+        if ($data->count() != 0) {
+            # code...
+            $missions = Time::where('mission_id',$data->first()->id)->get();
 
-        return view('analytics.M',compact('user','page','missions','missions_list'));
+
+
+                $sum = strtotime('00:00:00');
+
+                $totaltime = 0;
+
+                foreach( $missions as $el ) {
+
+                    // Converting the time into seconds
+                    $element = $el->elapsed_time;
+                    $timeinsec = strtotime($element) - $sum;
+
+                    // Sum the time with previous value
+                    $totaltime = $totaltime + $timeinsec;
+                }
+
+                // Totaltime is the summation of all
+                // time in seconds
+
+                // Hours is obtained by dividing
+                // totaltime with 3600
+                $h = intval($totaltime / 3600);
+
+                $totaltime = $totaltime - ($h * 3600);
+
+                // Minutes is obtained by dividing
+                // remaining total time with 60
+                $m = intval($totaltime / 60);
+
+                // Remaining value is seconds
+                $s = $totaltime - ($m * 60);
+                $tt=$h.':'.$m.':'.$s;
+                // dd($tt);
+            }
+        // dd($missions);
+        return view('analytics.M',compact('user','page','missions','missions_list','tt'));
 
     }
 
@@ -130,6 +182,7 @@ class AnalyticController extends Controller
         $missions_list=Mission::get()->sort();
         $collabs=Collab::get()->sort();
         $missions=NULL;
+        $tt=null;
 
 
         return view('analytics.CD',compact('user','page','missions_list','collabs','missions'));
@@ -151,15 +204,49 @@ class AnalyticController extends Controller
 
 
             $missions = Time::join('missions', 'times.mission_id', '=', 'missions.id')
+            ->join('collabs','times.collab_id','=','collabs.id')
             ->where('times.collab_id',$request->collab_id)
             ->where('missions.date_start','>=',$request->date_start)
             ->where('missions.date_finish','<=',$request->date_finish)
-            ->select('missions.*')
-            ->groupBy('mission_id')
-            ->get(['missions.mission_name'])->sort();
+            ->select('missions.*','times.id as time_id','times.elapsed_time')
+            // ->groupBy('mission_id')
+            ->get()->sort();
+
+            $sum = strtotime('00:00:00');
+
+            $totaltime = 0;
+
+            foreach( $missions as $el ) {
+
+                // Converting the time into seconds
+                $element = $el->elapsed_time;
+                $timeinsec = strtotime($element) - $sum;
+
+                // Sum the time with previous value
+                $totaltime = $totaltime + $timeinsec;
+            }
+
+            // Totaltime is the summation of all
+            // time in seconds
+
+            // Hours is obtained by dividing
+            // totaltime with 3600
+            $h = intval($totaltime / 3600);
+
+            $totaltime = $totaltime - ($h * 3600);
+
+            // Minutes is obtained by dividing
+            // remaining total time with 60
+            $m = intval($totaltime / 60);
+
+            // Remaining value is seconds
+            $s = $totaltime - ($m * 60);
+            $tt=$h.':'.$m.':'.$s;
+
+
 
         // dd($missions);
-        return view('analytics.CD',compact('user','page','missions','collabs','missions_list'));
+        return view('analytics.CD',compact('user','page','tt','missions','collabs','missions_list'));
 
     }
 
@@ -197,7 +284,7 @@ class AnalyticController extends Controller
             ->where('missions.service_id',$request->service_id)
             ->where('missions.date_start','>=',$request->date_start)
             ->where('missions.date_finish','<=',$request->date_finish)
-            // ->select('missions.*')
+            ->select('missions.*','services.service_ligne')
             // ->groupBy('mission_id')
             ->get()->sort();
 

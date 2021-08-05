@@ -27,7 +27,7 @@
             </span>
         @enderror
         </div>
-        <div>
+        <div style="z-index: 12">
             <label for="">{{__('Finish Date')}}</label>
             <input type="date" class="form-control @error('date_finish') is-invalid @enderror" id="inputPhone"
             name="date_finish" value="{{''}}">
@@ -66,9 +66,10 @@
         <caption class="cap-style">{{__('Result')}}</caption>
         <thead class="table-light">
             <tr>
-                <th>{{__('id')}}</th>
+                <th>{{__('Code Mission')}}</th>
                 <th>{{__('Mission')}}</th>
                 <th>{{__('Client')}}</th>
+                <th>{{__('Total Hours')}}</th>
             </tr>
         </thead>
         <tbody style="border: 0.5px">
@@ -76,9 +77,11 @@
                 @foreach ( $missions as $mission )
                 <tr>
                     <th>{{$mission->id}}</th>
-                    <td>{{$mission->mission_name }}</td>
+                    <td>{{__($mission->mission_name) }}</td>
                     <td>{{$mission->client()->where('id',$mission->client_id)->value('social_reason') }}</td>
-
+                    <td> {{
+                        $totalSecondsDiff = (abs(strtotime($mission->date_start)- (strtotime($mission->date_finish))))/60/60 . __(' Hours').' / '.(abs(strtotime($mission->date_start)- (strtotime($mission->date_finish))))/60/60/24 .__(' Days')
+                        }}</td>
                 </tr>
 
                 @endforeach

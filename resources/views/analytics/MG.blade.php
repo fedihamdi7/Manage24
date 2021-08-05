@@ -63,9 +63,14 @@
                 @foreach ( $missions as $mission )
                 <tr>
                     <th>{{$mission->id}}</th>
-                    <td>{{$mission->mission_name }}</td>
-                    <td>{{$mission->time()->where('mission_id', $mission->id)->value('finish_time') ?? 'N/A' }}</td>
+                    <td>{{__($mission->mission_name) }}</td>
+                    {{-- <td>{{$mission->time()->where('mission_id', $mission->id)->value('finish_time') ?? 'N/A' }}</td> --}}
+                    <td>
+                        {{
+                        $totalSecondsDiff = (abs(strtotime($mission->date_start)- (strtotime($mission->date_finish))))/60/60 . __(' Hours').' / '.(abs(strtotime($mission->date_start)- (strtotime($mission->date_finish))))/60/60/24 .__(' Days')
 
+                        }}
+                    </td>
                 </tr>
 
                 @endforeach
