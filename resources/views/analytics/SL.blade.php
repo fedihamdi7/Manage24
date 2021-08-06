@@ -58,7 +58,11 @@
         class="fa fa-search"></i> {{__('Search')}} </button></div>
     </form>
 
-
+    @if ($missions)
+    <a name="" id="" style="background-color: #fb1e00;" class="btn btn-perso"
+    href="{{ route('pdf.SL', ['s' => $s , 'f' => $f ,'serv' => $serv]) }}" role="button"><i class="fa fa-download"
+        aria-hidden="true">{{ __('Download') }}</i></a>
+        @endif
     <div id="search_list" style="margin-top: 10%;">
 
     @if ($missions)
@@ -76,11 +80,11 @@
                 @foreach ( $missions as $mission )
                 <tr>
                     <th>{{$mission->id}}</th>
-                    <td>{{$mission->mission_name }}</td>
+                    <td>{{__($mission->mission_name) }}</td>
                     <td> {{
                         $totalSecondsDiff = (abs(strtotime($mission->date_start)- (strtotime($mission->date_finish))))/60/60 . __(' Hours').' / '.(abs(strtotime($mission->date_start)- (strtotime($mission->date_finish))))/60/60/24 .__(' Days')
                         }}</td>
-                        
+
                 </tr>
 
                 @endforeach

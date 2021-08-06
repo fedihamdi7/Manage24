@@ -46,6 +46,13 @@ Route::POST('analytic-CD-search','admin\AnalyticController@CDsearch')->name('CD.
 Route::POST('analytic-SL-search','admin\AnalyticController@SLsearch')->name('SL.search');
 Route::POST('analytic-G-search','admin\AnalyticController@Gsearch')->name('G.search');
 
+Route::get('pdf-MG/{s}/{f}','admin\AnalyticController@pdfMG')->name('pdf.MG');
+Route::get('pdf-M/{s}/{f}/{m}','admin\AnalyticController@pdfM')->name('pdf.M');
+Route::get('pdf-C/{s}/{f}/{c}','admin\AnalyticController@pdfC')->name('pdf.C');
+Route::get('pdf-CD/{s}/{f}/{c}','admin\AnalyticController@pdfCD')->name('pdf.CD');
+Route::get('pdf-SL/{s}/{f}/{serv}','admin\AnalyticController@pdfSL')->name('pdf.SL');
+Route::get('pdf-G/{g}','admin\AnalyticController@pdfG')->name('pdf.G');
+
 
 Route::get('/reg', function () {
     return view('welcome');

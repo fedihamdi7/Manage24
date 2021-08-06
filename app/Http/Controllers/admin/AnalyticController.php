@@ -9,8 +9,11 @@ use App\Mission;
 use App\Service;
 use App\Time;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade as PDF;
+
 
 class AnalyticController extends Controller
 {
@@ -22,6 +25,7 @@ class AnalyticController extends Controller
 
     }
 
+    // ***********************Global mission***********************
 
     public function MG()
     {
@@ -59,10 +63,14 @@ class AnalyticController extends Controller
 
         // }
 
-        return view('analytics.MG',compact('user','page','missions','missions_list'));
+            $s = $request->date_start;
+            $f=$request->date_finish;
+            // dd($dates);
+        return view('analytics.MG',compact('user','page','missions','missions_list','s','f'));
 
     }
 
+    // ***********************Mission***********************
 
     public function M()
     {
@@ -129,9 +137,17 @@ class AnalyticController extends Controller
                 // dd($tt);
             }
         // dd($missions);
-        return view('analytics.M',compact('user','page','missions','missions_list','tt'));
+
+
+        $s = $request->date_start;
+        $f=$request->date_finish;
+        $m=$request->mission_id;
+        return view('analytics.M',compact('user','page','missions','missions_list','tt','s','f','m'));
 
     }
+
+
+    // ***********************Collab***********************
 
 
     public function C()
@@ -169,11 +185,15 @@ class AnalyticController extends Controller
             ->groupBy('mission_id')
             ->get(['missions.mission_name'])->sort();
 
+            $s = $request->date_start;
+            $f=$request->date_finish;
+            $c=$request->collab_id;
         // dd($missions);
-        return view('analytics.C',compact('user','page','missions','collabs','missions_list'));
+        return view('analytics.C',compact('user','page','missions','collabs','missions_list','s','f','c'));
 
     }
 
+    // ***********************Collab Details***********************
 
     public function CD()
     {
@@ -244,11 +264,17 @@ class AnalyticController extends Controller
             $tt=$h.':'.$m.':'.$s;
 
 
+            $s = $request->date_start;
+            $f=$request->date_finish;
+            $c=$request->collab_id;
 
         // dd($missions);
-        return view('analytics.CD',compact('user','page','tt','missions','collabs','missions_list'));
+        return view('analytics.CD',compact('user','page','tt','missions','collabs','missions_list','s','f','c'));
 
     }
+
+
+    // ***********************Service Line***********************
 
 
     public function SL()
@@ -287,13 +313,16 @@ class AnalyticController extends Controller
             ->select('missions.*','services.service_ligne')
             // ->groupBy('mission_id')
             ->get()->sort();
-
+            $s = $request->date_start;
+            $f=$request->date_finish;
+            $serv=$request->service_id;
         // dd($missions);
-        return view('analytics.SL',compact('user','page','services_list','missions'));
+        return view('analytics.SL',compact('user','page','services_list','missions','s','f','serv'));
 
 
     }
 
+    // ***********************Grade***********************
 
     public function G()
     {
@@ -319,10 +348,209 @@ class AnalyticController extends Controller
         ->where('collabs.grade_id',$request->grade_id)
         ->get()->sort();
         // dd($missions);
-        return view('analytics.G',compact('user','page','missions','grade_list'));
+        $g=$request->grade_id;
+        return view('analytics.G',compact('user','page','missions','grade_list','g'));
 
     }
 
 
 
+    // **********************PDF***********************
+
+    public function pdfMG($s,$f){
+        $page='analytics';
+        $user = Auth::user();
+        $time = Carbon::now();
+
+        $missions=Mission::where('date_start','>=',$s)->where('date_finish','<=',$f)->get();
+
+
+        $pdf = PDF::loadview('analytics.MG_pdf',compact('user','missions','page','time'));
+        $pdf->setPaper('A4', 'landscape');
+
+        return $pdf->download("file.pdf");
+    }
+
+    public function pdfM($s,$f,$m){
+        $page='analytics';
+        $user = Auth::user();
+        $time = Carbon::now();
+
+        $missions_list=Mission::get()->sort();
+        $missions=null;
+        $tt=null;
+
+        $data=Mission::where('date_start','>=',$s)->where('date_finish','<=',$f)->where('id',$m)->get();
+        // dd($data->count());
+        if ($data->count() != 0) {
+            # code...
+            $missions = Time::where('mission_id',$data->first()->id)->get();
+
+
+
+                $sum = strtotime('00:00:00');
+
+                $totaltime = 0;
+
+                foreach( $missions as $el ) {
+
+                    // Converting the time into seconds
+                    $element = $el->elapsed_time;
+                    $timeinsec = strtotime($element) - $sum;
+
+                    // Sum the time with previous value
+                    $totaltime = $totaltime + $timeinsec;
+                }
+
+                // Totaltime is the summation of all
+                // time in seconds
+
+                // Hours is obtained by dividing
+                // totaltime with 3600
+                $h = intval($totaltime / 3600);
+
+                $totaltime = $totaltime - ($h * 3600);
+
+                // Minutes is obtained by dividing
+                // remaining total time with 60
+                $m = intval($totaltime / 60);
+
+                // Remaining value is seconds
+                $s = $totaltime - ($m * 60);
+                $tt=$h.':'.$m.':'.$s;
+                // dd($tt);
+            }
+        // dd($missions);
+
+
+        $pdf = PDF::loadview('analytics.M_pdf',compact('user','missions','page','time','tt'));
+        $pdf->setPaper('A4', 'landscape');
+
+        return $pdf->download("file.pdf");
+    }
+
+
+    public function pdfC($s,$f,$c){
+        $page='analytics';
+        $user = Auth::user();
+        $time = Carbon::now();
+
+        $page='analytics';
+        $user = Auth::user();
+        $missions_list=Mission::get()->sort();
+        $collabs=Collab::get()->sort();
+
+            $missions = Time::join('missions', 'times.mission_id', '=', 'missions.id')
+            ->where('times.collab_id',$c)
+            ->where('missions.date_start','>=',$s)
+            ->where('missions.date_finish','<=',$f)
+            ->select('missions.*')
+            ->groupBy('mission_id')
+            ->get(['missions.mission_name'])->sort();
+
+
+
+        $pdf = PDF::loadview('analytics.C_pdf',compact('user','missions','page','time'));
+        $pdf->setPaper('A4', 'landscape');
+
+        return $pdf->download("file.pdf");
+    }
+    public function pdfCD($s,$f,$c){
+        $page='analytics';
+        $user = Auth::user();
+        $time = Carbon::now();
+
+        $missions = Time::join('missions', 'times.mission_id', '=', 'missions.id')
+        ->join('collabs','times.collab_id','=','collabs.id')
+        ->where('times.collab_id',$c)
+        ->where('missions.date_start','>=',$s)
+        ->where('missions.date_finish','<=',$f)
+        ->select('missions.*','times.id as time_id','times.elapsed_time')
+        // ->groupBy('mission_id')
+        ->get()->sort();
+
+        $sum = strtotime('00:00:00');
+
+        $totaltime = 0;
+
+        foreach( $missions as $el ) {
+
+            // Converting the time into seconds
+            $element = $el->elapsed_time;
+            $timeinsec = strtotime($element) - $sum;
+
+            // Sum the time with previous value
+            $totaltime = $totaltime + $timeinsec;
+        }
+
+        // Totaltime is the summation of all
+        // time in seconds
+
+        // Hours is obtained by dividing
+        // totaltime with 3600
+        $h = intval($totaltime / 3600);
+
+        $totaltime = $totaltime - ($h * 3600);
+
+        // Minutes is obtained by dividing
+        // remaining total time with 60
+        $m = intval($totaltime / 60);
+
+        // Remaining value is seconds
+        $s = $totaltime - ($m * 60);
+        $tt=$h.':'.$m.':'.$s;
+
+
+
+        $pdf = PDF::loadview('analytics.CD_pdf',compact('user','missions','page','time','tt'));
+        $pdf->setPaper('A4', 'landscape');
+
+        return $pdf->download("file.pdf");
+    }
+    public function pdfSL($s,$f,$serv){
+        $page='analytics';
+        $user = Auth::user();
+        $time = Carbon::now();
+
+        $page='analytics';
+        $user = Auth::user();
+        $missions_list=Mission::get()->sort();
+        $collabs=Collab::get()->sort();
+
+        $missions = Mission::join('services', 'missions.service_id', '=', 'services.id')
+        ->where('missions.service_id',$serv)
+        ->where('missions.date_start','>=',$s)
+        ->where('missions.date_finish','<=',$f)
+        ->select('missions.*','services.service_ligne')
+        // ->groupBy('mission_id')
+        ->get()->sort();
+
+
+
+        $pdf = PDF::loadview('analytics.SL_pdf',compact('user','missions','page','time'));
+        $pdf->setPaper('A4', 'landscape');
+
+        return $pdf->download("file.pdf");
+    }
+    public function pdfG($g){
+        $page='analytics';
+        $user = Auth::user();
+        $time = Carbon::now();
+
+        $page='analytics';
+        $user = Auth::user();
+        $missions_list=Mission::get()->sort();
+        $collabs=Collab::get()->sort();
+
+        $missions = Collab::join('grades', 'collabs.grade_id', '=', 'grades.id')
+        ->where('collabs.grade_id',$g)
+        ->get()->sort();
+
+
+
+        $pdf = PDF::loadview('analytics.G_pdf',compact('user','missions','page','time'));
+        $pdf->setPaper('A4', 'landscape');
+
+        return $pdf->download("file.pdf");
+    }
 }

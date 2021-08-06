@@ -58,7 +58,11 @@
         class="fa fa-search"></i> {{__('Search')}} </button></div>
     </form>
 
-
+    @if ($missions)
+    <a name="" id="" style="background-color: #fb1e00;" class="btn btn-perso"
+    href="{{ route('pdf.M', ['s' => $s , 'f' => $f ,'m' => $m]) }}" role="button"><i class="fa fa-download"
+        aria-hidden="true">{{ __('Download') }}</i></a>
+        @endif
     <div id="search_list" style="margin-top: 10%;">
 
     @if ($missions)
