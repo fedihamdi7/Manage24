@@ -5,7 +5,7 @@
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
-    <form method="POST" action="{{ route('CD.search') }}" style="width: 23%;display: flex;height: 4%;position: absolute;left: 21%;top: 14%;">
+    <form method="POST" action="{{ route('CD.search') }}" style="width: 23%;display: flex;height: 4%;position: absolute;left: 15%;top: 14%; @if ( (app()->getLocale()) == "en" )  left: 21%; @endif">
         @csrf
     {{-- <select class="form-select" id="search" name="mission_id" aria-label="Default select example">
         @foreach ($missions_list as $list )
@@ -39,7 +39,7 @@
         </div>
 
         <div>
-            <select class="form-select" name="collab_id" aria-label="Default select example" style="margin-top: 15.5%; width: 95%; @if ( (app()->getLocale()) == "en" )  width: 78%; @endif">
+            <select class="form-select" name="collab_id" aria-label="Default select example" style="margin-top: 28%; width: 169%; @if ( (app()->getLocale()) == "en" )  margin-top: 24%;width: 107%; @endif">
                 <option selected style="background-color: #e4e9f7;">{{__('Select Collaborator')}}</option>
                 @foreach ($collabs as $collab )
                 <option value=" {{$collab->id}} ">{{$collab->collab_name}} {{$collab->collab_last_name}}</option>
@@ -52,7 +52,7 @@
             @enderror
         </div>
         <div>
-            <select class="form-select" name="mission_id" aria-label="Default select example" style="margin-top: 21%;width: 110%;margin-left: -4%; @if ( (app()->getLocale()) == "en" )  margin-left: -41%;margin-top: 31%; @endif">
+            <select class="form-select" name="mission_id" aria-label="Default select example" style="margin-top: 39%;width: 196%;margin-left: 97%; @if ( (app()->getLocale()) == "en" )  margin-left: 13%;margin-top: 48%; @endif">
                 <option selected style="background-color: #e4e9f7;">{{__('Select Mission')}}</option>
                 @foreach ($missions_list as $m )
                 <option value=" {{$m->id}} ">{{$m->mission_name}}</option>
@@ -67,7 +67,7 @@
     </div>
 
 
-    <div><button type="submit" class="btn btn-block btn-outline-primary" style="height: 38px;width: 138px; margin-left: -200%;margin-top: 34%; @if ( (app()->getLocale()) == "en" )  margin-left: -152%; @endif">
+    <div><button type="submit" class="btn btn-block btn-outline-primary" style="height: 38px;width: 138px; margin-left: -136%;margin-top: 44%; @if ( (app()->getLocale()) == "en" )  margin-left: -136%;margin-top: 42%; @endif">
         <i class="fa fa-search"></i> {{__('Search')}} </button></div>
     </form>
 

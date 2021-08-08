@@ -33,8 +33,11 @@
         </div>
 
 
-        <div><button type="submit" class="btn btn-block btn-outline-primary" style="height: 38px;
-        width: 138px;"><i class="fa fa-search"></i> {{ __('Search') }} </button></div>
+        <div>
+            <button type="submit" class="btn btn-block btn-outline-primary" style="height: 37px;width: 142px;margin-top: 10px;margin-left: 18px;">
+                <i class="fa fa-search"></i> {{ __('Search') }}
+            </button>
+        </div>
     </form>
     @if ($missions)
     <a name="" id="" style="background-color: #fb1e00;" class="btn btn-perso"

@@ -5,7 +5,7 @@
       <i class='bx bx-menu' ></i>
       <span class="text"></span>
     </div>
-    <form method="POST" action="{{ route('SL.search') }}" style="width: 23%;display: flex;height: 4%;position: absolute;left: 28%;top: 14%;">
+    <form method="POST" action="{{ route('SL.search') }}" style="width: 23%;display: flex;height: 4%;position: absolute;left: 22%;top: 14%;">
         @csrf
     {{-- <select class="form-select" id="search" name="mission_id" aria-label="Default select example">
         @foreach ($missions_list as $list )
@@ -39,7 +39,7 @@
         </div>
 
         <div>
-            <select class="form-select" name="service_id" aria-label="Default select example" style="margin-top: 17%; width: 115%; @if ( (app()->getLocale()) == "en" ) margin-top:32% @endif ">
+            <select class="form-select" name="service_id" aria-label="Default select example" style="margin-top: 16%;width: 302px; @if ( (app()->getLocale()) == "en" ) margin-top:30% ; width: 161px; @endif ">
                 <option selected style="background-color: #e4e9f7;">{{__('Select Service')}}</option>
                 @foreach ($services_list as $serv )
                 <option value="{{$serv->id}}">{{$serv->service_ligne}}</option>
@@ -54,7 +54,7 @@
     </div>
 
 
-    <div><button type="submit" class="btn btn-block btn-outline-primary" style="height: 38px;width: 138px; margin-left: -188%;margin-top: 34%; @if ( (app()->getLocale()) == "en" )     margin-left: -85%; @endif"><i
+    <div><button type="submit" class="btn btn-block btn-outline-primary" style="height: 38px;width: 138px;margin-left: -259%;margin-top: 41%; @if ( (app()->getLocale()) == "en" )     margin-left: -157%; @endif"><i
         class="fa fa-search"></i> {{__('Search')}} </button></div>
     </form>
 
