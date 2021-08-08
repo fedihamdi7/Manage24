@@ -28,6 +28,50 @@
             font-size: 17px;
             transition: 0.3s;
         }
+        @media only screen and (min-width: 1638px) {
+            form .MG{
+                margin-top: -1px !important;
+                margin-left: 13px !important;
+            }
+            form .M{
+                margin-top: 46px !important;
+                margin-left: -134px !important;
+                @if ( (app()->getLocale()) == "fr" )
+                margin-left: -249px !important ;
+                @endif
+            }
+            form .C{
+                margin-top: 46px !important;
+                margin-left: -172px !important;
+                @if ( (app()->getLocale()) == "fr" )
+                margin-left: -256px !important ;
+                @endif
+            }
+            .select_cd .CD{
+                margin-top: 48px !important;
+            }
+            .btnCD .CD {
+                margin-left: -198% !important;
+                @if ( (app()->getLocale()) == "en" )
+                margin-left: -154% !important ;
+                @endif
+            }
+            form .SL{
+                margin-top: 46px !important;
+                margin-left: -118px !important;
+                @if ( (app()->getLocale()) == "fr" )
+                margin-left: -259px !important ;
+                @endif
+            }
+            form .G{
+                margin-top: 32px !important;
+                margin-left: 46px !important;
+                @if ( (app()->getLocale()) == "fr" )
+                margin-top: 39px !important;
+                margin-left: 53px !important ;
+                @endif
+            }
+            }
 
     </style>
 </head>

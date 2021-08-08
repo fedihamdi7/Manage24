@@ -38,8 +38,8 @@
            @enderror
         </div>
 
-        <div>
-            <select class="form-select" name="collab_id" aria-label="Default select example" style="margin-top: 28%; width: 169%; @if ( (app()->getLocale()) == "en" )  margin-top: 24%;width: 107%; @endif">
+        <div class="select_cd">
+            <select class="form-select CD" name="collab_id" aria-label="Default select example" style="margin-top: 28%; width: 169%; @if ( (app()->getLocale()) == "en" )  margin-top: 24%;width: 107%; @endif">
                 <option selected style="background-color: #e4e9f7;">{{__('Select Collaborator')}}</option>
                 @foreach ($collabs as $collab )
                 <option value=" {{$collab->id}} ">{{$collab->collab_name}} {{$collab->collab_last_name}}</option>
@@ -51,8 +51,8 @@
                 </span>
             @enderror
         </div>
-        <div>
-            <select class="form-select" name="mission_id" aria-label="Default select example" style="margin-top: 39%;width: 196%;margin-left: 97%; @if ( (app()->getLocale()) == "en" )  margin-left: 13%;margin-top: 48%; @endif">
+        <div class="select_cd">
+            <select class="form-select CD" name="mission_id" aria-label="Default select example" style="margin-top: 39%;width: 196%;margin-left: 97%; @if ( (app()->getLocale()) == "en" )  margin-left: 13%;margin-top: 48%; @endif">
                 <option selected style="background-color: #e4e9f7;">{{__('Select Mission')}}</option>
                 @foreach ($missions_list as $m )
                 <option value=" {{$m->id}} ">{{$m->mission_name}}</option>
@@ -67,7 +67,7 @@
     </div>
 
 
-    <div><button type="submit" class="btn btn-block btn-outline-primary" style="height: 38px;width: 138px; margin-left: -136%;margin-top: 44%; @if ( (app()->getLocale()) == "en" )  margin-left: -136%;margin-top: 42%; @endif">
+    <div class="btnCD"><button type="submit" class="btn btn-block btn-outline-primary CD" style="height: 38px;width: 138px; margin-left: -136%;margin-top: 44%; @if ( (app()->getLocale()) == "en" )  margin-left: -136%;margin-top: 42%; @endif">
         <i class="fa fa-search"></i> {{__('Search')}} </button></div>
     </form>
 

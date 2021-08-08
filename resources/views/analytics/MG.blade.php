@@ -34,7 +34,7 @@
 
 
         <div>
-            <button type="submit" class="btn btn-block btn-outline-primary" style="height: 37px;width: 142px;margin-top: 10px;margin-left: 18px;">
+            <button type="submit" class="btn btn-block btn-outline-primary MG" style="height: 37px;width: 142px;margin-top: 10px;margin-left: 18px;">
                 <i class="fa fa-search"></i> {{ __('Search') }}
             </button>
         </div>
