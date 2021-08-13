@@ -722,7 +722,6 @@
     "Grade": "Grade",
     "English": "Anglais",
     "French": "Français",
-    "Admin" : "Administrateur",
     "Last Name" : "Prenom",
     "Date In" : "Date d'entrée",
     "Date Out" : "Date de sortir",
@@ -804,7 +803,14 @@
     " Days" : " Jours",
     " Hours" : " Heures",
     "Fedi's Stage" : "Stage de Fedi",
-    "Result" : "Résultat"
+    "Result" : "Résultat",
+    "You Have Been Added As Collaborator" : "Vous avez été ajouté en tant que collaborateur",
+    "Click This Link To Set A Password And Start Collaborating" : "Cliquez sur ce lien pour définir un mot de passe et commencer à collaborer",
+    "Welcome To The Team" : "Bienvenue dans l'équipe",
+    "Create Password" : "Créer un mot de passe",
+    "link" : "lien",
+    "Account Created , Log In" : "Compte créé, connectez-vous"
+
 
 
 }

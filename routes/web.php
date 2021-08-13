@@ -71,3 +71,5 @@ Route::get('lo', function () {
 return view('auth.login');
 });
 
+Route::get('/create_pwd/collab/{token}','admin\CollabController@password')->name('collab.password');
+Route::post('/create_pwd/collab/confirm','admin\CollabController@Confirmpassword')->name('collab.confirmpassword');

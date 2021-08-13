@@ -5,13 +5,17 @@ namespace App\Http\Controllers\admin;
 use App\Collab;
 use App\Grade;
 use App\Http\Controllers\Controller;
+use App\Mail\AddCollab;
 use App\Service;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 use Barryvdh\DomPDF\Facade as PDF;
-
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 class CollabController extends Controller
 {
 
@@ -96,8 +100,12 @@ class CollabController extends Controller
             'service_id' => 'required',
         ]);
 
+        $data['token'] = Str::random(60);
+
         $collab = new Collab();
         $collab->create($data);
+        // dd($request->collab_mail);
+        Mail::to($request->collab_mail)->send(new AddCollab($data));
         return redirect(route('collab.index',))->with('collabCreated',__('Collaborator Added Successfully'));
 
     }
@@ -184,5 +192,45 @@ class CollabController extends Controller
     {
      $collab->delete();
      return redirect()->route('collab.index')->with('collabDeleted',__('Collaborator Deleted Successfully'));
+    }
+
+
+    public function password($token)
+    {
+        $collab = DB::table('collabs')
+        ->where('token',$token)
+        ->get();
+        // dd(count($collab));
+
+        if (count($collab)>0) {
+            return  view('newpwd',compact('token'));
+        }
+        else {
+            return redirect()->route('/')->with('wrongtoken','Wrong Token');
+        }
+    }
+
+    public function Confirmpassword(Request $request)
+    {
+        // dd($request);
+        $data = $request->validate([
+            'password' => 'required|required_with:password_confirmation|same:password_confirmation',
+            'password_confirmation' => 'required|same:password|required_with:password',
+        ]);
+
+        $collab = DB::table('collabs')->where('token',$request->mail_token)->get()->first();
+
+        DB::table('users')->insert(
+            [
+            'name' => $collab->collab_name,
+            'email' => $collab->collab_mail,
+            'password' => Hash::make($data['password']),
+            'role' =>'Collaborator',
+            'phone'=>$collab->collab_phone
+            ]
+        );
+
+        return redirect()->route('/')->with('collabwelcome','Account Created , Log In');
+
     }
 }

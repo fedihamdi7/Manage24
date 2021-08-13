@@ -26,6 +26,7 @@ class CreateCollabsTable extends Migration
             $table->bigInteger('grade_id')->unsigned();
             $table->foreign('grade_id')->references('id')->on('grades')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
+            $table->string('token', 100)->nullable();
 
         });
     }

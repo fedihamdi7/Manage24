@@ -22,10 +22,31 @@
       #language a img {
           width: 32px;
       }
+      .close-btn{
+    background-color: transparent !important;
+        border: none !important;
+
+}
   </style>
   <link rel="stylesheet" href="css/login.css">
 </head>
 <body style="background-image:url('images/background.png') ">
+    @if (session('wrongtoken'))
+    <div class="alert alert-dismissible alert-danger fade show suc-msg" style="margin-bottom: 0px;position: absolute;left: 41%;top: 6%;z-index: 11;" role="alert">
+        {{ session('wrongtoken') }}
+        <button type="button" class="close-btn" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true" style="margin-right: -44px;">&times;</span>
+        </button>
+    </div>
+    @endif
+    @if (session('collabwelcome'))
+    <div class="alert alert-dismissible alert-success fade show suc-msg" style="margin-bottom: 0px;position: absolute;left: 41%;top: 6%;z-index: 11;" role="alert">
+        {{ __(session('collabwelcome')) }}
+        <button type="button" class="close-btn" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true" style="margin-right: -44px;">&times;</span>
+        </button>
+    </div>
+    @endif
   <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
     <div class="container">
       <div class="card login-card">

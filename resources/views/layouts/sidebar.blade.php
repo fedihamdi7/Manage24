@@ -288,7 +288,7 @@
                     </div>
                     <a href=" {{ route('user.index') }} ">
                         <div class="name-job">
-                            <div class="profile_name">{{ $user->name }}</div>
+                            <div class="profile_name" style="text-overflow: ellipsis;white-space: nowrap;overflow: hidden;width: 157px;">{{ $user->name }}</div>
                             <div class="job">{{ __($user->role) }}</div>
                         </div>
                     </a>
@@ -296,7 +296,8 @@
 
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
-                        <i class='bx bx-log-out' title="Logout"></i>
+                        <i class='bx bx-log-out' title="Logout" style="position: fixed;
+                        left: 13%;"></i>
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
