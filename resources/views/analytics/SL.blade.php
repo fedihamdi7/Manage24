@@ -20,7 +20,7 @@
 
             <label for="">{{__('Start Date')}}</label>
             <input type="date" class="form-control @error('date_start') is-invalid @enderror" id="inputPhone"
-         name="date_start" value="{{''}}">
+         name="date_start" value="{{ request()->input('date_start') ?? '' }}">
         @error('date_start')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -30,7 +30,7 @@
         <div>
             <label for="">{{__('Finish Date')}}</label>
             <input type="date" class="form-control @error('date_finish') is-invalid @enderror" id="inputPhone"
-            name="date_finish" value="{{''}}">
+            name="date_finish" value="{{ request()->input('date_finish') ?? '' }}">
            @error('date_finish')
                <span class="invalid-feedback" role="alert">
                    <strong>{{ $message }}</strong>

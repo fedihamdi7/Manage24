@@ -20,7 +20,7 @@
 
             <label for="">{{__('Start Date')}}</label>
             <input type="date" class="form-control @error('date_start') is-invalid @enderror" id="inputPhone"
-         name="date_start" value="{{''}}">
+         name="date_start" value="{{ request()->input('date_start') ?? '' }}">
         @error('date_start')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -30,7 +30,7 @@
         <div style="z-index: 12">
             <label for="">{{__('Finish Date')}}</label>
             <input type="date" class="form-control @error('date_finish') is-invalid @enderror" id="inputPhone"
-            name="date_finish" value="{{''}}">
+            name="date_finish" value="{{ request()->input('date_finish') ?? '' }}">
            @error('date_finish')
                <span class="invalid-feedback" role="alert">
                    <strong>{{ $message }}</strong>
@@ -60,7 +60,7 @@
 
     @if ($missions)
     <a name="" id="" style="background-color: #fb1e00;" class="btn btn-perso"
-    href="{{ route('pdf.C', ['s' => $s , 'f' => $f ,'c' => $c]) }}" role="button"><i class="fa fa-download"
+    href="{{ route('pdf.C', ['s' => $start , 'f' => $fini ,'c' => $cola]) }}" role="button"><i class="fa fa-download"
         aria-hidden="true">{{ __('Download') }}</i></a>
         @endif
     <div id="search_list" style="margin-top: 10%;">
@@ -72,23 +72,35 @@
             <tr>
                 <th>{{__('Code Mission')}}</th>
                 <th>{{__('Mission')}}</th>
+                <th>{{__('Collaborator')}}</th>
                 <th>{{__('Client')}}</th>
                 <th>{{__('Total Hours')}}</th>
             </tr>
         </thead>
         <tbody style="border: 0.5px">
 
-                @foreach ( $missions as $mission )
-                <tr>
-                    <th>{{$mission->id}}</th>
-                    <td>{{__($mission->mission_name) }}</td>
-                    <td>{{$mission->client()->where('id',$mission->client_id)->value('social_reason') }}</td>
-                    <td> {{
-                        $totalSecondsDiff = (abs(strtotime($mission->date_start)- (strtotime($mission->date_finish))))/60/60 . __(' Hours').' / '.(abs(strtotime($mission->date_start)- (strtotime($mission->date_finish))))/60/60/24 .__(' Days')
-                        }}</td>
-                </tr>
 
-                @endforeach
+                @foreach ($missions as $key =>$mission)
+                        <tr>
+                            <th>{{ $mission->id }}</th>
+                            <td>{{ __($mission->mission_name) }}</td>
+                            <td>{{ $lecollab->collab_name .' '. $lecollab->collab_last_name}}</td>
+                            <td>{{$mission->client()->where('id',$mission->client_id)->value('social_reason') }}</td>
+
+                            <td>
+
+                                @if (array_key_exists($key,$allmission))
+                                    {{$allmission[$key] . __(' Hours')}}
+                                @else
+                                    {{__('N/A')}}
+                                @endif
+                            </td>
+                            {{-- <td>
+                                {{ $allmission[$key] . __(' Hours') ?? ' ' }}
+                            </td> --}}
+                        </tr>
+
+                    @endforeach
                 {{-- <tr>
                     <th>{{__('Client')}}</th>
                     <td>{{$missions->client()->where('id', $missions->client_id)->value('social_reason') ?? 'N/A'}}</td>

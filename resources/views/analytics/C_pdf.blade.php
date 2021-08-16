@@ -59,23 +59,41 @@
             <tr>
                 <th>{{__('Code Mission')}}</th>
                 <th>{{__('Mission')}}</th>
+                <th>{{__('Collaborator')}}</th>
                 <th>{{__('Client')}}</th>
                 <th>{{__('Total Hours')}}</th>
             </tr>
         </thead>
         <tbody style="border: 0.5px">
 
-                @foreach ( $missions as $mission )
-                <tr>
-                    <th>{{$mission->id}}</th>
-                    <td>{{__($mission->mission_name) }}</td>
-                    <td>{{$mission->client()->where('id',$mission->client_id)->value('social_reason') }}</td>
-                    <td> {{
-                        $totalSecondsDiff = (abs(strtotime($mission->date_start)- (strtotime($mission->date_finish))))/60/60 . __(' Hours').' / '.(abs(strtotime($mission->date_start)- (strtotime($mission->date_finish))))/60/60/24 .__(' Days')
-                        }}</td>
-                </tr>
+            @foreach ($missions as $key =>$mission)
+            <tr>
+                <th>{{ $mission->id }}</th>
+                <td>{{ __($mission->mission_name) }}</td>
+                <td>{{ $lecollab->collab_name .' '. $lecollab->collab_last_name}}</td>
+                <td>{{$mission->client()->where('id',$mission->client_id)->value('social_reason') }}</td>
 
-                @endforeach
+                <td>
+
+                    @if (array_key_exists($key,$allmission))
+                        {{$allmission[$key] . __(' Hours')}}
+                    @else
+                        {{__('N/A')}}
+                    @endif
+                </td>
+                {{-- <td>
+                    {{ $allmission[$key] . __(' Hours') ?? ' ' }}
+                </td> --}}
+            </tr>
+
+        @endforeach
+        <tr>
+            <th></th>
+            <td></td>
+            <td></td>
+            <td> <span style="padding-left: 45% ; font-weight: bold">{{ __('Total') }}</span></td>
+            <td>{{$tt}}</td>
+        </tr>
                 {{-- <tr>
                     <th>{{__('Client')}}</th>
                     <td>{{$missions->client()->where('id', $missions->client_id)->value('social_reason') ?? 'N/A'}}</td>

@@ -64,17 +64,24 @@
         </thead>
         <tbody style="border: 0.5px">
 
-            @foreach ($missions as $mission)
-                <tr>
-                    <th>{{ $mission->id }}</th>
-                    <td>{{ __($mission->mission_name) }}</td>
-                    {{-- <td>{{$mission->time()->where('mission_id', $mission->id)->value('finish_time') ?? 'N/A' }}</td> --}}
-                    <td>
-                        {{ $totalSecondsDiff = abs(strtotime($mission->date_start) - strtotime($mission->date_finish)) / 60 / 60 . __(' Hours') . ' / ' . abs(strtotime($mission->date_start) - strtotime($mission->date_finish)) / 60 / 60 / 24 . __(' Days') }}
-                    </td>
-                </tr>
+            @foreach ($missions as $key =>$mission)
+            <tr>
+                <th>{{ $mission->id }}</th>
+                <td>{{ __($mission->mission_name) }}</td>
+                <td>
 
-            @endforeach
+                    @if (array_key_exists($key,$allmission))
+                        {{$allmission[$key] . __(' Hours')}}
+                    @else
+                        {{__('N/A')}}
+                    @endif
+                </td>
+                {{-- <td>
+                    {{ $allmission[$key] . __(' Hours') ?? ' ' }}
+                </td> --}}
+            </tr>
+
+        @endforeach
 
         </tbody>
     </table>

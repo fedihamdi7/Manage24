@@ -19,8 +19,8 @@
         <div >
 
             <label for="">{{__('Start Date')}}</label>
-            <input type="date" class="form-control @error('date_start') is-invalid @enderror" id="inputPhone"
-         name="date_start" value="{{''}}">
+            <input type="date" style="z-index: 12;" class="form-control @error('date_start') is-invalid @enderror" id="inputPhone"
+         name="date_start" value="{{ request()->input('date_start') ?? '' }}">
         @error('date_start')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -30,7 +30,7 @@
         <div style="z-index: 15">
             <label for="">{{__('Finish Date')}}</label>
             <input type="date" class="form-control @error('date_finish') is-invalid @enderror" id="inputPhone"
-            name="date_finish" value="{{''}}">
+            name="date_finish" value="{{ request()->input('date_finish') ?? '' }}">
            @error('date_finish')
                <span class="invalid-feedback" role="alert">
                    <strong>{{ $message }}</strong>
@@ -39,7 +39,7 @@
         </div>
 
         <div class="select_cd">
-            <select class="form-select CD" name="collab_id" aria-label="Default select example" style="margin-top: 28%; width: 169%; @if ( (app()->getLocale()) == "en" )  margin-top: 24%;width: 107%; @endif">
+            <select class="form-select CD" name="collab_id" aria-label="Default select example" style="margin-top: 30.2%;width: 181%; @if ( (app()->getLocale()) == "en" )  margin-top: 29%;width: 129%; @endif">
                 <option selected style="background-color: #e4e9f7;">{{__('Select Collaborator')}}</option>
                 @foreach ($collabs as $collab )
                 <option value=" {{$collab->id}} ">{{$collab->collab_name}} {{$collab->collab_last_name}}</option>
@@ -52,7 +52,7 @@
             @enderror
         </div>
         <div class="select_cd">
-            <select class="form-select CD" name="mission_id" aria-label="Default select example" style="margin-top: 39%;width: 196%;margin-left: 97%; @if ( (app()->getLocale()) == "en" )  margin-left: 13%;margin-top: 48%; @endif">
+            <select class="form-select CD" name="mission_id" aria-label="Default select example" style="margin-top: 36%;width: 196%;margin-left: 97%; @if ( (app()->getLocale()) == "en" )  margin-left: 37%;margin-top: 36%;width: 136%; @endif">
                 <option selected style="background-color: #e4e9f7;">{{__('Select Mission')}}</option>
                 @foreach ($missions_list as $m )
                 <option value=" {{$m->id}} ">{{$m->mission_name}}</option>
@@ -72,8 +72,8 @@
     </form>
 
     @if ($missions)
-    <a name="" id="" style="background-color: #fb1e00; right: -77%;top: 7.2%;" class="btn btn-perso"
-    href="{{ route('pdf.CD', ['s' => $s , 'f' => $f ,'c' => $c]) }}" role="button"><i class="fa fa-download"
+    <a name="" id="" style="background-color: #fb1e00; right: -74%;top: 19.2%;" class="btn btn-perso"
+    href="{{ route('pdf.CD', ['start' => $start , 'fini' => $fini ,'col' => $col,'miss'=>$miss]) }}" role="button"><i class="fa fa-download"
         aria-hidden="true">{{ __('Download') }}</i></a>
         @endif
     <div id="search_list" style="margin-top: 10%;">
@@ -85,7 +85,7 @@
             <tr>
                 <th>{{__('Code Mission')}}</th>
                 <th>{{__('Mission')}}</th>
-                <th>{{__('Total Hours')}}</th>
+                {{-- <th>{{__('Total Hours')}}</th> --}}
                 <th>{{__('Start Date')}}</th>
                 <th>{{__('Finish Date')}}</th>
                 <th>{{__('Elapsed Time')}}</th>
@@ -95,11 +95,11 @@
 
                 @foreach ( $missions as $mission )
                 <tr>
-                    <th>{{$mission->id}}</th>
+                    <th>{{$mission->mission_id}}</th>
                     <td>{{__($mission->mission_name) }}</td>
-                    <td> {{
+                    {{-- <td> {{
                         $totalSecondsDiff = (abs(strtotime($mission->date_start)- (strtotime($mission->date_finish))))/60/60 . __(' Hours').' / '.(abs(strtotime($mission->date_start)- (strtotime($mission->date_finish))))/60/60/24 .__(' Days')
-                        }}</td>
+                        }}</td> --}}
                     <td>{{$mission->date_start }}</td>
                     <td>{{$mission->date_finish }}</td>
                     <td>{{$mission->elapsed_time }}</td>
@@ -109,7 +109,6 @@
                 @endforeach
                 <tr>
                     <th></th>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td> <span style="padding-left: 45% ; font-weight: bold">{{ __('Total') }}</span></td>

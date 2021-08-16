@@ -50,23 +50,48 @@ class AnalyticController extends Controller
         ]);
 
         $missions=Mission::where('date_start','>=',$request->date_start)->where('date_finish','<=',$request->date_finish)->get();
+        $hours = Time::where('date_start','>=',$request->date_start)->where('date_finish','<=',$request->date_finish)->get()->groupby('mission_id');
+        // dd($hours);
 
-        // foreach ($missions as $m) {
-        //     $ds = strtotime($m->date_start);
-        //     $df = strtotime($m->date_finish);
-        //     $totalSecondsDiff = abs($ds-$df); //42600225
-        //     $totalMinutesDiff = $totalSecondsDiff/60; //710003.75
-        //     $totalHoursDiff   = $totalSecondsDiff/60/60;//11833.39
-        //     $totalDaysDiff    = $totalSecondsDiff/60/60/24; //493.05
-        //     $totalMonthsDiff  = $totalSecondsDiff/60/60/24/30; //16.43
-        //     $totalYearsDiff   = $totalSecondsDiff/60/60/24/365; //1.35
+        $allmission=[];
+        foreach ($hours as $mission) {
+            $eachmission=[];
+            foreach ($mission as $miss) {
+            array_push($eachmission,$miss->elapsed_time);
+            }
+            $sum = strtotime('00:00:00');
+            $totaltime = 0;
+                foreach( $eachmission as $element ) {
+                    // Converting the time into seconds
+                    $timeinsec = strtotime($element) - $sum;
 
-        // }
+                    // Sum the time with previous value
+                    $totaltime = $totaltime + $timeinsec;
+                }
+                $h = intval($totaltime / 3600);
+                $totaltime = $totaltime - ($h * 3600);
+                // Minutes is obtained by dividing
+                // remaining total time with 60
+                $m = intval($totaltime / 60);
+                // Remaining value is seconds
+                $s = $totaltime - ($m * 60);
+                if ($s<10) {
+                    $s='0'.$s;
+                }
+                if ($m<10) {
+                    $m='0'.$m;
+                }
+                $tt=$h.':'.$m.':'.$s;
+                array_push($allmission,$tt);
+            }
+
+
+            // dd($allmission);
 
             $s = $request->date_start;
             $f=$request->date_finish;
             // dd($dates);
-        return view('analytics.MG',compact('user','page','missions','missions_list','s','f'));
+        return view('analytics.MG',compact('user','page','missions','missions_list','s','f','allmission'));
 
     }
 
@@ -133,16 +158,22 @@ class AnalyticController extends Controller
 
                 // Remaining value is seconds
                 $s = $totaltime - ($m * 60);
+                if ($s<10) {
+                    $s='0'.$s;
+                }
+                if ($m<10) {
+                    $m='0'.$m;
+                }
                 $tt=$h.':'.$m.':'.$s;
                 // dd($tt);
             }
         // dd($missions);
 
 
-        $s = $request->date_start;
-        $f=$request->date_finish;
-        $m=$request->mission_id;
-        return view('analytics.M',compact('user','page','missions','missions_list','tt','s','f','m'));
+        $star = $request->date_start;
+        $fini=$request->date_finish;
+        $misid=$request->mission_id;
+        return view('analytics.M',compact('user','page','missions','missions_list','tt','star','fini','misid'));
 
     }
 
@@ -175,7 +206,40 @@ class AnalyticController extends Controller
             'date_finish' => 'required',
             'collab_id' => 'required|numeric'
         ]);
+        $hours = Time::where('date_start','>=',$request->date_start)->where('date_finish','<=',$request->date_finish)->get()->groupby('mission_id');
+        // dd($hours);
+        $allmission=[];
+        foreach ($hours as $mission) {
+            $eachmission=[];
+            foreach ($mission as $miss) {
+            array_push($eachmission,$miss->elapsed_time);
+            }
+            $sum = strtotime('00:00:00');
+            $totaltime = 0;
+                foreach( $eachmission as $element ) {
+                    // Converting the time into seconds
+                    $timeinsec = strtotime($element) - $sum;
 
+                    // Sum the time with previous value
+                    $totaltime = $totaltime + $timeinsec;
+                }
+                $h = intval($totaltime / 3600);
+                $totaltime = $totaltime - ($h * 3600);
+                // Minutes is obtained by dividing
+                // remaining total time with 60
+                $m = intval($totaltime / 60);
+                // Remaining value is seconds
+                $s = $totaltime - ($m * 60);
+                if ($s<10) {
+                    $s='0'.$s;
+                }
+                if ($m<10) {
+                    $m='0'.$m;
+                }
+                $tt=$h.':'.$m.':'.$s;
+                array_push($allmission,$tt);
+            }
+            // dd($allmission);
 
             $missions = Time::join('missions', 'times.mission_id', '=', 'missions.id')
             ->where('times.collab_id',$request->collab_id)
@@ -185,11 +249,13 @@ class AnalyticController extends Controller
             ->groupBy('mission_id')
             ->get(['missions.mission_name'])->sort();
 
-            $s = $request->date_start;
-            $f=$request->date_finish;
-            $c=$request->collab_id;
+            $lecollab=Collab::where('id',$request->collab_id)->select('collab_name','collab_last_name')->get()->first();
+            // dd($lecollab);
+            $start = $request->date_start;
+            $fini=$request->date_finish;
+            $cola=$request->collab_id;
         // dd($missions);
-        return view('analytics.C',compact('user','page','missions','collabs','missions_list','s','f','c'));
+        return view('analytics.C',compact('user','page','lecollab','missions','tt','collabs','missions_list','allmission','start','fini','cola'));
 
     }
 
@@ -226,11 +292,13 @@ class AnalyticController extends Controller
             $missions = Time::join('missions', 'times.mission_id', '=', 'missions.id')
             ->join('collabs','times.collab_id','=','collabs.id')
             ->where('times.collab_id',$request->collab_id)
+            ->where('times.mission_id',$request->mission_id)
             ->where('missions.date_start','>=',$request->date_start)
             ->where('missions.date_finish','<=',$request->date_finish)
-            ->select('missions.*','times.id as time_id','times.elapsed_time')
+            ->select('times.*','times.id as time_id','times.elapsed_time','missions.mission_name')
             // ->groupBy('mission_id')
             ->get()->sort();
+            // dd($missions);
 
             $sum = strtotime('00:00:00');
 
@@ -261,15 +329,22 @@ class AnalyticController extends Controller
 
             // Remaining value is seconds
             $s = $totaltime - ($m * 60);
+            if ($s<10) {
+                $s='0'.$s;
+            }
+            if ($m<10) {
+                $m='0'.$m;
+            }
             $tt=$h.':'.$m.':'.$s;
 
 
-            $s = $request->date_start;
-            $f=$request->date_finish;
-            $c=$request->collab_id;
+            $start = $request->date_start;
+            $fini=$request->date_finish;
+            $col=$request->collab_id;
+            $miss=$request->mission_id;
 
         // dd($missions);
-        return view('analytics.CD',compact('user','page','tt','missions','collabs','missions_list','s','f','c'));
+        return view('analytics.CD',compact('user','page','tt','missions','collabs','missions_list','start','fini','col','miss'));
 
     }
 
@@ -356,6 +431,10 @@ class AnalyticController extends Controller
 
 
     // **********************PDF***********************
+    // **********************PDF***********************
+    // **********************PDF***********************
+    // **********************PDF***********************
+    // **********************PDF***********************
 
     public function pdfMG($s,$f){
         $page='analytics';
@@ -363,9 +442,43 @@ class AnalyticController extends Controller
         $time = Carbon::now();
 
         $missions=Mission::where('date_start','>=',$s)->where('date_finish','<=',$f)->get();
+        $hours = Time::where('date_start','>=',$s)->where('date_finish','<=',$f)->get()->groupby('mission_id');
+        // dd($hours);
+
+        $allmission=[];
+        foreach ($hours as $mission) {
+            $eachmission=[];
+            foreach ($mission as $miss) {
+            array_push($eachmission,$miss->elapsed_time);
+            }
+            $sum = strtotime('00:00:00');
+            $totaltime = 0;
+                foreach( $eachmission as $element ) {
+                    // Converting the time into seconds
+                    $timeinsec = strtotime($element) - $sum;
+
+                    // Sum the time with previous value
+                    $totaltime = $totaltime + $timeinsec;
+                }
+                $h = intval($totaltime / 3600);
+                $totaltime = $totaltime - ($h * 3600);
+                // Minutes is obtained by dividing
+                // remaining total time with 60
+                $m = intval($totaltime / 60);
+                // Remaining value is seconds
+                $s = $totaltime - ($m * 60);
+                if ($s<10) {
+                    $s='0'.$s;
+                }
+                if ($m<10) {
+                    $m='0'.$m;
+                }
+                $tt=$h.':'.$m.':'.$s;
+                array_push($allmission,$tt);
+            }
 
 
-        $pdf = PDF::loadview('analytics.MG_pdf',compact('user','missions','page','time'));
+        $pdf = PDF::loadview('analytics.MG_pdf',compact('user','missions','page','time','allmission'));
         $pdf->setPaper('A4', 'landscape');
 
         return $pdf->download("file.pdf");
@@ -417,6 +530,12 @@ class AnalyticController extends Controller
 
                 // Remaining value is seconds
                 $s = $totaltime - ($m * 60);
+                if ($s<10) {
+                    $s='0'.$s;
+                }
+                if ($m<10) {
+                    $m='0'.$m;
+                }
                 $tt=$h.':'.$m.':'.$s;
                 // dd($tt);
             }
@@ -430,45 +549,80 @@ class AnalyticController extends Controller
     }
 
 
-    public function pdfC($s,$f,$c){
+    public function pdfC($start,$fini,$cola){
         $page='analytics';
         $user = Auth::user();
         $time = Carbon::now();
-
-        $page='analytics';
-        $user = Auth::user();
         $missions_list=Mission::get()->sort();
         $collabs=Collab::get()->sort();
 
+        $hours = Time::where('date_start','>=',$start)->where('date_finish','<=',$fini)->get()->groupby('mission_id');
+        // dd($hours);
+        $allmission=[];
+        foreach ($hours as $mission) {
+            $eachmission=[];
+            foreach ($mission as $miss) {
+            array_push($eachmission,$miss->elapsed_time);
+            }
+            $sum = strtotime('00:00:00');
+            $totaltime = 0;
+                foreach( $eachmission as $element ) {
+                    // Converting the time into seconds
+                    $timeinsec = strtotime($element) - $sum;
+
+                    // Sum the time with previous value
+                    $totaltime = $totaltime + $timeinsec;
+                }
+                $h = intval($totaltime / 3600);
+                $totaltime = $totaltime - ($h * 3600);
+                // Minutes is obtained by dividing
+                // remaining total time with 60
+                $m = intval($totaltime / 60);
+                // Remaining value is seconds
+                $s = $totaltime - ($m * 60);
+                if ($s<10) {
+                    $s='0'.$s;
+                }
+                if ($m<10) {
+                    $m='0'.$m;
+                }
+                $tt=$h.':'.$m.':'.$s;
+                array_push($allmission,$tt);
+            }
+            // dd($allmission);
+
             $missions = Time::join('missions', 'times.mission_id', '=', 'missions.id')
-            ->where('times.collab_id',$c)
-            ->where('missions.date_start','>=',$s)
-            ->where('missions.date_finish','<=',$f)
+            ->where('times.collab_id',$cola)
+            ->where('missions.date_start','>=',$start)
+            ->where('missions.date_finish','<=',$fini)
             ->select('missions.*')
             ->groupBy('mission_id')
             ->get(['missions.mission_name'])->sort();
 
+            $lecollab=Collab::where('id',$cola)->select('collab_name','collab_last_name')->get()->first();
 
 
-        $pdf = PDF::loadview('analytics.C_pdf',compact('user','missions','page','time'));
+
+        $pdf = PDF::loadview('analytics.C_pdf',compact('user','lecollab','allmission','tt','missions','page','time'));
         $pdf->setPaper('A4', 'landscape');
 
         return $pdf->download("file.pdf");
     }
-    public function pdfCD($s,$f,$c){
+    public function pdfCD($start,$fini,$col,$miss){
         $page='analytics';
         $user = Auth::user();
         $time = Carbon::now();
 
         $missions = Time::join('missions', 'times.mission_id', '=', 'missions.id')
         ->join('collabs','times.collab_id','=','collabs.id')
-        ->where('times.collab_id',$c)
-        ->where('missions.date_start','>=',$s)
-        ->where('missions.date_finish','<=',$f)
+        ->where('times.collab_id',$col)
+        ->where('times.mission_id',$miss)
+        ->where('missions.date_start','>=',$start)
+        ->where('missions.date_finish','<=',$fini)
         ->select('missions.*','times.id as time_id','times.elapsed_time')
         // ->groupBy('mission_id')
         ->get()->sort();
-
+        // dd($missions);
         $sum = strtotime('00:00:00');
 
         $totaltime = 0;
@@ -498,8 +652,13 @@ class AnalyticController extends Controller
 
         // Remaining value is seconds
         $s = $totaltime - ($m * 60);
+        if ($s<10) {
+            $s='0'.$s;
+        }
+        if ($m<10) {
+            $m='0'.$m;
+        }
         $tt=$h.':'.$m.':'.$s;
-
 
 
         $pdf = PDF::loadview('analytics.CD_pdf',compact('user','missions','page','time','tt'));

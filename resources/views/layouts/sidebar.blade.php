@@ -207,7 +207,7 @@
 
                 </ul>
             </li>
-
+            @if ($user->role == 'Admin')
             <li @if ($page == 'analytics') class="active-side" @endif>
                 <div class="iocn-link">
                     <a href="#">
@@ -220,17 +220,17 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">{{ __('Analytics') }}</a></li>
-                    @if ($user->role == 'Admin')
+
                         <li><a href="{{ route('analytic.MG') }}">{{ __('Analytic ALL Missions') }}</a></li>
                         <li><a href="{{ route('analytic.M') }}">{{ __('Analytic By Mission') }}</a></li>
                         <li><a href="{{ route('analytic.C') }}">{{ __('Analytic By Collaborator') }}</a></li>
                         <li><a href="{{ route('analytic.CD') }}">{{ __('Analytic By Collaborator Details') }}</a></li>
                         <li><a href="{{ route('analytic.SL') }}">{{ __('Analytic By Service Line') }}</a></li>
                         <li><a href="{{ route('analytic.G') }}">{{ __('Analytic By Grade') }}</a></li>
-                    @endif
 
-                </ul>
-            </li>
+                    </ul>
+                </li>
+                @endif
 
             <li >
                 <div class="iocn-link">

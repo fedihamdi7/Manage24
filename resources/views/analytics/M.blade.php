@@ -20,7 +20,7 @@
 
             <label for="">{{__('Start Date')}}</label>
             <input type="date" class="form-control @error('date_start') is-invalid @enderror" id="inputPhone"
-         name="date_start" value="{{''}}">
+         name="date_start" value="{{ request()->input('date_start') ?? '' }}">
         @error('date_start')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -30,7 +30,7 @@
         <div>
             <label for="">{{__('Finish Date')}}</label>
             <input type="date" class="form-control @error('date_finish') is-invalid @enderror" id="inputPhone"
-            name="date_finish" value="{{''}}">
+            name="date_finish" value="{{ request()->input('date_finish') ?? '' }}">
            @error('date_finish')
                <span class="invalid-feedback" role="alert">
                    <strong>{{ $message }}</strong>
@@ -42,7 +42,7 @@
             <select class="form-select" name="mission_id" aria-label="Default select example" style="margin-top: 16.5%;width: 290px; @if ( (app()->getLocale()) == "en" )  margin-top: 27%; width: 178px; @endif">
                 <option selected style="background-color: #e4e9f7;">{{__('Select Mission')}}</option>
                 @foreach ($missions_list as $m )
-                <option value=" {{$m->id}} ">{{$m->mission_name}}</option>
+                <option value="{{$m->id}}">{{$m->mission_name}}</option>
                 @endforeach
               </select>
             @error('mission_id')
@@ -60,7 +60,7 @@
 
     @if ($missions)
     <a name="" id="" style="background-color: #fb1e00;" class="btn btn-perso"
-    href="{{ route('pdf.M', ['s' => $s , 'f' => $f ,'m' => $m]) }}" role="button"><i class="fa fa-download"
+    href="{{ route('pdf.M', ['s' => $star , 'f' => $fini ,'m' => $misid]) }}" role="button"><i class="fa fa-download"
         aria-hidden="true">{{ __('Download') }}</i></a>
         @endif
     <div id="search_list" style="margin-top: 10%;">
@@ -80,7 +80,7 @@
                 @foreach ( $missions as $mission )
                 <tr>
                     <th>{{$mission->mission()->where('id',$mission->mission_id)->value('mission_name')}}</th>
-                    <td>{{$mission->collab()->where('id',$mission->collab_id)->value('collab_name')}}</td>
+                    <td>{{$mission->collab()->where('id',$mission->collab_id)->value('collab_name').' '.$mission->collab()->where('id',$mission->collab_id)->value('collab_last_name')}}</td>
                     <td>{{$mission->elapsed_time }}</td>
 
                 </tr>
@@ -119,8 +119,8 @@
         <caption class="cap-style">{{__('Result')}}</caption>
         <thead class="table-light">
 <tr>
-    <th>{{__('id')}}</th>
     <th>{{__('Mission')}}</th>
+    <th>{{__('Collaborator')}}</th>
     <th>{{__('Total Hours')}}</th>
 </tr>
         </thead>
