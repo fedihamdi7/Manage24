@@ -71,6 +71,9 @@
                 margin-left: 53px !important ;
                 @endif
             }
+            .bx-log-out{
+                left: 10.6% !important;
+            }
             }
 
     </style>
