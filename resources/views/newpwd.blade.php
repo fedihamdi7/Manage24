@@ -37,7 +37,7 @@
                     <form method="POST" action="{{ route('collab.confirmpassword') }}">
                         @csrf
 
-                        <input type="hidden" name="mail_token" id="" value="{{$token}}">
+                        {{-- <input type="hidden" name="mail_token" id="" value="{{$token}}"> --}}
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 

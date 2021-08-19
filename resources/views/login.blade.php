@@ -96,7 +96,7 @@
                 {{-- <a href="#!" class="forgot-password-link">Forgot password?</a>
                 <p class="login-card-footer-text">Don't have an account? <a href="#!" class="text-reset">Register here</a></p> --}}
                 <nav class="login-card-footer-nav">
-                  <a href="#!">{{__('Terms of use')}}</a> -
+                  <a href="{{ route('password.request') }}">{{__('Forgot Your Password?')}}</a> -
                   <a href="#!">{{__('Privacy Policy')}}</a>
                 </nav>
             </div>

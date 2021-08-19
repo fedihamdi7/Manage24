@@ -21,9 +21,11 @@ Route::get('/', function () {
     return view('login');
 })->name('/');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('home', 'HomeController@index')->name('home');
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
 Route::resource('collab', 'admin\CollabController');
 Route::resource('service', 'admin\ServiceController');
 Route::resource('client', 'admin\ClientController');
@@ -68,8 +70,11 @@ Route::get('pdf-grade','admin\GradeController@pdf')->name('grade.pdf');
 Route::get('pdf-profile','UserController@pdf')->name('profile.pdf');
 
 Route::get('lo', function () {
-return view('auth.login');
+    return view('auth.login');
 });
 
-Route::get('/create_pwd/collab/{token}','admin\CollabController@password')->name('collab.password');
+Route::get('/forgot','admin\CollabController@password')->name('collab.password');
 Route::post('/create_pwd/collab/confirm','admin\CollabController@Confirmpassword')->name('collab.confirmpassword');
+
+
+Auth::routes();

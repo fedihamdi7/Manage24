@@ -207,17 +207,19 @@ class CollabController extends Controller
 
     public function password($token)
     {
-        $collab = DB::table('collabs')
-        ->where('token',$token)
-        ->get();
+        // $collab = DB::table('collabs')
+        // ->where('token',$token)
+        // ->get();
         // dd(count($collab));
 
-        if (count($collab)>0) {
+        // if (count($collab)>0) {
+        //     return  view('newpwd',compact('token'));
+        // }
+        // else {
+        //     return redirect()->route('/')->with('wrongtoken','Wrong Token');
+        // }
             return  view('newpwd',compact('token'));
-        }
-        else {
-            return redirect()->route('/')->with('wrongtoken','Wrong Token');
-        }
+
     }
 
     public function Confirmpassword(Request $request)
