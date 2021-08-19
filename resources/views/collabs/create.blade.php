@@ -74,6 +74,15 @@
                 </span>
             @enderror
         </div>
+        <div class="col-12">
+            <label >{{ __('Password')}}</label>
+            <input type="password" class="form-control @error('collab_pwd') is-invalid @enderror" placeholder="{{ __('Password')}}" name="collab_pwd" value="{{''}}" >
+             @error('collab_pwd')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
         <div class="row">
             <div class="col">
                 <label >{{ __('Grade')}}</label>

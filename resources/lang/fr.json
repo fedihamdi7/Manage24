@@ -805,12 +805,13 @@
     "Fedi's Stage" : "Stage de Fedi",
     "Result" : "Résultat",
     "You Have Been Added As Collaborator" : "Vous avez été ajouté en tant que collaborateur",
-    "Click This Link To Set A Password And Start Collaborating" : "Cliquez sur ce lien pour définir un mot de passe et commencer à collaborer",
+    "Click This Link To Login" : "Cliquez sur ce lien pour vous connecter ",
     "Welcome To The Team" : "Bienvenue dans l'équipe",
     "Create Password" : "Créer un mot de passe",
     "link" : "lien",
-    "Account Created , Log In" : "Compte créé, connectez-vous"
-
+    "Account Created , Log In" : "Compte créé, connectez-vous",
+    "Your Email : " : " Votre Email : ",
+    "Your Password : " : "Votre mot de passe : "
 
 
 }

@@ -17,13 +17,12 @@ class AddCollab extends Mailable
      * @return void
      */
     public $collab;
-    
+
     public function __construct($data)
     {
-        //
-        // dd($data);
-        $this->collab = $data;
 
+        $this->collab = $data;
+        // dd($this->collab);
     }
 
     /**

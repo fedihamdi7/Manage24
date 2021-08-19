@@ -96,12 +96,22 @@ class CollabController extends Controller
             'collab_dateOut' => 'required',
             'collab_phone' => 'required|size:8',
             'collab_mail' => 'required|email',
+            'collab_pwd' => 'required',
             'grade_id' => 'required',
             'service_id' => 'required',
         ]);
 
         $data['token'] = Str::random(60);
 
+        DB::table('users')->insert(
+            [
+            'name' => $request->collab_name,
+            'email' => $request->collab_mail,
+            'password' => Hash::make($data['collab_pwd']),
+            'role' =>'Collaborator',
+            'phone'=>$request->collab_phone
+            ]
+        );
         $collab = new Collab();
         $collab->create($data);
         // dd($request->collab_mail);

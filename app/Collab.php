@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Collab extends Model
 {
     //
-    protected $guarded=[];
+    protected $guarded=['collab_pwd'];
 
     public function time()
     {
