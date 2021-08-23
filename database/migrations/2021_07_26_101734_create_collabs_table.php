@@ -14,7 +14,7 @@ class CreateCollabsTable extends Migration
     public function up()
     {
         Schema::create('collabs', function (Blueprint $table) {
-            $table->bigInteger('id')->unsigned();
+            $table->bigInteger('id')->unsigned()->unique();
             $table->foreign('id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             // $table->string('collab_name', 100);
             // $table->string('collab_last_name', 100);
