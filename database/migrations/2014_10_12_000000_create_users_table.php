@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('role')->default('Collaborator');
+            $table->string('role')->default('Admin');
             $table->date('birth')->nullable();
             $table->string('image')->default('default_profile_image.jpg');
             $table->string('phone')->nullable();
