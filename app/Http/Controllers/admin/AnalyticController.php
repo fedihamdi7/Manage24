@@ -50,7 +50,7 @@ class AnalyticController extends Controller
         ]);
 
         $missions=Mission::where('date_start','>=',$request->date_start)->where('date_finish','<=',$request->date_finish)->get();
-        $hours = Time::where('date_start','>=',$request->date_start)->where('date_finish','<=',$request->date_finish)->get()->groupby('mission_id');
+        $hours = Time::where('date','>=',$request->date_start)->where('date','<=',$request->date_finish)->get()->groupby('mission_id');
         // dd($hours);
 
         $allmission=[];
@@ -186,7 +186,8 @@ class AnalyticController extends Controller
         $page='analytics';
         $user = Auth::user();
         $missions_list=Mission::get()->sort();
-        $collabs=Collab::get()->sort();
+        $collabs = Collab::join('users','collabs.id','users.id')->where('users.role','Collaborator')->get()->sort();
+
         $missions=NULL;
 
 
@@ -198,7 +199,8 @@ class AnalyticController extends Controller
         $page='analytics';
         $user = Auth::user();
         $missions_list=Mission::get()->sort();
-        $collabs=Collab::get()->sort();
+        $collabs = Collab::join('users','collabs.id','users.id')->where('users.role','Collaborator')->get()->sort();
+
 
 
        $request->validate([
@@ -206,7 +208,7 @@ class AnalyticController extends Controller
             'date_finish' => 'required',
             'collab_id' => 'required|numeric'
         ]);
-        $hours = Time::where('date_start','>=',$request->date_start)->where('date_finish','<=',$request->date_finish)->get()->groupby('mission_id');
+        $hours = Time::where('date','>=',$request->date_start)->where('date','<=',$request->date_finish)->get()->groupby('mission_id');
         // dd($hours);
         $allmission=[];
         foreach ($hours as $mission) {
@@ -239,7 +241,24 @@ class AnalyticController extends Controller
                 $tt=$h.':'.$m.':'.$s;
                 array_push($allmission,$tt);
             }
-            // dd($allmission);
+            $sumSeconds = 0;
+            foreach($allmission as $time) {
+                $explodedTime = explode(':', $time);
+                $seconds = $explodedTime[0]*3600+$explodedTime[1]*60+$explodedTime[2];
+                $sumSeconds =$sumSeconds + $seconds;
+            }
+            $hours = floor($sumSeconds/3600);
+            $minutes = floor(($sumSeconds % 3600)/60);
+            $seconds = (($sumSeconds%3600)%60);
+
+            if ($seconds<10) {
+                $seconds='0'.$seconds;
+            }
+            if ($minutes<10) {
+                $minutes='0'.$minutes;
+            }
+            $tt = $hours.':'.$minutes.':'.$seconds;
+            // dd($tt);
 
             $missions = Time::join('missions', 'times.mission_id', '=', 'missions.id')
             ->where('times.collab_id',$request->collab_id)
@@ -249,7 +268,7 @@ class AnalyticController extends Controller
             ->groupBy('mission_id')
             ->get(['missions.mission_name'])->sort();
 
-            $lecollab=Collab::where('id',$request->collab_id)->select('collab_name','collab_last_name')->get()->first();
+            $lecollab=Collab::join('users','collabs.id','users.id')->where('users.id',$request->collab_id)->select('name')->get()->first();
             // dd($lecollab);
             $start = $request->date_start;
             $fini=$request->date_finish;
@@ -266,7 +285,7 @@ class AnalyticController extends Controller
         $page='analytics';
         $user = Auth::user();
         $missions_list=Mission::get()->sort();
-        $collabs=Collab::get()->sort();
+        $collabs = Collab::join('users','collabs.id','users.id')->where('users.role','Collaborator')->get()->sort();
         $missions=NULL;
         $tt=null;
 
@@ -279,7 +298,8 @@ class AnalyticController extends Controller
         $page='analytics';
         $user = Auth::user();
         $missions_list=Mission::get()->sort();
-        $collabs=Collab::get()->sort();
+        $collabs = Collab::join('users','collabs.id','users.id')->where('users.role','Collaborator')->get()->sort();
+
 
 
        $request->validate([
@@ -291,11 +311,12 @@ class AnalyticController extends Controller
 
             $missions = Time::join('missions', 'times.mission_id', '=', 'missions.id')
             ->join('collabs','times.collab_id','=','collabs.id')
+            ->join('users','users.id','=','collabs.id')
             ->where('times.collab_id',$request->collab_id)
             ->where('times.mission_id',$request->mission_id)
             ->where('missions.date_start','>=',$request->date_start)
             ->where('missions.date_finish','<=',$request->date_finish)
-            ->select('times.*','times.id as time_id','times.elapsed_time','missions.mission_name')
+            ->select('times.*','times.id as time_id','times.elapsed_time','missions.mission_name','users.name')
             // ->groupBy('mission_id')
             ->get()->sort();
             // dd($missions);
@@ -415,11 +436,12 @@ class AnalyticController extends Controller
         $user = Auth::user();
         $grade_list=Grade::get()->sort();
 
-       $request->validate([
-            'grade_id' => 'required|numeric'
-        ]);
+        $request->validate([
+                'grade_id' => 'required|numeric'
+            ]);
 
         $missions = Collab::join('grades', 'collabs.grade_id', '=', 'grades.id')
+        ->join('users','collabs.id','users.id')
         ->where('collabs.grade_id',$request->grade_id)
         ->get()->sort();
         // dd($missions);
@@ -442,7 +464,7 @@ class AnalyticController extends Controller
         $time = Carbon::now();
 
         $missions=Mission::where('date_start','>=',$s)->where('date_finish','<=',$f)->get();
-        $hours = Time::where('date_start','>=',$s)->where('date_finish','<=',$f)->get()->groupby('mission_id');
+        $hours = Time::where('date','>=',$s)->where('date','<=',$f)->get()->groupby('mission_id');
         // dd($hours);
 
         $allmission=[];
@@ -552,11 +574,12 @@ class AnalyticController extends Controller
     public function pdfC($start,$fini,$cola){
         $page='analytics';
         $user = Auth::user();
-        $time = Carbon::now();
+        $time_now = Carbon::now();
         $missions_list=Mission::get()->sort();
-        $collabs=Collab::get()->sort();
+        $collabs = Collab::join('users','collabs.id','users.id')->where('users.role','Collaborator')->get()->sort();
 
-        $hours = Time::where('date_start','>=',$start)->where('date_finish','<=',$fini)->get()->groupby('mission_id');
+
+        $hours = Time::where('date','>=',$start)->where('date','<=',$fini)->get()->groupby('mission_id');
         // dd($hours);
         $allmission=[];
         foreach ($hours as $mission) {
@@ -589,7 +612,23 @@ class AnalyticController extends Controller
                 $tt=$h.':'.$m.':'.$s;
                 array_push($allmission,$tt);
             }
-            // dd($allmission);
+            $sumSeconds = 0;
+            foreach($allmission as $time) {
+                $explodedTime = explode(':', $time);
+                $seconds = $explodedTime[0]*3600+$explodedTime[1]*60+$explodedTime[2];
+                $sumSeconds =$sumSeconds + $seconds;
+            }
+            $hours = floor($sumSeconds/3600);
+            $minutes = floor(($sumSeconds % 3600)/60);
+            $seconds = (($sumSeconds%3600)%60);
+
+            if ($seconds<10) {
+                $seconds='0'.$seconds;
+            }
+            if ($minutes<10) {
+                $minutes='0'.$minutes;
+            }
+            $tt = $hours.':'.$minutes.':'.$seconds;
 
             $missions = Time::join('missions', 'times.mission_id', '=', 'missions.id')
             ->where('times.collab_id',$cola)
@@ -599,11 +638,11 @@ class AnalyticController extends Controller
             ->groupBy('mission_id')
             ->get(['missions.mission_name'])->sort();
 
-            $lecollab=Collab::where('id',$cola)->select('collab_name','collab_last_name')->get()->first();
+            $lecollab=Collab::join('users','collabs.id','users.id')->where('users.id',$cola)->select('name')->get()->first();
 
 
 
-        $pdf = PDF::loadview('analytics.C_pdf',compact('user','lecollab','allmission','tt','missions','page','time'));
+        $pdf = PDF::loadview('analytics.C_pdf',compact('user','lecollab','allmission','tt','missions','page','time_now'));
         $pdf->setPaper('A4', 'landscape');
 
         return $pdf->download("file.pdf");
@@ -614,15 +653,14 @@ class AnalyticController extends Controller
         $time = Carbon::now();
 
         $missions = Time::join('missions', 'times.mission_id', '=', 'missions.id')
-        ->join('collabs','times.collab_id','=','collabs.id')
-        ->where('times.collab_id',$col)
-        ->where('times.mission_id',$miss)
-        ->where('missions.date_start','>=',$start)
-        ->where('missions.date_finish','<=',$fini)
-        ->select('missions.*','times.id as time_id','times.elapsed_time')
-        // ->groupBy('mission_id')
-        ->get()->sort();
-        // dd($missions);
+            ->join('collabs','times.collab_id','=','collabs.id')
+            ->join('users','users.id','=','collabs.id')
+            ->where('times.collab_id',$col)
+            ->where('times.mission_id',$miss)
+            ->where('missions.date_start','>=',$start)
+            ->where('missions.date_finish','<=',$fini)
+            ->select('times.*','times.id as time_id','times.elapsed_time','missions.mission_name','users.name')
+            ->get()->sort();
         $sum = strtotime('00:00:00');
 
         $totaltime = 0;

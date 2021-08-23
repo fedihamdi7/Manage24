@@ -42,7 +42,7 @@
             <select class="form-select CD" name="collab_id" aria-label="Default select example" style="margin-top: 30.2%;width: 181%; @if ( (app()->getLocale()) == "en" )  margin-top: 29%;width: 129%; @endif">
                 <option selected style="background-color: #e4e9f7;">{{__('Select Collaborator')}}</option>
                 @foreach ($collabs as $collab )
-                <option value=" {{$collab->id}} ">{{$collab->collab_name}} {{$collab->collab_last_name}}</option>
+                <option value=" {{$collab->id}} ">{{$collab->name}}</option>
                 @endforeach
               </select>
             @error('collab_id')
@@ -85,9 +85,8 @@
             <tr>
                 <th>{{__('Code Mission')}}</th>
                 <th>{{__('Mission')}}</th>
-                {{-- <th>{{__('Total Hours')}}</th> --}}
-                <th>{{__('Start Date')}}</th>
-                <th>{{__('Finish Date')}}</th>
+                <th>{{__('Collaborator')}}</th>
+                <th>{{__('Date')}}</th>
                 <th>{{__('Elapsed Time')}}</th>
             </tr>
         </thead>
@@ -97,11 +96,8 @@
                 <tr>
                     <th>{{$mission->mission_id}}</th>
                     <td>{{__($mission->mission_name) }}</td>
-                    {{-- <td> {{
-                        $totalSecondsDiff = (abs(strtotime($mission->date_start)- (strtotime($mission->date_finish))))/60/60 . __(' Hours').' / '.(abs(strtotime($mission->date_start)- (strtotime($mission->date_finish))))/60/60/24 .__(' Days')
-                        }}</td> --}}
-                    <td>{{$mission->date_start }}</td>
-                    <td>{{$mission->date_finish }}</td>
+                    <td>{{$mission->name}}</td>
+                    <td>{{$mission->date }}</td>
                     <td>{{$mission->elapsed_time }}</td>
 
                 </tr>

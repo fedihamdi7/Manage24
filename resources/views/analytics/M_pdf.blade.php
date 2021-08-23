@@ -67,7 +67,7 @@
                 @foreach ( $missions as $mission )
                 <tr>
                     <th>{{$mission->mission()->where('id',$mission->mission_id)->value('mission_name')}}</th>
-                    <td>{{$mission->collab()->where('id',$mission->collab_id)->value('collab_name').' '.$mission->collab()->where('id',$mission->collab_id)->value('collab_last_name')}}</td>
+                    <td>{{DB::table('users')->where('id',$mission->collab_id)->value('name')}} </td>
                     <td>{{$mission->elapsed_time }}</td>
 
                 </tr>

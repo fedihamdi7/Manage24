@@ -109,7 +109,6 @@ class UserController extends Controller
             'role' => $request->role,
             'phone' => $request->phone,
             'adresse1' => $request->adresse1,
-            'adresse2' => $request->adresse2,
             'city' => $request->city,
             'state' => $request->state,
 

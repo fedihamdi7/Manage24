@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Collab extends Model
 {
     //
-    protected $guarded=['collab_pwd'];
+
 
     public function time()
     {
@@ -21,5 +21,15 @@ class Collab extends Model
     public function service()
     {
         return $this->belongsTo('App\Service');
+    }
+
+    public function user()
+    {
+        return $this->hasOne('App\User');
+    }
+
+    public function client()
+    {
+        return $this->belongsTo('App\Client');
     }
 }

@@ -18,11 +18,12 @@ class CreateClientsTable extends Migration
             $table->string('social_reason');
             $table->string('activity');
             $table->string('adresse1');
-            $table->string('adresse2')->nullable();
+            // $table->string('adresse2')->nullable();
             $table->string('phone')->nullable();
             $table->string('fax')->nullable();
             $table->string('email')->nullable();
-            $table->string('contact_person')->nullable();
+            $table->bigInteger('contact_person')->unsigned();
+            $table->foreign('contact_person')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('website')->nullable();
             $table->enum('type', ['local', 'foreign'])->nullable();
             $table->timestamps();

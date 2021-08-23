@@ -22,7 +22,7 @@
                 <div class="col">
 
                     <select class="form-select" name="mission_id" aria-label="Default select example">
-                        <option selected style="background-color: #e4e9f7;">{{__('Select Mission')}}</option>
+                        <option selected disabled style="background-color: #e4e9f7;">{{__('Select Mission')}}</option>
                         @foreach ($missions as $mission )
                         <option value=" {{$mission->id}} ">{{$mission->mission_name}}</option>
                         @endforeach
@@ -41,11 +41,27 @@
                         </span>
                     @enderror --}}
                 </div>
+
+                @if (Auth::user()->role == "Collaborator")
                 <div class="col">
                     <select class="form-select" name="collab_id" aria-label="Default select example">
-                        <option selected style="background-color: #e4e9f7;">{{__('Select Collaborator')}}</option>
+                        <option selected style="background-color: #e4e9f7;" value="{{Auth::user()->id}} ">{{Auth::user()->name}}</option>
+                        {{-- @foreach ($collabs as $collab )
+                        <option value="{{$collab->id}} ">{{$collab->name}}</option>
+                        @endforeach --}}
+                      </select>
+                    @error('collab_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                @else
+                <div class="col">
+                    <select class="form-select" name="collab_id" aria-label="Default select example">
+                        <option selected style="background-color: #e4e9f7;" disabled>{{__('Select Collaborator')}}</option>
                         @foreach ($collabs as $collab )
-                        <option value=" {{$collab->id}} ">{{$collab->collab_name}} {{$collab->collab_last_name}}</option>
+                        <option value="{{$collab->id}} ">{{$collab->name}}</option>
                         @endforeach
                       </select>
                     @error('collab_id')
@@ -54,6 +70,7 @@
                         </span>
                     @enderror
                 </div>
+                @endif
                 {{-- <div class="col">
                     <input type="text" class="form-control @error('collab_id') is-invalid @enderror"
                         placeholder="Collaborator id" aria-label="Last name" name="collab_id"
@@ -67,17 +84,17 @@
             </div>
             <hr>
             <div class="row">
-                <div class="col">
-                    <label for="date">{{__('Date Start')}}</label>
-                    <input type="date" id="#date" class="form-control @error('date_start') is-invalid @enderror"
-                        placeholder="Date Start" aria-label="Date In" name="date_start" value="{{  old('date_start') }}">
-                    @error('date_start')
+                <div class="col-6">
+                    <label for="date">{{__('Date')}}</label>
+                    <input type="date" id="#date" class="form-control @error('date') is-invalid @enderror"
+                        placeholder="Date Start" aria-label="Date In" name="date" value="{{  old('date') }}">
+                    @error('date')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
                 </div>
-                <div class="col">
+                {{-- <div class="col">
                     <label for="date">{{__('Date Finish')}}</label>
                     <input type="date" id="#date" class="form-control @error('date_finish') is-invalid @enderror"
                         placeholder="Date Finish" aria-label="Date In" name="date_finish" value="{{  old('date_finish') }}">
@@ -86,7 +103,7 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                </div>
+                </div> --}}
             </div>
             <hr>
             <div class="row">

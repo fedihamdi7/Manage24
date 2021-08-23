@@ -53,15 +53,15 @@
     {{-- <img src=" {{asset('images/logo.png')}} " alt=""> --}}
     <img src="images/logo.png" alt="">
 
-    <table class="table caption-top">
+    <table class="table caption-top" style="text-align: center;">
         <caption class="cap-style">{{ __('Collaborators List')}}</caption>
         <thead class="table-light">
           <tr>
             <th scope="col">#</th>
             <th scope="col">{{ __('Name')}}</th>
-            <th scope="col">{{ __('Last Name')}}</th>
+            {{-- <th scope="col">{{ __('Last Name')}}</th> --}}
             <th scope="col">{{ __('Date In')}}</th>
-            <th scope="col">{{ __('Date Out')}}</th>
+            <th scope="col" style="width: 130px;">{{ __('Date Out')}}</th>
             <th scope="col">{{ __('Phone')}}</th>
             <th scope="col">{{ __('Email')}}</th>
             <th scope="col">{{ __('Grade')}}</th>
@@ -72,15 +72,15 @@
             @foreach ( $collabs as $collab )
                 <tr>
                     <th scope="row">{{$collab->id}}</th>
-                    <td>{{$collab->collab_name ?? 'N/A'}}</td>
-                    <td>{{$collab->collab_last_name ?? 'N/A'}}</td>
-                    <td>{{$collab->collab_dateIn ?? 'N/A'}}</td>
-                    <td>{{$collab->collab_dateOut ?? 'N/A'}}</td>
-                    <td>{{$collab->collab_phone ?? 'N/A'}}</td>
-                    <td>{{$collab->collab_mail ?? 'N/A'}}</td>
-                    {{-- <td>{{$collab->grade_id ?? 'N/A'}}</td> --}}
-                    <td>{{$collab->grade()->where('id', $collab->grade_id)->value('grade') ?? 'N/A'}}</td>
-                    <td>{{$collab->service()->where('id', $collab->service_id)->value('service_ligne') ?? 'N/A'}}</td>
+                    <td>{{$collab->name ?? __('N/A')}}</td>
+                    {{-- <td>{{$collab->collab_last_name ?? __('N/A')}}</td> --}}
+                    <td>{{$collab->collab_dateIn ?? __('N/A')}}</td>
+                    <td>{{$collab->collab_dateOut ?? __('N/A')}}</td>
+                    <td>{{$collab->phone ?? __('N/A')}}</td>
+                    <td>{{$collab->email ?? __('N/A')}}</td>
+                    {{-- <td>{{$collab->grade_id ?? __('N/A')}}</td> --}}
+                    <td>{{__($collab->grade()->where('id', $collab->grade_id)->value('grade')) ?? __('N/A')}}</td>
+                    <td>{{$collab->service()->where('id', $collab->service_id)->value('service_ligne') ?? __('N/A')}}</td>
 
                 </tr>
             @endforeach

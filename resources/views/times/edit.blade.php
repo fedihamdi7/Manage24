@@ -28,50 +28,66 @@
                     <option value=" {{$mission->id}} ">{{$mission->id}} - {{$mission->mission_name}}</option>
                     @endforeach
                   </select>
-                {{-- <input type="text" class="form-control @error('mission_id') is-invalid @enderror"
-                    placeholder="Mission id" aria-label="First name" name="mission_id"
-                    value="{{  old('mission_id') ?? $time->mission_id }}"> --}}
                 @error('mission_id')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
             </div>
-            <div class="col">
+            @if (Auth::user()->role == "Collaborator")
+                <div class="col">
+                    <label for="" style="margin-bottom: 2%">{{__('Collaborator')}}</label>
+                    <select class="form-select" name="collab_id" aria-label="Default select example">
+                        <option selected style="background-color: #e4e9f7;" value="{{Auth::user()->id}} ">{{Auth::user()->name}}</option>
+                        {{-- @foreach ($collabs as $collab )
+                        <option value="{{$collab->id}} ">{{$collab->name}}</option>
+                        @endforeach --}}
+                      </select>
+                    @error('collab_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                @else
+                <div class="col">
+                    <label for="" style="margin-bottom: 2%">{{__('Collaborator')}}</label>
+                    <select class="form-select" name="collab_id" aria-label="Default select example">
+                        <option selected value=" {{$time->collab_id}} ">  {{$current_collab_name }} </option>
+                        @foreach ($collabs as $collab )
+                        <option value="{{$collab->id}} ">{{$collab->name}}</option>
+                        @endforeach
+                      </select>
+                    @error('collab_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                @endif
+
+            {{-- <div class="col">
                 <label for="" style="margin-bottom: 2%">{{__('Collaborator')}}</label>
                 <select class="form-select" name="collab_id" aria-label="Default select example">
-                    <option selected value=" {{$time->collab_id}} ">  {{$current_collab_name }} {{$current_collab_last_name}} </option>
+                    <option selected value=" {{$time->collab_id}} ">  {{$current_collab_name }} </option>
                     @foreach ($collabs as $collab )
-                    <option value=" {{$collab->id}} ">{{$collab->id}} - {{$collab->collab_name}} {{$collab->collab_last_name}}</option>
+                    <option value=" {{$collab->id}} ">{{$collab->id}} - {{$collab->name}}</option>
                     @endforeach
                   </select>
-                {{-- <input type="text" class="form-control @error('collab_id') is-invalid @enderror"
-                    placeholder="Collaborator id" aria-label="Last name" name="collab_id"
-                    value="{{  old('collab_id') ?? $time->collab_id }}"> --}}
                 @error('collab_id')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
-            </div>
+            </div> --}}
         </div>
         <hr>
         <div class="row">
-            <div class="col">
-                <label for="date">{{__('Start Date')}}</label>
-                <input type="date" id="#date" class="form-control @error('date_start') is-invalid @enderror"
-                    placeholder="Date Start" aria-label="Date In" name="date_start" value="{{  old('date_start') ?? $time->date_start }}">
-                @error('date_start')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-            <div class="col">
-                <label for="date">{{__('Finish Date')}}</label>
-                <input type="date" id="#date" class="form-control @error('date_finish') is-invalid @enderror"
-                    placeholder="Date Finish" aria-label="Date In" name="date_finish" value="{{  old('date_finish') ?? $time->date_finish }}">
-                @error('date_finish')
+            <div class="col-6">
+                <label for="date">{{__('Date')}}</label>
+                <input type="date" id="#date" class="form-control @error('date') is-invalid @enderror"
+                    placeholder="Date Start" aria-label="Date In" name="date" value="{{  old('date') ?? $time->date}}">
+                @error('date')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>

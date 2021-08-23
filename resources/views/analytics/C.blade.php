@@ -42,7 +42,7 @@
             <select class="form-select" name="collab_id" aria-label="Default select example" style="margin-top: 16%;width: 299px; @if ( (app()->getLocale()) == "en" )  margin-top: 22%; width: 214px; @endif">
                 <option selected style="background-color: #e4e9f7;">{{__('Select Collaborator')}}</option>
                 @foreach ($collabs as $collab )
-                <option value=" {{$collab->id}} ">{{$collab->collab_name}} {{$collab->collab_last_name}}</option>
+                <option value=" {{$collab->id}} ">{{$collab->name}}</option>
                 @endforeach
               </select>
             @error('collab_id')
@@ -84,7 +84,7 @@
                         <tr>
                             <th>{{ $mission->id }}</th>
                             <td>{{ __($mission->mission_name) }}</td>
-                            <td>{{ $lecollab->collab_name .' '. $lecollab->collab_last_name}}</td>
+                            <td>{{ $lecollab->name}}</td>
                             <td>{{$mission->client()->where('id',$mission->client_id)->value('social_reason') }}</td>
 
                             <td>
@@ -95,33 +95,16 @@
                                     {{__('N/A')}}
                                 @endif
                             </td>
-                            {{-- <td>
-                                {{ $allmission[$key] . __(' Hours') ?? ' ' }}
-                            </td> --}}
                         </tr>
 
                     @endforeach
-                {{-- <tr>
-                    <th>{{__('Client')}}</th>
-                    <td>{{$missions->client()->where('id', $missions->client_id)->value('social_reason') ?? 'N/A'}}</td>
-                </tr>
-                <tr>
-                    <th>{{__('Client ID')}}</th>
-                    <td>{{$missions->client()->where('id', $missions->client_id)->value('id') ?? 'N/A'}}</td>
-                </tr>
-                <tr>
-                    <th>{{__('Start Date')}}</th>
-                    <td>{{$missions->date_start ?? __('N/A')}}</td>
-                </tr>
-                <tr>
-                    <th>{{__('Finish Date')}}</th>
-                    <td>{{$missions->date_finish ?? __('N/A')}}</td>
-                </tr>
-                <tr>
-                    <th>{{__('Year')}}</th>
-                    <td>{{$missions->year ?? __('N/A')}}</td>
-                </tr> --}}
-
+                    <tr>
+                        <th></th>
+                        <td></td>
+                        <td></td>
+                        <td> <span style="padding-left: 45% ; font-weight: bold">{{ __('Total') }}</span></td>
+                        <td>{{$tt . __(' Hours')}}</td>
+                    </tr>
         </tbody>
       </table>
     @else

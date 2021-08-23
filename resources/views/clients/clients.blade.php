@@ -32,7 +32,7 @@
             <th scope="col">#</th>
             <th scope="col">{{__('Social Reason')}}</th>
             <th scope="col">{{__('Activity')}}</th>
-            <th scope="col">{{__('Adresse 1')}}</th>
+            <th scope="col">{{__('Adresse')}}</th>
             <th scope="col">{{__('Phone')}}</th>
             <th scope="col">{{__('Email')}}</th>
             <th scope="col">{{__('Contact Person')}}</th>
@@ -52,7 +52,8 @@
                     <td>{{$client->adresse1 ?? 'N/A'}}</td>
                     <td>{{$client->phone ?? 'N/A'}}</td>
                     <td>{{$client->email ?? 'N/A'}}</td>
-                    <td>{{$client->contact_person ?? 'N/A'}}</td>
+                    <td>{{$client->user()->where('id',$client->user_id)->value('name') ?? 'N/A'}}</td>
+                    {{-- <td>{{$client->contact_person ?? 'N/A'}}</td> --}}
                     <td>{{$client->website ?? 'N/A'}}</td>
                     <td>{{$client->type ?? 'N/A'}}</td>
                     @if ($user->role == "Admin")

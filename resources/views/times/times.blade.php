@@ -33,8 +33,8 @@
             <th scope="col">#</th>
             <th scope="col">{{__('Mission')}}</th>
             <th scope="col">{{__('Collaborator')}}</th>
-            <th scope="col">{{__('Start Date')}}</th>
-            <th scope="col">{{__('Finish Date')}}</th>
+            <th scope="col">{{__('Date')}}</th>
+            {{-- <th scope="col">{{__('Finish Date')}}</th> --}}
             <th scope="col">{{__('Start Time')}}</th>
             <th scope="col">{{__('Finish Time')}}</th>
             <th scope="col">{{__('Elapsed Time')}}</th>
@@ -49,10 +49,9 @@
                     <th scope="row">{{$time->id}}</th>
                     {{-- <td>{{$time->mission_id ?? 'N/A'}}</td> --}}
                     <td>{{$time->mission()->where('id', $time->mission_id)->value('mission_name') ?? 'N/A'}}</td>
-                    <td>{{$time->collab()->where('id', $time->collab_id)->value('collab_name') ?? 'N/A'}}</td>
-                    {{-- <td>{{$time->collab_id ?? 'N/A'}}</td> --}}
-                    <td>{{$time->date_start ?? 'N/A'}}</td>
-                    <td>{{$time->date_finish ?? 'N/A'}}</td>
+                    {{-- <td>{{$time->collab()->where('id', $time->collab_id)->user()->where('id',$time->collab_id)->value('name') ?? 'N/A'}}</td> --}}
+                    <td>{{DB::table('users')->where('id',$time->collab_id)->value('name') ?? 'N/A'}}</td>
+                    <td>{{$time->date ?? 'N/A'}}</td>
                     <td>{{$time->start_time ?? 'N/A'}}</td>
                     <td>{{$time->finish_time ?? 'N/A'}}</td>
                     <td>{{$time->elapsed_time ?? 'N/A'}}</td>

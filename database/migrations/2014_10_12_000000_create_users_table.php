@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('image')->default('default_profile_image.jpg');
             $table->string('phone')->nullable();
             $table->string('adresse1')->nullable();
-            $table->string('adresse2')->nullable();
+            // $table->string('adresse2')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
 

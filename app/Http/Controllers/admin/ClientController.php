@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\admin;
 
 use App\Client;
+use App\Collab;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -28,6 +30,7 @@ class ClientController extends Controller
         $page='client';
         $user = Auth::user();
         $clients = Client::get()->sort();
+        // dd($clients->user()->where('id',$clients->contact_person));
 
         return view('clients.clients',compact('user','clients','page'));
     }
@@ -52,7 +55,8 @@ class ClientController extends Controller
     {
         $page='client';
         $user = Auth::user();
-        return view('clients.create',compact('user','page'));
+        $collabs = Collab::join('users','collabs.id','users.id')->get()->sort();
+        return view('clients.create',compact('user','page','collabs'));
     }
 
     /**
@@ -69,8 +73,9 @@ class ClientController extends Controller
             'activity' => 'required',
             'adresse1' => 'required',
             'phone' => 'required|size:8',
+            'fax' => 'nullable|size:8',
             'email' => 'email',
-            'contact_person' => 'required',
+            'user_id' => 'required',
             'website' => 'required',
             'type' => 'required',
         ]);
@@ -102,7 +107,9 @@ class ClientController extends Controller
         $page='client';
         $user = Auth::user();
         $client = client::find($client->id);
-        return view('clients.edit',compact('user','client','page'));
+        $collabs=User::where('role','Collaborator')->get()->sort();
+        $current_collab = $client->user()->where('id',$client->user_id)->get()->first();
+        return view('clients.edit',compact('user','client','page','current_collab','collabs'));
     }
 
     /**
@@ -114,13 +121,15 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
+
         $data = $request->validate([
             'social_reason' => 'required',
             'activity' => 'required',
             'adresse1' => 'required',
             'phone' => 'required|size:8',
+            'fax' => 'nullable|size:8',
             'email' => 'email',
-            'contact_person' => 'required',
+            'user_id' => 'required|numeric',
             'website' => 'required',
             'type' => 'required',
         ]);
@@ -131,11 +140,10 @@ class ClientController extends Controller
             'social_reason' => $request->social_reason,
             'activity' => $request->activity,
             'adresse1' => $request->adresse1,
-            'adresse2' => $request->adresse2,
             'phone' => $request->phone,
             'fax' => $request->fax,
             'email' => $request->email,
-            'contact_person' => $request->contact_person,
+            'user_id' => $request->user_id,
             'website' => $request->website,
             'type' => $request->type,
 
