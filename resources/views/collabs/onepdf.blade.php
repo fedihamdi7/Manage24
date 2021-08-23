@@ -10,6 +10,7 @@
           font-family: Poppins, Helvetica, sans-serif;
           border-collapse: collapse;
           width: 100%;
+          text-align: center;
         }
 
         table td, table th {
@@ -35,7 +36,7 @@
         table{
             margin-top: 3%;
             margin-left: 10%;
-            width: 110%;
+            width: 103%;
         }
         caption{
             margin-bottom: 1%;
@@ -47,41 +48,59 @@
     right: 5%;
     font-size: 1.2em;
         }
+        table tbody tr th{
+            text-align: center;
+        }
         </style>
 </head>
 <body>
     {{-- <img src=" {{asset('images/logo.png')}} " alt=""> --}}
-    <img src="C:\Users\Legion 5\Desktop\Stage\Manage24\public\images\logo.png" alt="">
+    <img src="images/logo.png" alt="">
 
     <table class="table caption-top">
-        <caption class="cap-style"><span style="font-weight: bold">{{$collabs->collab_name}} {{$collabs->collab_last_name}}</span></caption>
+        <caption class="cap-style">{{__('Profile')}}</caption>
         <thead class="table-light">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">{{ __('Name')}}</th>
-            <th scope="col">{{ __('Last Name')}}</th>
-            <th scope="col">{{ __('Date In')}}</th>
-            <th scope="col">{{ __('Date Out')}}</th>
-            <th scope="col">{{ __('Phone')}}</th>
-            <th scope="col">{{ __('Email')}}</th>
-            <th scope="col">{{ __('Grade')}}</th>
-            <th scope="col">{{ __('Service')}}</th>
 
-          </tr>
         </thead>
         <tbody>
+
                 <tr>
-                    <th scope="row">{{$collab->id}}</th>
-                    <td>{{$collab->collab_name ?? 'N/A'}}</td>
-                    <td>{{$collab->collab_last_name ?? 'N/A'}}</td>
-                    <td>{{$collab->collab_dateIn ?? 'N/A'}}</td>
-                    <td>{{$collab->collab_dateOut ?? 'N/A'}}</td>
-                    <td>{{$collab->collab_phone ?? 'N/A'}}</td>
-                    <td>{{$collab->collab_mail ?? 'N/A'}}</td>
-                    {{-- <td>{{$collab->grade_id ?? 'N/A'}}</td> --}}
-                    <td>{{$collab->grade()->where('id', $collab->grade_id)->value('grade') ?? 'N/A'}}</td>
-                    <td>{{$collab->service()->where('id', $collab->service_id)->value('service_ligne') ?? 'N/A'}}</td>
+                    <th>{{__('Profile Picture')}}</th>
+                    <td> <img width="150px" src="storage/images/profileImg/{{ $collabs->image }}" alt=""> </td>
                 </tr>
+                <tr>
+                    <th>{{__('Full Name')}}</th>
+                    <td>{{$collabs->name }}</td>
+                </tr>
+                <tr>
+                    <th>{{__('Email')}}</th>
+                    <td>{{$collabs->email }}</td>
+                </tr>
+                <tr>
+                    <th>{{__('Role')}}</th>
+                    <td>{{__($collabs->role) }}</td>
+                </tr>
+                <tr>
+                    <th>{{__('Date Of Birth')}}</th>
+                    <td>{{$collabs->birth ?? __('N/A')}}</td>
+                </tr>
+                <tr>
+                    <th>{{__('Phone Number')}}</th>
+                    <td>{{$collabs->phone ?? __('N/A')}}</td>
+                </tr>
+                <tr>
+                    <th>{{__('Adresse 1')}}</th>
+                    <td>{{$collabs->adresse1 ?? __('N/A')}}</td>
+                </tr>
+                <tr>
+                    <th>{{__('City')}}</th>
+                    <td>{{$collabs->city ?? __('N/A')}}</td>
+                </tr>
+                <tr>
+                    <th>{{__('State')}}</th>
+                    <td>{{$collabs->state ?? __('N/A')}}</td>
+                </tr>
+
         </tbody>
       </table>
 

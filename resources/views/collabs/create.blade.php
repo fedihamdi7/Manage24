@@ -26,7 +26,7 @@
                 </span>
             @enderror
             </div>
-            <div class="col">
+            {{-- <div class="col">
                 <label >{{ __('Last Name')}}</label>
             <input type="text" class="form-control @error('collab_last_name') is-invalid @enderror" value="{{old('collab_last_name') ?? ''}}" placeholder="{{ __('Last Name')}}" aria-label="Last name" name="collab_last_name">
              @error('collab_last_name')
@@ -34,7 +34,7 @@
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
-            </div>
+            </div> --}}
         </div>
         <div class="row">
             <div class="col">
@@ -106,7 +106,8 @@
                     @foreach ($services as $service )
                     <option value=" {{$service->id}} ">{{$service->id}} - {{$service->service_ligne}}</option>
                     @endforeach
-                  </select>                @error('service_id')
+                  </select>
+                   @error('service_id')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>

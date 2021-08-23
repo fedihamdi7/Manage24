@@ -16,19 +16,19 @@
         <form method="POST" action="{{ route('collab.update',['collab'=>$collabs])}}">
             @csrf
             @method('PUT')
-        <div class="title-edit"> {{__('Edit')}} <span> {{$collabs->collab_name}} </span> </div>
+        <div class="title-edit"> {{__('Edit')}} <span> {{$collabs->name}} </span> </div>
             <div class="row">
                 <div class="col">
                     <label >{{ __('Name')}}</label>
                 <input type="hidden"  value="{{$collabs->id}}"  name="id">
-                <input type="text" class="form-control @error('collab_name') is-invalid @enderror" value="{{$collabs->collab_name}}" placeholder="{{ __('Name')}}" aria-label="First name" name="collab_name">
+                <input type="text" class="form-control @error('collab_name') is-invalid @enderror" value="{{$collabs->name}}" placeholder="{{ __('Name')}}" aria-label="First name" name="collab_name">
                  @error('collab_name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
                 </div>
-                <div class="col">
+                {{-- <div class="col">
                     <label >{{ __('Last Name')}}</label>
                 <input type="text" class="form-control @error('collab_last_name') is-invalid @enderror" value="{{$collabs->collab_last_name}}" placeholder="{{ __('Last Name')}}" aria-label="Last name" name="collab_last_name">
                  @error('collab_last_name')
@@ -36,7 +36,7 @@
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
-                </div>
+                </div> --}}
             </div>
             <div class="row">
                 <div class="col">
@@ -60,7 +60,7 @@
             </div>
             <div class="col-12">
                 <label >{{ __('Phone')}}</label>
-                <input type="text" class="form-control @error('collab_phone') is-invalid @enderror" id="inputPhone" placeholder="{{ __('Phone')}}" name="collab_phone" value="{{$collabs->collab_phone}} ">
+                <input type="text" class="form-control @error('collab_phone') is-invalid @enderror" id="inputPhone" placeholder="{{ __('Phone')}}" name="collab_phone" value="{{$collabs->phone}} ">
                  @error('collab_phone')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -69,7 +69,7 @@
             </div>
             <div class="col-12">
                 <label >{{ __('Email')}}</label>
-                <input type="email" class="form-control @error('collab_mail') is-invalid @enderror" id="inputEmail" placeholder="{{ __('Email')}}" name="collab_mail" value="{{$collabs->collab_mail}}">
+                <input type="email" class="form-control @error('collab_mail') is-invalid @enderror" id="inputEmail" placeholder="{{ __('Email')}}" name="collab_mail" value="{{$collabs->email}}">
                  @error('collab_mail')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -106,6 +106,11 @@
                 @enderror
             </div>
         </div>
+        <div class="row">
+            <div class="col"><label class="labels">{{__('City')}}</label><input type="text" class="form-control" placeholder="{{__('City')}}" value="{{$collabs->city }}" name="city">@error('city')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror </div>
+            <div class="col"><label class="labels">{{__('State')}}</label><input type="text" class="form-control" placeholder="{{__('State')}}" value="{{$collabs->state }}" name="state">@error('state')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror </div>
+
+        </div>
 
             <div id="both-btn">
                 <div class="sub-btn"><button type="submit" class="btn btn-block btn-outline-primary"><i class="fa fa-save"></i>  {{__('Save')}} </button></div>
@@ -119,7 +124,7 @@
             </form>
         </div>
     </div>
-  </section>
+   </section>
 
  <script src="{{ asset('js/dashboard.js') }}"></script>
  <script src="{{ asset('js/app.js') }}" defer></script>

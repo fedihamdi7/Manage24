@@ -78,7 +78,7 @@
                     <td>{{$client->adresse1 ?? 'N/A'}}</td>
                     <td>{{$client->phone ?? 'N/A'}}</td>
                     <td>{{$client->email ?? 'N/A'}}</td>
-                    <td>{{$client->contact_person ?? 'N/A'}}</td>
+                    <td>{{$client->user()->where('id',$client->user_id)->value('name') ?? 'N/A'}}</td>
                     <td>{{$client->website ?? 'N/A'}}</td>
                     <td>{{$client->type ?? 'N/A'}}</td>
                 </tr>

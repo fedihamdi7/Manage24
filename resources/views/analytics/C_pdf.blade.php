@@ -70,7 +70,7 @@
             <tr>
                 <th>{{ $mission->id }}</th>
                 <td>{{ __($mission->mission_name) }}</td>
-                <td>{{ $lecollab->collab_name .' '. $lecollab->collab_last_name}}</td>
+                <td>{{ $lecollab->name}}</td>
                 <td>{{$mission->client()->where('id',$mission->client_id)->value('social_reason') }}</td>
 
                 <td>
@@ -92,7 +92,7 @@
             <td></td>
             <td></td>
             <td> <span style="padding-left: 45% ; font-weight: bold">{{ __('Total') }}</span></td>
-            <td>{{$tt}}</td>
+            <td>{{$tt . __(' Hours')}}</td>
         </tr>
                 {{-- <tr>
                     <th>{{__('Client')}}</th>
@@ -119,7 +119,7 @@
       </table>
 
       <div class="time">
-        {{$time->toDateTimeString()}}
+        {{$time_now->toDateTimeString()}}
     </div>
 
 </body>

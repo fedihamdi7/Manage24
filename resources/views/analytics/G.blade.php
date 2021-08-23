@@ -54,7 +54,7 @@
     {{-- </div> --}}
 
 
-    <div><button type="submit" class="btn btn-block btn-outline-primary G" style="height: 37px;width: 137px;margin-left: 35%;margin-top: 24%; @if ( (app()->getLocale()) == "en" ) height: 36px;width: 138px;margin-left: 31%;margin-top: 23%; @endif"><i
+    <div><button type="submit" class="btn btn-block btn-outline-primary G" style="height: 37px;width: 137px;margin-left: 35%;margin-top: 24%; @if ( (app()->getLocale()) == "en" ) height: 36px;width: 138px;margin-left: 31%;margin-top: 20%; @endif"><i
         class="fa fa-search"></i> {{__('Search')}} </button></div>
     </form>
 
@@ -72,7 +72,6 @@
             <tr>
                 <th>{{__('id')}}</th>
                 <th>{{__('Name')}}</th>
-                <th>{{__('Last Name')}}</th>
                 <th>{{__('Grade')}}</th>
                 <th>{{__('Email')}}</th>
             </tr>
@@ -82,35 +81,14 @@
                 @foreach ( $missions as $mission )
                 <tr>
                     <th>{{$mission->id}}</th>
-                    <td>{{$mission->collab_name}}</td>
-                    <td>{{$mission->collab_last_name}}</td>
+                    <td>{{$mission->name}}</td>
                     <td>{{__($mission->grade)}}</td>
-                    <td>{{$mission->collab_mail}}</td>
+                    <td>{{$mission->email}}</td>
 
                 </tr>
 
                 @endforeach
-                {{-- <tr>
-                    <th>{{__('Client')}}</th>
-                    <td>{{$missions->client()->where('id', $missions->client_id)->value('social_reason') ?? 'N/A'}}</td>
-                </tr>
-                <tr>
-                    <th>{{__('Client ID')}}</th>
-                    <td>{{$missions->client()->where('id', $missions->client_id)->value('id') ?? 'N/A'}}</td>
-                </tr>
-                <tr>
-                    <th>{{__('Start Date')}}</th>
-                    <td>{{$missions->date_start ?? __('N/A')}}</td>
-                </tr>
-                <tr>
-                    <th>{{__('Finish Date')}}</th>
-                    <td>{{$missions->date_finish ?? __('N/A')}}</td>
-                </tr>
-                <tr>
-                    <th>{{__('Year')}}</th>
-                    <td>{{$missions->year ?? __('N/A')}}</td>
-                </tr> --}}
-
+                
         </tbody>
       </table>
     @else

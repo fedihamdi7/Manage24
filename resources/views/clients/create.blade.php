@@ -49,16 +49,6 @@
                     </span>
                 @enderror
             </div>
-            <div class="col-12">
-
-                <input type="text" class="form-control @error('adresse2') is-invalid @enderror" id="inputPhone"
-                    placeholder="{{__('Adresse 2')}}" name="adresse2" value="{{ old('adresse2') }}">
-                @error('adresse2')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
 
             <div class="row">
                 <div class="col">
@@ -97,9 +87,13 @@
             </div>
 
             <div class="col-12">
-                <input type="text" class="form-control @error('contact_person') is-invalid @enderror"
-                    placeholder="{{__('Contact Person')}}" name="contact_person" value="{{ old('contact_person') }}">
-                @error('contact_person')
+                <label >{{ __('Contact Person')}}</label>
+                <select class="form-select" name="user_id" aria-label="Default select example">
+                    <option selected value="">{{ __('Select Collaborator')}}</option>
+                    @foreach ($collabs as $collab )
+                    <option value=" {{$collab->id}} ">{{$collab->id}} - {{$collab->name}}</option>
+                    @endforeach
+                  </select> @error('user_id')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>

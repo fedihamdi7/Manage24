@@ -27,13 +27,14 @@
     <a name="" id="" class="btn btn-perso" href="{{route('collab.create')}}" role="button" >{{ __('Add Collaborator')}}</a>
     @endif
 
-    <table class="table caption-top">
+    <table class="table caption-top" style="text-align: center; vertical-align:middle;">
         <caption class="cap-style">{{ __('Collaborators List')}}</caption>
         <thead class="table-light">
           <tr>
             <th scope="col">#</th>
             <th scope="col">{{ __('Name')}}</th>
-            <th scope="col">{{ __('Last Name')}}</th>
+            {{-- <th scope="col">{{ __('Last Name')}}</th> --}}
+            <th scope="col">{{ __('Image')}}</th>
             <th scope="col">{{ __('Date In')}}</th>
             <th scope="col">{{ __('Date Out')}}</th>
             <th scope="col">{{ __('Phone')}}</th>
@@ -50,12 +51,15 @@
             @foreach ( $collabs as $collab )
                 <tr>
                     <th scope="row">{{$collab->id}}</th>
-                    <td>{{$collab->collab_name ?? __('N/A')}}</td>
-                    <td>{{$collab->collab_last_name ?? __('N/A')}}</td>
+                    <td>{{$collab->name ?? __('N/A')}}</td>
+                    <td><img style="height: 58px;width: 58px;" src="{{ asset('/storage/images/profileImg/') }}/{{$collab->image }}"
+                        onerror="this.onerror=null;this.src='storage/images/profileImg/default_profile_image.jpg';"
+                        alt="profileImg"></td>
+                    {{-- <td>{{$collab->collab_last_name ?? __('N/A')}}</td> --}}
                     <td>{{$collab->collab_dateIn ?? __('N/A')}}</td>
                     <td>{{$collab->collab_dateOut ?? __('N/A')}}</td>
-                    <td>{{$collab->collab_phone ?? __('N/A')}}</td>
-                    <td>{{$collab->collab_mail ?? __('N/A')}}</td>
+                    <td>{{$collab->phone ?? __('N/A')}}</td>
+                    <td>{{$collab->email ?? __('N/A')}}</td>
                     {{-- <td>{{$collab->grade_id ?? __('N/A')}}</td> --}}
                     <td>{{__($collab->grade()->where('id', $collab->grade_id)->value('grade')) ?? __('N/A')}}</td>
                     <td>{{$collab->service()->where('id', $collab->service_id)->value('service_ligne') ?? __('N/A')}}</td>
@@ -71,7 +75,7 @@
                     </td>
                     @endif
 
-                    <td > <a href=" {{route('onecollab.pdf',['collab'=>$collab])}} " style="color: rgb(139, 101, 101);margin-left: 37%;"> <i class="fa fa-download" aria-hidden="true"></i></a></td>
+                    <td > <a href=" {{route('onecollab.pdf',['collab'=>$collab])}} " style="color: rgb(139, 101, 101);"> <i class="fa fa-download" aria-hidden="true"></i></a></td>
                 </tr>
             @endforeach
         </tbody>

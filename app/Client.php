@@ -17,5 +17,14 @@ class Client extends Model
     {
         return $this->hasOne('App\Time');
     }
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function collab()
+    {
+        return $this->belongsTo('App\Collab');
+    }
 
 }

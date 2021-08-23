@@ -28,6 +28,9 @@
             font-size: 17px;
             transition: 0.3s;
         }
+        table{
+            text-align: center;
+        }
         @media only screen and (min-width: 1638px) {
             form .MG{
                 margin-top: -1px !important;

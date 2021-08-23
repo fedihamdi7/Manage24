@@ -59,9 +59,8 @@
             <tr>
                 <th>{{__('Code Mission')}}</th>
                 <th>{{__('Mission')}}</th>
-                {{-- <th>{{__('Total Hours')}}</th> --}}
-                <th>{{__('Start Date')}}</th>
-                <th>{{__('Finish Date')}}</th>
+                <th>{{__('Collaborator')}}</th>
+                <th>{{__('Date')}}</th>
                 <th>{{__('Elapsed Time')}}</th>
             </tr>
         </thead>
@@ -69,13 +68,10 @@
 
                 @foreach ( $missions as $mission )
                 <tr>
-                    <th>{{$mission->id}}</th>
+                    <th>{{$mission->mission_id}}</th>
                     <td>{{__($mission->mission_name) }}</td>
-                    {{-- <td> {{
-                        $totalSecondsDiff = (abs(strtotime($mission->date_start)- (strtotime($mission->date_finish))))/60/60 . __(' Hours').' / '.(abs(strtotime($mission->date_start)- (strtotime($mission->date_finish))))/60/60/24 .__(' Days')
-                        }}</td> --}}
-                    <td>{{$mission->date_start }}</td>
-                    <td>{{$mission->date_finish }}</td>
+                    <td>{{$mission->name}}</td>
+                    <td>{{$mission->date }}</td>
                     <td>{{$mission->elapsed_time }}</td>
 
                 </tr>
