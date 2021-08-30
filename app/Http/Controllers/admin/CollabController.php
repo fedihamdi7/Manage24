@@ -111,9 +111,16 @@ class CollabController extends Controller
             'phone'=>$request->collab_phone
         ];
         $user = User::create($u);
-        $data['id'] = $user->id;
+        // $data['id'] = $user->id;
         $collab = new Collab();
-        $collab->create($data);
+        $tocreateC = [
+            'id' =>$user->id,
+            'collab_dateIn' => $request->collab_dateIn,
+            'collab_dateOut' => $request->collab_dateOut,
+            'service_id' => $request->service_id,
+            'grade_id' => $request->grade_id
+        ];
+        $collab->create($tocreateC);
 
         Mail::to($request->collab_mail)->send(new AddCollab($data));
         return redirect(route('collab.index',))->with('collabCreated',__('Collaborator Added Successfully'));

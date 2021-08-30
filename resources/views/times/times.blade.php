@@ -23,9 +23,9 @@
     </div>
     <a name="" id="" style="background-color: #fb1e00;" class="btn btn-perso" href="{{route('time.pdf')}}" role="button" ><i class="fa fa-download" aria-hidden="true">{{__('Download')}}</i></a>
 
-    @if ($user->role == "Admin")
+    {{-- @if ($user->role == "Admin") --}}
     <a  id="" class="btn btn-perso" href="{{route('time.create')}}" role="button" >{{__('Add Time')}}</a>
-    @endif
+    {{-- @endif --}}
     <table class="table caption-top">
         <caption class="cap-style" style="margin-left: 41%;">{{__('Times')}}</caption>
         <thead class="table-light">

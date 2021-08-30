@@ -22,8 +22,8 @@ class CreateClientsTable extends Migration
             $table->string('phone')->nullable();
             $table->string('fax')->nullable();
             $table->string('email')->nullable();
-            $table->bigInteger('contact_person')->unsigned();
-            $table->foreign('contact_person')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('website')->nullable();
             $table->enum('type', ['local', 'foreign'])->nullable();
             $table->timestamps();
