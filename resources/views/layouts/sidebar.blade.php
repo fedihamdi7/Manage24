@@ -104,9 +104,9 @@
                         <i class='bx bx-street-view'></i>
                         <span class="link_name">{{ __('Collaborators') }}</span>
                     </a>
-                    @if ($user->role == 'Admin')
+                    {{-- @if ($user->role == 'Admin')
                         <i class='bx bxs-chevron-down arrow'></i>
-                    @endif
+                    @endif --}}
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="{{ route('collab.index') }}">{{ __('Collaborators') }}</a></li>
@@ -123,9 +123,9 @@
                         <i class='bx bxs-devices'></i>
                         <span class="link_name">{{ __('Service Line') }}</span>
                     </a>
-                    @if ($user->role == 'Admin')
+                    {{-- @if ($user->role == 'Admin')
                         <i class='bx bxs-chevron-down arrow'></i>
-                    @endif
+                    @endif --}}
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="{{ route('service.index') }}">{{ __('Service Line') }}</a></li>
@@ -142,9 +142,9 @@
                         <span class="link_name">{{ __('Clients') }}</span>
                     </a>
 
-                    @if ($user->role == 'Admin')
+                    {{-- @if ($user->role == 'Admin')
                         <i class='bx bxs-chevron-down arrow'></i>
-                    @endif
+                    @endif --}}
 
                 </div>
                 <ul class="sub-menu">
@@ -162,9 +162,9 @@
                         <i class='bx bxs-bookmark-star'></i>
                         <span class="link_name">{{ __('Missions') }}</span>
                     </a>
-                    @if ($user->role == 'Admin')
+                    {{-- @if ($user->role == 'Admin')
                         <i class='bx bxs-chevron-down arrow'></i>
-                    @endif
+                    @endif --}}
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="{{ route('mission.index') }}">{{ __('Missions') }}</a></li>
@@ -180,9 +180,9 @@
                         <i class='bx bx-time'></i>
                         <span class="link_name">{{ __('Time Managment') }}</span>
                     </a>
-                    @if ($user->role == 'Admin')
+                    {{-- @if ($user->role == 'Admin')
                         <i class='bx bxs-chevron-down arrow'></i>
-                    @endif
+                    @endif --}}
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="{{ route('time.index') }}">{{ __('Time Managment') }}</a></li>
@@ -198,9 +198,9 @@
                         <i class='bx bxs-graduation'></i>
                         <span class="link_name">{{ __('Grades') }}</span>
                     </a>
-                    @if ($user->role == 'Admin')
+                    {{-- @if ($user->role == 'Admin')
                         <i class='bx bxs-chevron-down arrow'></i>
-                    @endif
+                    @endif --}}
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="{{ route('grade.index') }}">{{ __('Grades') }}</a></li>
@@ -217,9 +217,9 @@
                         <i class='bx bx-search-alt'></i>
                         <span class="link_name">{{ __('Analytics') }}</span>
                     </a>
-                    @if ($user->role == 'Admin')
+                    {{-- @if ($user->role == 'Admin')
                         <i class='bx bxs-chevron-down arrow'></i>
-                    @endif
+                    @endif --}}
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">{{ __('Analytics') }}</a></li>
@@ -241,9 +241,9 @@
                         <i class='bx bx-cog'></i>
                         <span class="link_name">{{ __('Language') }}</span>
                     </a>
-                    @if ($user->role == 'Admin')
+                    {{-- @if ($user->role == 'Admin')
                         <i class='bx bxs-chevron-down arrow'></i>
-                    @endif
+                    @endif --}}
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">{{ __('Language') }}</a></li>
