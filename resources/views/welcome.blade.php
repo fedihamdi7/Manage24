@@ -76,6 +76,7 @@
                     <form class="forms_form" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
                         <fieldset class="forms_fieldset">
+                            <input type="hidden" name="role" value="Admin">
                             <div class="forms_field">
                                 <input type="text" placeholder="Full Name" class="forms_field-input @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" />
                                  @error('name')<div class="text-danger">{{ $message }}</div>@enderror

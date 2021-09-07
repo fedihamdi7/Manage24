@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -45,17 +46,36 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        $data = request()->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-        User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-    
+
+        if (str_contains($request->header('referer'),'/reg')) {
+
+            $data = request()->validate([
+                'name' => 'required',
+                'email' => 'required|email',
+                'password' => 'required',
+                'role' => 'required'
+            ]);
+            DB::table('users')->insert(
+                [
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'role' => $data['role']
+                ]
+            );
+        }
+        else {
+            $data = request()->validate([
+                'name' => 'required',
+                'email' => 'required|email',
+                'password' => 'required'
+            ]);
+            User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+            ]);
+        }
 
         return redirect(route('/'))->with('membreCreate','Account Created Successfully , You can Login');
 
