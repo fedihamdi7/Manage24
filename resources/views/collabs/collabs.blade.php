@@ -52,7 +52,7 @@
                 <tr>
                     <th scope="row">{{$collab->id}}</th>
                     <td>{{$collab->name ?? __('N/A')}}</td>
-                    <td><img style="height: 58px;width: 58px;" src="{{ asset('/storage/images/profileImg/') }}/{{$collab->image }}"
+                    <td><img style="height: 58px;width: 58px;" src="{{ asset('/storage/images/profileImg/') }}/{{$collab->avatar }}"
                         onerror="this.onerror=null;this.src='storage/images/profileImg/default_profile_image.jpg';"
                         alt="profileImg"></td>
                     {{-- <td>{{$collab->collab_last_name ?? __('N/A')}}</td> --}}

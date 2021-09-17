@@ -62,7 +62,7 @@ class CollabController extends Controller
         $g= Grade::find($collab->grade_id)->value('grade');
         $grades=Grade::get()->sort();
         $time = Carbon::now();
-        // dd($collabs);
+        // dd($collabs->avatar);
 
         $pdf = PDF::loadview('collabs.onepdf',compact('user','collabs','collab','page','g','grades','current_grade','time'));
         $pdf->setPaper('A4', 'landscape');

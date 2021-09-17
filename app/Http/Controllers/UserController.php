@@ -117,7 +117,7 @@ class UserController extends Controller
         if ($request->hasfile("image")) {
             $imageName = time() . $request['image']->getClientOriginalName();
             $request['image']->move(base_path() . '/public/storage/images/profileImg/', $imageName);
-            $update['image'] = $imageName;
+            $update['avatar'] = $imageName;
             $image = Image::make(public_path("storage/images/profileImg/".$imageName))->fit(300,300);
             $image->save();
         }

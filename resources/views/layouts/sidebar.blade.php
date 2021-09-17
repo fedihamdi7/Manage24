@@ -235,6 +235,33 @@
                 </li>
                 @endif
 
+                <li>
+                    <div class="iocn-link">
+                        <a href="{{ route('chatify') }}">
+                            @php
+                                $unread=DB::table('ch_messages')->where([['to_id',Auth::user()->id],['seen',0]])->get()
+                            @endphp
+                            @if (count($unread)>0)
+                            <i class='bx bxs-chat bx-tada' style='color:#ff0000' ></i>
+
+                            @else
+                            <i class='bx bxs-chat'></i>
+
+                            @endif
+                            <span class="link_name">{{ __('Chat') }}</span>
+                        </a>
+                        {{-- @if ($user->role == 'Admin')
+                            <i class='bx bxs-chevron-down arrow'></i>
+                        @endif --}}
+                    </div>
+                    {{-- <ul class="sub-menu">
+                        <li><a class="link_name" href="{{ route('grade.index') }}">{{ __('Grades') }}</a></li>
+                        @if ($user->role == 'Admin')
+                            <li><a href="{{ route('grade.create') }}">{{ __('Add') }}</a></li>
+                        @endif
+
+                    </ul> --}}
+                </li>
             <li >
                 <div class="iocn-link">
                     <a href="#">
@@ -255,39 +282,13 @@
                     <li><a href="#">{{__('French')}}</a></li> --}}
                 </ul>
             </li>
-            {{-- <li>
-                <a href="#">
-                    <i class='bx bx-compass'></i>
-                    <span class="link_name">Explore</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Explore</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-history'></i>
-                    <span class="link_name">History</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">History</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-cog'></i>
-                    <span class="link_name">Setting</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Setting</a></li>
-                </ul>
-            </li> --}}
+
             <li>
                 <div class="profile-details">
 
                     <div class="profile-content">
                         <a href=" {{ route('user.index') }} ">
-                            <img src="{{ asset('/storage/images/profileImg/') }}/{{ $user->image }}"
+                            <img src="{{ asset('/storage/images/profileImg/') }}/{{ $user->avatar }}"
                                 onerror="this.onerror=null;this.src='storage/images/profileImg/default_profile_image.jpg';"
                                 alt="profileImg">
                         </a>
