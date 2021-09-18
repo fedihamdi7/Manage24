@@ -5,7 +5,9 @@
         {{-- Header and search bar --}}
         <div class="m-header">
             <nav>
-                <a href="#"><i class="fas fa-inbox"></i> <span class="messenger-headTitle">MESSAGES</span> </a>
+                {{-- <a href="#"><i class="fas fa-inbox"></i> <span class="messenger-headTitle">MESSAGES</span> </a> --}}
+                <a href="{{route('collab.index')}}"><i class="fas fa-arrow-left"></i> <i class="fas fa-home"></i> {{__('HOME')}} </a>
+
                 {{-- header buttons --}}
                 <nav class="m-header-right">
                     <a href="#"><i class="fas fa-cog settings-btn"></i></a>
@@ -74,7 +76,7 @@
                 {{-- header buttons --}}
                 <nav class="m-header-right">
                     <a href="#" class="add-to-favorite"><i class="fas fa-star"></i></a>
-                    <a href="{{route('collab.index')}}"><i class="fas fa-home"></i></a>
+                    {{-- <a href="{{route('collab.index')}}"><i class="fas fa-home"></i></a> --}}
                     <a href="#" class="show-infoSide"><i class="fas fa-info-circle"></i></a>
                 </nav>
             </nav>
