@@ -78,3 +78,7 @@ Route::post('/create_pwd/collab/confirm','admin\CollabController@Confirmpassword
 
 
 Auth::routes();
+
+Route::get('chat', 'MessageController@index')->name('chat');
+Route::get('/chat/{id}', 'MessageController@getMessage')->name('message');
+Route::post('/chat/{to}/send-message','MessageController@sendMessage')->name('send-message');

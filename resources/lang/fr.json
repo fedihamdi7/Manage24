@@ -811,7 +811,8 @@
     "link" : "lien",
     "Account Created , Log In" : "Compte créé, connectez-vous",
     "Your Email : " : " Votre Email : ",
-    "Your Password : " : "Votre mot de passe : "
+    "Your Password : " : "Votre mot de passe : ",
+    "SEND" : "Envoyer"
 
 
 }
