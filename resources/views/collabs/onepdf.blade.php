@@ -66,7 +66,7 @@
 
                 <tr>
                     <th>{{__('Profile Picture')}}</th>
-                    <td> <img width="150px" src="storage/images/profileImg/{{ $collabs->image }}" alt=""> </td>
+                    <td> <img width="150px" src="storage/images/profileImg/{{ $collabs->avatar }}" alt=""> </td>
                 </tr>
                 <tr>
                     <th>{{__('Full Name')}}</th>
