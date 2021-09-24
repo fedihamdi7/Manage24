@@ -13,6 +13,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+    @if ($page == 'chat') <link rel="stylesheet" href="{{ asset('css/chat.css') }}"> @endif
     <link rel="icon" href="{{ asset('images/logo.png') }}">
     <title>RBB</title>
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -234,7 +235,33 @@
                     </ul>
                 </li>
                 @endif
+                <li @if ($page == 'chat') class="active-side" @endif>
+                    <div class="iocn-link">
+                        <a href="{{ route('chat') }}">
+                            @php
+                                $unread=DB::table('messages')->where([['to',Auth::user()->id],['is_read',0]])->get()
+                            @endphp
+                            @if (count($unread)>0)
+                            <i class='bx bxs-chat bx-tada' style='color:#ff0000' ></i>
 
+                            @else
+                            <i class='bx bxs-chat'></i>
+
+                            @endif
+                            <span class="link_name">{{ __('Chat') }}</span>
+                        </a>
+                        {{-- @if ($user->role == 'Admin')
+                            <i class='bx bxs-chevron-down arrow'></i>
+                        @endif --}}
+                    </div>
+                    {{-- <ul class="sub-menu">
+                        <li><a class="link_name" href="{{ route('grade.index') }}">{{ __('Grades') }}</a></li>
+                        @if ($user->role == 'Admin')
+                            <li><a href="{{ route('grade.create') }}">{{ __('Add') }}</a></li>
+                        @endif
+
+                    </ul> --}}
+                </li>
             <li >
                 <div class="iocn-link">
                     <a href="#">
@@ -288,7 +315,7 @@
                     <div class="profile-content">
                         <a href=" {{ route('user.index') }} ">
                             <img src="{{ asset('/storage/images/profileImg/') }}/{{ $user->image }}"
-                                onerror="this.onerror=null;this.src='storage/images/profileImg/default_profile_image.jpg';"
+                                onerror="this.onerror=null;this.src='../storage/images/profileImg/default_profile_image.jpg';"
                                 alt="profileImg">
                         </a>
                     </div>
