@@ -35,7 +35,8 @@ class CollabController extends Controller
     {
         $page='collabs';
         $user = Auth::user();
-        $collabs = Collab::join('users','collabs.id','users.id')->where('users.role','Collaborator')->get()->sort();
+        $collabs = Collab::join('users','collabs.id','users.id')->where('users.role','Collaborator')->paginate(5);
+        // $collabs = Collab::join('users','collabs.id','users.id')->where('users.role','Collaborator')->get()->sort();
         // dd($collabs);
         return view('collabs.collabs',compact('user','collabs','page'));
     }

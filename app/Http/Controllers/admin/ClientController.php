@@ -29,7 +29,9 @@ class ClientController extends Controller
     {
         $page='client';
         $user = Auth::user();
-        $clients = Client::get()->sort();
+        // $clients = Client::get()->sort();
+        $clients = Client::paginate(5);
+        // dd($clients);
         // dd($clients->user()->where('id',$clients->contact_person));
 
         return view('clients.clients',compact('user','clients','page'));

@@ -45,7 +45,7 @@ class TimeController extends Controller
     {
         $page='time';
         $user = Auth::user();
-        $times = Time::get()->sort();
+        $times = Time::paginate(10);
 
         return view('times.times',compact('user','times','page'));
     }

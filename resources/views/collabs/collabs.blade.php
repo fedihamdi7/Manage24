@@ -80,6 +80,9 @@
             @endforeach
         </tbody>
       </table>
+      <div style="left: 45%;position: absolute;bottom: 0%;">
+      {{ $collabs->links() }}
+    </div>
   </section>
 
  <script src="{{ asset('js/dashboard.js') }}"></script>

@@ -27,7 +27,7 @@ class ServiceController extends Controller
     {
         $page='service';
         $user = Auth::user();
-        $services = Service::get()->sort();
+        $services = Service::paginate(9);
 
         return view('services.services',compact('user','services','page'));
     }

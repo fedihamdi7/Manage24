@@ -30,7 +30,7 @@ class GradeController extends Controller
     {
         $page='grade';
         $user = Auth::user();
-        $grades = Grade::get()->sort();
+        $grades = Grade::paginate(9);
 
 
         return view('grades.grades',compact('user','grades','page'));
